@@ -1,0 +1,32 @@
+
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 8px 0;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  a,
+  a:visited,
+  a:hover {
+    color: #01050a;
+    font-weight: bold;
+    text-decoration: underline;
+    font-size: 20px;
+  }
+
+
+  li a{
+    margin: 0 0 0 20px;
+  }
+  a:hover {
+    color: #125699;
+  }
+
