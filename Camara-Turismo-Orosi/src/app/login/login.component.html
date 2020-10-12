@@ -1,0 +1,18 @@
+<div class="login">
+    <h1>
+        Ingreso al Sistema de la Cámara de Turismo de Orosí
+    </h1>
+    <div class="form">
+        <form [formGroup]="loginForm">
+            <div class="username">
+                <p>Ingrese el nombre de Usuario</p>
+                <input type="text" name="username" id="username" formControlName="username">
+            </div>
+            <div class="password">
+                <p>Ingrese la contraseña</p>
+                <input type="password" name="password" id="password" formControlName="password">
+            </div>
+            <button (click)="onSubmit()">Ingresar</button>
+        </form>
+    </div>
+</div>
