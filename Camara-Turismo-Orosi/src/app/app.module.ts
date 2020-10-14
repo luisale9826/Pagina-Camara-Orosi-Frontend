@@ -13,7 +13,6 @@ import { DirectorioComponent } from './directorio/directorio.component';
 import { ArmarTourComponent } from './armar-tour/armar-tour.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginModule } from './login/login.module';
-import { from } from 'rxjs';
 
 @NgModule({
   declarations: [

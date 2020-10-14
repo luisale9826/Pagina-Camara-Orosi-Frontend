@@ -15,7 +15,7 @@ const routes: Routes = [{ path: '', component: IndexComponent }];
     DirectorioModule,
     AfiliadosModule,
     ArmarTourModule,
-    LoginModule
+    LoginModule,
   ],
   exports: [RouterModule],
 })

@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ArmarTourComponent } from './armar-tour.component';
 
 const routes: Routes = [
-  {path: 'armarTour', component: ArmarTourComponent},
+  {path: 'armarTour', component: ArmarTourComponent },
 ];
 
 @NgModule({

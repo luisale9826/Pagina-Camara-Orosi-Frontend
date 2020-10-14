@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginService } from '../services/login.service';
 
 @Component({
   selector: 'app-directorio',
@@ -7,7 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DirectorioComponent implements OnInit {
 
-  constructor() { }
+  status: boolean;
+  constructor(private loginService: LoginService) {
+    this.loginService.statusProvider.subscribe((status) => {
+      this.status = status;
+    });
+  }
 
   ngOnInit(): void {
   }
