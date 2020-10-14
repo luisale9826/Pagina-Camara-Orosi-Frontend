@@ -1,0 +1,26 @@
+.container {
+    margin-top: 40px;
+}
+
+.container h1 {
+    text-align: center;
+    font-size: 40px;
+}
+
+.container .panels {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.container div h1 {
+    text-align: left;
+}
+
+.container .panels mat-accordion mat-expansion-panel {  
+    background-color: #0c7c24;
+    color: white;
+}
+
+.container .panels mat-accordion mat-expansion-panel mat-expansion-panel-header mat-panel-title {  
+    color: white;
+}

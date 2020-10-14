@@ -1,5 +1,5 @@
 <header>
-    <!-- Navbar -->
+  <!-- Navbar -->
   <nav class="navbar navbar-expand-sm justify-content-center">
     <ul class="navbar-nav">
       <li class="nav-item" id="nav-item">
@@ -9,7 +9,7 @@
         <a class="nav-link" routerLink="/directorio">DIRECTORIO</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/afiliados">AFILIADOS</a>
+        <a class="nav-link" routerLink="/conozcanos">CONZCANOS/AFILIARSE</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" routerLink="/tourVirtual">TOUR VIRTUAL</a>
@@ -17,11 +17,13 @@
       <li class="nav-item">
         <a class="nav-link" routerLink="/armarTour">ARMA TU PROPIO TOUR</a>
       </li>
+      <li class="nav-item" *ngIf="status">
+        <a class="nav-link" routerLink="/usuarios">USUARIOS</a>
+      </li>
+      <li class="nav-item" *ngIf="status">
+        <a class="nav-link" (click)="logout()">CERRAR SESSIÓN</a>
+      </li>
     </ul>
   </nav>
   <!-- End Navbar -->
- 
-  
-  
-  
-  </header>
+</header>

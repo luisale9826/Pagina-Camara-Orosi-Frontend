@@ -1,21 +1,22 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import {AfiliadosComponent} from './afiliados/afiliados.component';
-import {DirectorioComponent} from './directorio/directorio.component';
-import {ArmarTourComponent} from './armar-tour/armar-tour.component';
-import {IndexComponent} from './index/index.component';
+import { IndexComponent } from './index/index.component';
+import { DirectorioModule } from './directorio/directorio.module';
+import { ArmarTourModule } from './armar-tour/armar-tour.module';
+import { LoginModule } from './login/login.module';
+import { ConozcanosAfiliarseModule } from './conozcanos-afiliarse/conozcanos-afiliarse.module';
 
-
-const routes: Routes = [
-  {path:'afiliados', component:AfiliadosComponent},
-  {path:'directorio', component:DirectorioComponent},
-  {path:'armarTour', component:ArmarTourComponent},
-  {path:'', component:IndexComponent}
-];
+const routes: Routes = [{ path: '', component: IndexComponent }];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  imports: [
+    RouterModule.forRoot(routes),
+    DirectorioModule,
+    ArmarTourModule,
+    LoginModule,
+    ConozcanosAfiliarseModule
+  ],
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
