@@ -1,13 +1,14 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
-import { EventEmitter, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LoginService {
-  readonly PATH = 'http://localhost:8080/';
+  readonly PATH = environment.apiURL;
   statusProvider: BehaviorSubject<boolean>;
   private status = false;
 

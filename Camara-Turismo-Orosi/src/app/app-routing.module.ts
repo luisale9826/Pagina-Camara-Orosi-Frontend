@@ -3,9 +3,9 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IndexComponent } from './index/index.component';
 import { DirectorioModule } from './directorio/directorio.module';
-import { AfiliadosModule } from './afiliados/afiliados.module';
 import { ArmarTourModule } from './armar-tour/armar-tour.module';
 import { LoginModule } from './login/login.module';
+import { ConozcanosAfiliarseModule } from './conozcanos-afiliarse/conozcanos-afiliarse.module';
 
 const routes: Routes = [{ path: '', component: IndexComponent }];
 
@@ -13,9 +13,9 @@ const routes: Routes = [{ path: '', component: IndexComponent }];
   imports: [
     RouterModule.forRoot(routes),
     DirectorioModule,
-    AfiliadosModule,
     ArmarTourModule,
     LoginModule,
+    ConozcanosAfiliarseModule
   ],
   exports: [RouterModule],
 })
