@@ -11,11 +11,11 @@ const routes: Routes = [{ path: '', component: IndexComponent }];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes),
     DirectorioModule,
     ArmarTourModule,
     LoginModule,
-    ConozcanosAfiliarseModule
+    ConozcanosAfiliarseModule,
+    RouterModule.forRoot(routes),
   ],
   exports: [RouterModule],
 })

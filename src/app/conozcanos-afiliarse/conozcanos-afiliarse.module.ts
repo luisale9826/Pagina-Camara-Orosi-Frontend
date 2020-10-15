@@ -16,6 +16,6 @@ import { ConozcanosAfiliarseComponent } from './conozcanos-afiliarse.component';
     MatFormFieldModule,
     MatIconModule,
   ],
-  exports: [],
+  exports: [ConozcanosAfiliarseRoutingModule],
 })
 export class ConozcanosAfiliarseModule {}

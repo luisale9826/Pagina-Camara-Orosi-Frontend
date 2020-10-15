@@ -2,12 +2,10 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ArmarTourComponent } from './armar-tour.component';
 
-const routes: Routes = [
-  {path: 'armarTour', component: ArmarTourComponent },
-];
+export const routes: Routes = [{ path: 'armarTour', component: ArmarTourComponent }];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class ArmarTourRoutingModule { }
+export class ArmarTourRoutingModule {}

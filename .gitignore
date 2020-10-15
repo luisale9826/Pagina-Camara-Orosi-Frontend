@@ -48,3 +48,5 @@ Thumbs.db
 .vscode/
 
 debug.log
+
+.netlify/

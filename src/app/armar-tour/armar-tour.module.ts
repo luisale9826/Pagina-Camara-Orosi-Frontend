@@ -3,12 +3,9 @@ import { CommonModule } from '@angular/common';
 
 import { ArmarTourRoutingModule } from './armar-tour-routing.module';
 
-
 @NgModule({
   declarations: [],
-  imports: [
-    CommonModule,
-    ArmarTourRoutingModule
-  ]
+  imports: [CommonModule, ArmarTourRoutingModule],
+  exports: [ArmarTourRoutingModule],
 })
-export class ArmarTourModule { }
+export class ArmarTourModule {}
