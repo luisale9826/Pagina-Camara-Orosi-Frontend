@@ -27,22 +27,25 @@
   }
 
   .promociones{
-
     margin: 0 0 0 100px;
+  }
+
+  #container-promo{
+    margin: 0 10% 0 10%;
   }
 
   #dvCarrito h2{
     color: white;
   }
   #dvCarrito{
-    width: 300px;
-    height: 500px;
+    width: 80%;
+    height: 80%;
     background-color: #707271;
   }
 
   .conozca-orosi{
 
-    margin: 0 0 0 100px;
+    margin: 0 10% 0 10%;
   }
 
   
