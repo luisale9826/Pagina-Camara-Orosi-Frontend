@@ -63,8 +63,8 @@
             </mat-form-field>
         </div>
         <div class="custom-file">
-            <input type="file" class="custom-file-input" formControlName="companyLogo">
-            <label class="custom-file-label">Imagen o Logo de la Comapañía</label>
+            <input type="file" class="custom-file-input" (change)="onFileUploaded($event)">
+            <label class="custom-file-label">{{uploadedFileName}}</label>
         </div>
         <div>
             <mat-form-field>
