@@ -1,0 +1,88 @@
+<h1>{{data.titulo}}</h1>
+<mat-dialog-content>
+    <p>Este formulario tiene el propósito de registrara una compañía (afiliado) en el directorio</p>
+    <form [formGroup]="companyForm" (ngSubmit)="onSubmit(companyForm.value)">
+        <div>
+            <mat-form-field>
+                <mat-label>Nombre de la Compañía</mat-label>
+                <input matInput formControlName="companyName">
+                <mat-icon matSuffix>
+                    apartment
+                </mat-icon>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field>
+                <mat-label>Descripción de la Compañía</mat-label>
+                <textarea matInput type="url" formControlName="companyDescription"></textarea>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field>
+                <mat-label>Clasificación de la Compañía</mat-label>
+                <mat-select formControlName="companyClasification">
+                    <mat-option *ngFor="let clasification of companyClasifications" [value]="clasification.value">
+                        {{clasification.value}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field>
+                <mat-label>Correo de la Compañía</mat-label>
+                <input matInput type="email" formControlName="companyEmail">
+                <mat-icon matSuffix class="fa fa-envelope" style="font-size:24px"></mat-icon>
+            </mat-form-field>
+        </div>
+        <div formArrayName="companyPhones">
+            <button type="button" (click)="addPhoneNumber()">Agregar Teléfono</button>
+            <div *ngFor="let control of phones.controls; let i = index">
+                <div [formGroupName]="i">
+                    <mat-form-field>
+                        <mat-label>Teléfono {{i + 1}} de la Compañía</mat-label>
+                        <input matInput type="tel" formControlName="phone">
+                        <mat-icon matSuffix>phone_enabled</mat-icon>
+                    </mat-form-field>
+                    <button (click)="removePhone(i)">Eliminar Número</button>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div>
+                <mat-form-field>
+                    <mat-label>Dirección de la Compañía</mat-label>
+                    <textarea matInput formControlName="companyAddress"></textarea>
+                </mat-form-field>
+            </div>
+        </div>
+        <div>
+            <mat-form-field>
+                <mat-label>Ubicación en Google Maps de la Compañía</mat-label>
+                <input matInput formControlName="companyLocation">
+                <mat-icon matSuffix matSuffix class="fa fa-map-marker" style="font-size:24px"></mat-icon>
+            </mat-form-field>
+        </div>
+        <div class="custom-file">
+            <input type="file" class="custom-file-input" formControlName="companyLogo">
+            <label class="custom-file-label">Imagen o Logo de la Comapañía</label>
+        </div>
+        <div>
+            <mat-form-field>
+                <mat-label>Link a Facebook de la Compañía</mat-label>
+                <input type="url" matInput formControlName="companyFacebookProfile">
+                <mat-icon matSuffix class="fa fa-facebook-official" style="font-size:24px"></mat-icon>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field>
+                <mat-label>Link a Instagram de la Compañía</mat-label>
+                <input matInput type="url" formControlName="companyInstagramProfile">
+                <mat-icon matSuffix class="fa fa-instagram" style="font-size:24px"></mat-icon>
+            </mat-form-field>
+        </div>
+
+        <button class="btn-insertar" mat-flat-button type="submit">Guardar</button>
+        <button mat-flat-button>Cancelar</button>
+
+    </form>
+</mat-dialog-content>
