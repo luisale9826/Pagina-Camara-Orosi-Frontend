@@ -1,6 +1,9 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { RxwebValidators } from '@rxweb/reactive-form-validators';
+import { DirectorioService } from 'src/app/services/directorio.service';
+import { notNullOrBlank } from 'src/app/shared/custome-validations';
 
 @Component({
   selector: 'app-insertar-company-dialog',
@@ -13,10 +16,11 @@ export class InsertarCompanyDialogComponent implements OnInit {
   public uploadedFileName: string;
 
   constructor(
+    public dialogRef: MatDialogRef<InsertarCompanyDialogComponent>,
     private formBuilder: FormBuilder,
-    @Inject(MAT_DIALOG_DATA) public data
+    @Inject(MAT_DIALOG_DATA) public data,
+    private directorioService: DirectorioService
   ) {
-    this.uploadedFileName = 'Imagen o Logo de la Compañía';
     this.companyClasifications = [
       { value: 'Actividades Térmicas' },
       { value: 'Artesanías' },
@@ -30,14 +34,13 @@ export class InsertarCompanyDialogComponent implements OnInit {
 
   ngOnInit(): void {
     this.companyForm = this.formBuilder.group({
-      companyName: '',
+      companyName: ['', [Validators.required, notNullOrBlank]],
       companyDescription: '',
-      companyClasification: '',
-      companyEmail: '',
+      companyCategory: ['', [Validators.required]],
+      companyEmail: ['', [Validators.email]],
       companyPhones: this.formBuilder.array([]),
       companyAddress: '',
       companyLocation: '',
-      companyLogo: null,
       companyFacebookProfile: '',
       companyInstagramProfile: '',
     });
@@ -49,7 +52,7 @@ export class InsertarCompanyDialogComponent implements OnInit {
 
   private newPhone(): FormGroup {
     return this.formBuilder.group({
-      phone: '',
+      phone: ['', RxwebValidators.unique()],
     });
   }
 
@@ -61,12 +64,16 @@ export class InsertarCompanyDialogComponent implements OnInit {
     return this.companyForm.get('companyPhones') as FormArray;
   }
 
-  onFileUploaded(event): void {
-    this.uploadedFileName = event.target.files[0].name;
-    this.companyForm.get('companyLogo').setValue(event.target.files[0]);
-  }
-
   onSubmit(companyData): void {
-    console.log(companyData);
+    if (this.companyForm.valid) {
+      this.directorioService
+        .insertarCompany(companyData)
+        .then((data) => {
+          this.data.companyId = data.body.companyId;
+          this.data.companyName = companyData.companyName;
+          this.dialogRef.close(this.data);
+        })
+        .catch((err) => console.log(err));
+    }
   }
 }

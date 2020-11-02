@@ -1,15 +1,17 @@
 <h1>{{data.titulo}}</h1>
 <mat-dialog-content>
-    <p>Este formulario tiene el propósito de registrara una compañía (afiliado) en el directorio</p>
+    <p>Este formulario tiene el propósito de registrar una compañía (afiliado) en el directorio</p>
     <form [formGroup]="companyForm" (ngSubmit)="onSubmit(companyForm.value)">
         <div>
             <mat-form-field>
                 <mat-label>Nombre de la Compañía</mat-label>
-                <input matInput formControlName="companyName">
+                <input matInput id="companyName" formControlName="companyName">
                 <mat-icon matSuffix>
                     apartment
                 </mat-icon>
             </mat-form-field>
+            <p class="error" *ngIf="companyForm.controls.companyName.touched && companyForm.controls.companyName.hasError('required')">Este campo no puede estar vacio</p>
+            <p class="error" *ngIf="companyForm.controls.companyName.touched && companyForm.controls.companyName.hasError('blankOrNull')">Este campo no puede estar vacio</p>
         </div>
         <div>
             <mat-form-field>
@@ -20,12 +22,13 @@
         <div>
             <mat-form-field>
                 <mat-label>Clasificación de la Compañía</mat-label>
-                <mat-select formControlName="companyClasification">
+                <mat-select formControlName="companyCategory">
                     <mat-option *ngFor="let clasification of companyClasifications" [value]="clasification.value">
                         {{clasification.value}}
                     </mat-option>
                 </mat-select>
             </mat-form-field>
+            <p class="error" *ngIf="companyForm.controls.companyCategory.touched && companyForm.controls.companyCategory.hasError('required')">Este campo no puede estar vacio</p>
         </div>
         <div>
             <mat-form-field>
@@ -33,9 +36,14 @@
                 <input matInput type="email" formControlName="companyEmail">
                 <mat-icon matSuffix class="fa fa-envelope" style="font-size:24px"></mat-icon>
             </mat-form-field>
+            <p class="error" *ngIf="companyForm.controls.companyEmail.touched && companyForm.controls.companyEmail.hasError('email')">El formato no coincide con el de correo electrónico</p>
         </div>
         <div formArrayName="companyPhones">
-            <button type="button" (click)="addPhoneNumber()">Agregar Teléfono</button>
+            <button type="button" (click)="addPhoneNumber()">Agregar Teléfono
+                <mat-icon>
+                    add_ic_call
+                </mat-icon>
+            </button>
             <div *ngFor="let control of phones.controls; let i = index">
                 <div [formGroupName]="i">
                     <mat-form-field>
@@ -62,10 +70,6 @@
                 <mat-icon matSuffix matSuffix class="fa fa-map-marker" style="font-size:24px"></mat-icon>
             </mat-form-field>
         </div>
-        <div class="custom-file">
-            <input type="file" class="custom-file-input" (change)="onFileUploaded($event)">
-            <label class="custom-file-label">{{uploadedFileName}}</label>
-        </div>
         <div>
             <mat-form-field>
                 <mat-label>Link a Facebook de la Compañía</mat-label>
@@ -82,7 +86,7 @@
         </div>
 
         <button class="btn-insertar" mat-flat-button type="submit">Guardar</button>
-        <button mat-flat-button>Cancelar</button>
+        <button type="button" mat-flat-button (click)="dialogRef.close()">Cancelar</button>
 
     </form>
 </mat-dialog-content>

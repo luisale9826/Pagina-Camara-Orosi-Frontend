@@ -12,7 +12,6 @@ import { DirectorioComponent } from './directorio/directorio.component';
 import { ArmarTourComponent } from './armar-tour/armar-tour.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginModule } from './login/login.module';
-import { ConozcanosAfiliarseComponent } from './conozcanos-afiliarse/conozcanos-afiliarse.component';
 import { ConozcanosAfiliarseModule } from './conozcanos-afiliarse/conozcanos-afiliarse.module';
 import { PromocionComponent } from './promocion/promocion.component';
 import { PromocionModule } from './promocion/promocion.module';
@@ -34,7 +33,7 @@ import { PromocionModule } from './promocion/promocion.module';
     AppRoutingModule,
     NoopAnimationsModule,
     ConozcanosAfiliarseModule,
-    PromocionModule
+    PromocionModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

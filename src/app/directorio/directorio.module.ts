@@ -10,11 +10,13 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
+import { RxReactiveFormsModule } from '@rxweb/reactive-form-validators';
+import { UploadFileCompanyComponent } from './management/upload-file-company/upload-file-company.component';
 
 
 
 @NgModule({
-  declarations: [InsertarCompanyDialogComponent],
+  declarations: [InsertarCompanyDialogComponent, UploadFileCompanyComponent],
   imports: [
     CommonModule,
     DirectorioRoutingModule,
@@ -25,7 +27,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatInputModule,
     MatIconModule,
     MatSelectModule,
-    MatButtonModule
+    MatButtonModule,
+    RxReactiveFormsModule
   ],
   exports: [DirectorioRoutingModule],
   entryComponents: [InsertarCompanyDialogComponent],

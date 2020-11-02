@@ -1,0 +1,16 @@
+<h1>{{data.titulo}}</h1>
+<mat-dialog-content>
+    <p>Este formulario tiene el propósito de subir la image/logo una compañía (afiliado) en el directorio</p>
+    <form [formGroup]="companyForm" (ngSubmit)="onSubmit()">
+            <div class="custom-file">
+                <input type="file" class="custom-file-input" (change)="onFileUploaded($event)">
+                <label class="custom-file-label">{{uploadedFileName}}</label>
+                <p class="error" *ngIf="companyForm.controls.companyLogo.hasError('invalidImageType')">
+                    Solo se admiten imagenes con formato .PNG o .JPG
+                </p>
+            </div>
+        <button class="btn-insertar" mat-flat-button type="submit">Guardar</button>
+        <button type="button" mat-flat-button (click)="dialogRef.close()">Cancelar</button>
+
+    </form>
+</mat-dialog-content>
