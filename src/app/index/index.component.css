@@ -48,4 +48,47 @@
     margin: 0 10% 0 10%;
   }
 
+  .img{
+    display: flex;
+    justify-content: center;
+  }
+
+  .div0{
+    width: 1300px;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
   
+.header-format {
+  background-color: #5FB404;
+  color: white;
+  display: flex;
+  margin-top: 16px;
+  height: 30px;
+  width: 140px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px;
+}
+
+.block-format {
+  background-image: url("/assets/images/item.jpg");
+  height: 180px;
+  width: 250px;
+  margin-bottom: 20px;
+  margin-right: 20px;
+  display: flex;
+  justify-content: flex-start;
+  padding: 5px;
+  flex-direction: column;
+
+}
+
+.carrusel{
+  display: flex;
+  justify-content: center;
+}

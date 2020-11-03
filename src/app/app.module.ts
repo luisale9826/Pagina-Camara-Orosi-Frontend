@@ -16,6 +16,7 @@ import { ConozcanosAfiliarseComponent } from './conozcanos-afiliarse/conozcanos-
 import { ConozcanosAfiliarseModule } from './conozcanos-afiliarse/conozcanos-afiliarse.module';
 import { PromocionComponent } from './promocion/promocion.component';
 import { PromocionModule } from './promocion/promocion.module';
+import { SocialMediaComponent } from './social-media/social-media.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { PromocionModule } from './promocion/promocion.module';
     DirectorioComponent,
     ArmarTourComponent,
     PromocionComponent,
+    SocialMediaComponent,
   ],
   imports: [
     BrowserModule,
