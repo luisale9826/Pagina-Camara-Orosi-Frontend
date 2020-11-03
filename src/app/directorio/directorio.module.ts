@@ -12,11 +12,14 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { RxReactiveFormsModule } from '@rxweb/reactive-form-validators';
 import { UploadFileCompanyComponent } from './management/upload-file-company/upload-file-company.component';
+import { FileDropDirective } from '../directives/file-drop.directive';
+import { FlexLayoutModule } from '@angular/flex-layout';
+
 
 
 
 @NgModule({
-  declarations: [InsertarCompanyDialogComponent, UploadFileCompanyComponent],
+  declarations: [InsertarCompanyDialogComponent, UploadFileCompanyComponent, FileDropDirective],
   imports: [
     CommonModule,
     DirectorioRoutingModule,
@@ -28,7 +31,8 @@ import { UploadFileCompanyComponent } from './management/upload-file-company/upl
     MatIconModule,
     MatSelectModule,
     MatButtonModule,
-    RxReactiveFormsModule
+    RxReactiveFormsModule,
+    FlexLayoutModule
   ],
   exports: [DirectorioRoutingModule],
   entryComponents: [InsertarCompanyDialogComponent],

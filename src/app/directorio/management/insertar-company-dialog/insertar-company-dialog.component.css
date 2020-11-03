@@ -1,3 +1,7 @@
+mat-form-field {
+    width: 450px !important;
+}
+
 .btn-insertar {
     background-color: #0c7c24;
     color: white;
@@ -5,4 +9,11 @@
 
 .error {
     color: red !important;
+}
+
+
+@media only screen and (max-width: 768px) {
+    mat-form-field {
+        width: 400px !important;
+    }
 }

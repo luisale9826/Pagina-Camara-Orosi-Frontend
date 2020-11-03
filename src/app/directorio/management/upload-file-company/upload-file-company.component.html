@@ -1,16 +1,33 @@
 <h1>{{data.titulo}}</h1>
 <mat-dialog-content>
     <p>Este formulario tiene el propósito de subir la image/logo una compañía (afiliado) en el directorio</p>
-    <form [formGroup]="companyForm" (ngSubmit)="onSubmit()">
-            <div class="custom-file">
-                <input type="file" class="custom-file-input" (change)="onFileUploaded($event)">
-                <label class="custom-file-label">{{uploadedFileName}}</label>
+    <form [formGroup]="companyForm" (ngSubmit)="onSubmit()" >
+        <div class="dropzone" appFileDrop (filesDropped)="handleDrop($event)" (filesHovered)="dropzoneState($event)"
+            [ngClass]="{'active': dropzoneActive}">
+            <div>
+                <h2 [ngClass]="{'active': dropzoneActive}">Arrastre la Imagen</h2>
+            </div>
+
+            <div class="input-file">
+                <input id="file" type="file" (change)="onFileUploaded($event)">
+                <label for="file">Inserte Imagen</label>
+            </div>
+
+            <div>
                 <p class="error" *ngIf="companyForm.controls.companyLogo.hasError('invalidImageType')">
                     Solo se admiten imagenes con formato .PNG o .JPG
                 </p>
             </div>
-        <button class="btn-insertar" mat-flat-button type="submit">Guardar</button>
-        <button type="button" mat-flat-button (click)="dialogRef.close()">Cancelar</button>
+
+            <div>
+                <h2 class="file-name">{{uploadedFileName}}</h2>
+            </div>
+
+        </div>
+        <div class="buttons">
+            <button class="btn-insertar" mat-flat-button type="submit">Guardar</button>
+            <button type="button" mat-flat-button (click)="dialogRef.close()">Cancelar</button>
+        </div>
 
     </form>
 </mat-dialog-content>

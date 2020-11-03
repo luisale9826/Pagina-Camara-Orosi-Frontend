@@ -14,7 +14,7 @@ export class UploadFileCompanyComponent implements OnInit {
   public companyForm: FormGroup;
   public companyClasifications;
   public uploadedFileName: string;
-  public file: File;
+  public dropzoneActive = false;
 
   constructor(
     public dialogRef: MatDialogRef<UploadFileCompanyComponent>,
@@ -22,7 +22,7 @@ export class UploadFileCompanyComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data,
     private directorioService: DirectorioService
   ) {
-    this.uploadedFileName = 'Imagen o Logo de la Compañía';
+    this.uploadedFileName = '';
   }
 
   ngOnInit(): void {
@@ -34,7 +34,15 @@ export class UploadFileCompanyComponent implements OnInit {
   onFileUploaded(event): void {
     this.uploadedFileName = event.target.files[0].name;
     this.companyForm.get('companyLogo').setValue(event.target.files[0]);
-    this.file = event.target.files[0];
+  }
+
+  dropzoneState($event: boolean): void {
+    this.dropzoneActive = $event;
+  }
+
+  handleDrop(file: File): void {
+    this.uploadedFileName = file.name;
+    this.companyForm.get('companyLogo').setValue(file);
   }
 
   onSubmit(): void {
