@@ -4,17 +4,18 @@ import { file } from '@rxweb/reactive-form-validators';
 import { BehaviorSubject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Company } from '../model/company';
+import { LoginService } from './login.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DirectorioService {
-  readonly PATH = environment.apiURL;
-  readonly endpoint = 'management/cto/directory';
+  readonly PATH = `${environment.apiURL}management/cto/directory`;
   statusProvider: BehaviorSubject<boolean>;
   private status = false;
+  readonly headers = { Authorization: this.loginService.currentUser };
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private loginService: LoginService) {
     if (localStorage.getItem('currentUser') !== null) {
       this.status = true;
     }
@@ -23,9 +24,9 @@ export class DirectorioService {
 
   insertarCompany(company: Company): Promise<HttpResponse<any>> {
     return this.http
-      .post<any>(this.PATH + this.endpoint, company, {
+      .post<any>(`${this.PATH}`, company, {
         observe: 'response',
-        headers: { Authorization: localStorage.getItem('currentUser') },
+        headers: this.headers,
       })
       .toPromise();
   }
@@ -36,11 +37,9 @@ export class DirectorioService {
     formData.append('image', image);
 
     return this.http
-      .post<any>(this.PATH + this.endpoint + '/image', formData, {
+      .post<any>(`${this.PATH}/image`, formData, {
         observe: 'response',
-        headers: {
-          Authorization: localStorage.getItem('currentUser'),
-        },
+        headers: this.headers,
       })
       .toPromise();
   }

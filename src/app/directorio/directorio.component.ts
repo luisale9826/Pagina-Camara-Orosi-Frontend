@@ -16,9 +16,7 @@ export class DirectorioComponent implements OnInit {
     private insertDialog: MatDialog,
     private uploadFileDialog: MatDialog
   ) {
-    this.loginService.statusProvider.subscribe((status) => {
-      this.status = status;
-    });
+    this.status = this.loginService.isAuthenticated();
   }
 
   ngOnInit(): void {}

@@ -5,7 +5,7 @@
         <div>
             <mat-form-field>
                 <mat-label>Nombre de la Compañía</mat-label>
-                <input matInput id="companyName" formControlName="companyName">
+                <input matInput id="companyName" formControlName="companyName" required>
                 <mat-icon matSuffix>
                     apartment
                 </mat-icon>
@@ -22,7 +22,7 @@
         <div>
             <mat-form-field>
                 <mat-label>Clasificación de la Compañía</mat-label>
-                <mat-select formControlName="companyCategory">
+                <mat-select formControlName="companyCategory" required>
                     <mat-option *ngFor="let clasification of companyClasifications" [value]="clasification.value">
                         {{clasification.value}}
                     </mat-option>

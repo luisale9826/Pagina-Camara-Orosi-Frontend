@@ -1,4 +1,3 @@
-import { HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -28,7 +27,6 @@ export class LoginComponent implements OnInit {
     .login(this.loginForm.get('username').value, this.loginForm.get('password').value)
     .then((res) => {
       localStorage.setItem('currentUser', res.headers.get('Authorization'));
-      this.loginService.statusProvider.next(true);
       this.router.navigate(['/']);
     }).catch(err => {
       this.error = 'Nombre de Usuario o Contraseña inválidos';
