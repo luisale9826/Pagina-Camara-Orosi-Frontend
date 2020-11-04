@@ -2,16 +2,18 @@ import { HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { PromocionService } from '../services/promocion.service';
-import {Promocion} from '../models/Promocion'
+import { Promocion } from 'src/app/models/Promocion';
+import { PromocionService } from 'src/app/services/promocion.service';
+
+
 
 
 @Component({
-  selector: 'app-promocion',
-  templateUrl: './promocion.component.html',
-  styleUrls: ['./promocion.component.css']
+  selector: 'app-detallesPromocion',
+  templateUrl: './detallesPromocion.component.html',
+  styleUrls: ['./detallesPromocion.component.css']
 })
-export class PromocionComponent implements OnInit {
+export class DetallesPromocionComponent implements OnInit {
 
   titulo=null;
   nombreEmpresa=null;
@@ -31,18 +33,15 @@ export class PromocionComponent implements OnInit {
   promocion:Promocion=new Promocion();
   constructor(private promocionService: PromocionService, private router: Router) { }
 
-  ngOnInit(): void {
-    
+  ngOnInit() {
+    this.Editar();
   }
 
-  public onSubmit(): void {
-    
-    this.promocionService.insertPromotion(this.promocion)
-    .subscribe(data=>{
-      alert("Se Agrego con Exito...!!!");
-      this.router.navigate(["listar"]);
-    })
+  Editar(){
+    let json=localStorage.getItem("jsonPromocion");
+    this.promocion = JSON.parse(json);
+    console.log(this.promocion.title);
    
-    }
+  }
 
 }

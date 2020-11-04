@@ -1,42 +1,33 @@
 <div class="container">
+    <h2>
+        Ingreso de nueva promoción
+    </h2>
+    <div class="form">
+        <form [formGroup]="promocionForm">
+            <div>
+                <p class="error">{{error}}</p>
+            </div>
+            <div>
+                <p>Ingrese el titulo </p>
+                <input type="text" class="form-control" name="titulo" id="titulo" formControlName="titulo"
+                [(ngModel)]="promocion.title">
+            </div>
+            <div>
+                <p>Ingrese el nombre de la empresa</p>
+                <input type="text" class="form-control" name="nombreEmpresa" id="nombreEmpresa" formControlName="nombreEmpresa"
+                [(ngModel)]="promocion.companyName">
+            </div>
 
-    <h3>Ingresar nueva promoción</h3>
-    <br>
-    <div class="submit-form">
-      <div >
-        <div class="form-group">
-          <label for="name">Titulo Promoción:</label>
-          <input type="text" class="form-control" id="name" required  name="name"/>
-        </div>
-
-        <div class="form-group">
-            <label for="name">Nombre Negocio:</label>
-            <input type="text" class="form-control" id="name" required  name="name"/>
-          </div>
-  
-        <div class="form-group">
-          <label for="description">Description Promoción:</label>
-          <input class="form-control" id="description" required  name="description"/>
-        </div>
-
-        <div class="form-group">
-            <label for="description">Fecha de vencimiento:</label>
-            <input type="date" class="form-control" id="description" required  name="description"/>
-        </div>
-
-        <div class="form-group">
-            <label for="description">Imagen de la promoción:</label>
-            <input type="file" class="form-control" id="description" required  name="description"/>
-        </div>
-
-        <br>     
-        <button class="btn btn-success">Ingresar Promoción</button>
-      </div>
-  
-    
+            <div>
+                <p>Descripción</p>
+                <input type="text" class="form-control" name="descripcion" id="descripcion" formControlName="descripcion"
+                [(ngModel)]="promocion.description">
+            </div>
+            <div>
+                <p>Imagen de la promoción</p>
+                <input type="file" class="form-control" name="imagenPromocion" id="imagenPromocion" formControlName="imagenPromocion">
+            </div>
+            <button type="button" class="btn btn-primary" (click)="onSubmit()">Ingresar</button>
+        </form>
     </div>
-    <br>
-    <br>
-    <br>
-    <br>
-  </div>
+</div>
