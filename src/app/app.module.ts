@@ -16,6 +16,7 @@ import { ConozcanosAfiliarseModule } from './conozcanos-afiliarse/conozcanos-afi
 import { PromocionComponent } from './promocion/promocion.component';
 import { PromocionModule } from './promocion/promocion.module';
 import { ToastrModule } from 'ngx-toastr';
+import { AngularMaterialModule } from './angular-material.module';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,7 @@ import { ToastrModule } from 'ngx-toastr';
     ConozcanosAfiliarseModule,
     PromocionModule,
     ToastrModule.forRoot(),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
