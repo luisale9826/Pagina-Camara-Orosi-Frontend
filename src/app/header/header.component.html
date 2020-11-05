@@ -23,12 +23,16 @@
           <li class="nav-item">
             <a class="nav-link" routerLink="/armarTour">ARMA TU PROPIO TOUR</a>
           </li>
-          <li class="nav-item" *ngIf="!status">
-            <a class="nav-link" routerLink="/usuarios">USUARIOS</a>
-          </li>
-          <li class="nav-item" *ngIf="!status">
-            <a class="nav-link" (click)="logout()">CERRAR SESSIÓN</a>
-          </li>
+          <div *ngIf="!status">
+            <li class="nav-item" >
+              <a class="nav-link" routerLink="/usuarios">USUARIOS</a>
+            </li>
+          </div>
+          <div *ngIf="!status">
+            <li class="nav-item" >
+              <a class="nav-link" (click)="logout()">CERRAR SESSIÓN</a>
+            </li>
+          </div>
         </ul>
       </div>  
     </nav>

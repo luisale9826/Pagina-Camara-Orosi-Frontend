@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ToastrService } from 'ngx-toastr';
 import { DirectorioService } from 'src/app/services/directorio.service';
 import { isImage } from 'src/app/shared/custome-validations';
 
@@ -10,17 +11,18 @@ import { isImage } from 'src/app/shared/custome-validations';
   styleUrls: ['./upload-file-company.component.css'],
 })
 export class UploadFileCompanyComponent implements OnInit {
-
   public companyForm: FormGroup;
   public companyClasifications;
   public uploadedFileName: string;
   public dropzoneActive = false;
+  public btnText = 'Saltar';
 
   constructor(
     public dialogRef: MatDialogRef<UploadFileCompanyComponent>,
     private formBuilder: FormBuilder,
     @Inject(MAT_DIALOG_DATA) public data,
-    private directorioService: DirectorioService
+    private directorioService: DirectorioService,
+    private toastr: ToastrService
   ) {
     this.uploadedFileName = '';
   }
@@ -46,11 +48,29 @@ export class UploadFileCompanyComponent implements OnInit {
   }
 
   onSubmit(): void {
-    if (this.companyForm.valid) {
+    if (
+      this.companyForm.valid &&
+      this.companyForm.get('companyLogo').value !== ''
+    ) {
       this.directorioService
-        .uploadFile(this.data.companyId, this.companyForm.controls.companyLogo.value)
-        .then((data) => this.dialogRef.close())
-        .catch((err) => console.log(err));
+        .uploadFile(
+          this.data.companyId,
+          this.companyForm.controls.companyLogo.value
+        )
+        .then((data) => {
+          this.dialogRef.close();
+          this.toastr.success('Imagen subida correctamente', 'Imagen subida');
+        })
+        .catch((err) => {
+          this.toastr.error('Error al subir la imagen', 'Error');
+        });
     }
+    this.dialogRef.close();
+  }
+
+  get getButtonText(): string {
+    return this.companyForm.controls.companyLogo.value === ''
+      ? 'Saltar'
+      : 'Guardar';
   }
 }

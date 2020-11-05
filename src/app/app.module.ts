@@ -10,11 +10,12 @@ import { FooterComponent } from './footer/footer.component';
 import { IndexComponent } from './index/index.component';
 import { DirectorioComponent } from './directorio/directorio.component';
 import { ArmarTourComponent } from './armar-tour/armar-tour.component';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginModule } from './login/login.module';
 import { ConozcanosAfiliarseModule } from './conozcanos-afiliarse/conozcanos-afiliarse.module';
 import { PromocionComponent } from './promocion/promocion.component';
 import { PromocionModule } from './promocion/promocion.module';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,8 @@ import { PromocionModule } from './promocion/promocion.module';
     NoopAnimationsModule,
     ConozcanosAfiliarseModule,
     PromocionModule,
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

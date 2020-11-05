@@ -9,9 +9,9 @@
                 <mat-icon matSuffix>
                     apartment
                 </mat-icon>
+                <mat-error *ngIf="companyForm.controls.companyName.touched">{{getCompanyNameError}}</mat-error>
             </mat-form-field>
-            <p class="error" *ngIf="companyForm.controls.companyName.touched && companyForm.controls.companyName.hasError('required')">Este campo no puede estar vacio</p>
-            <p class="error" *ngIf="companyForm.controls.companyName.touched && companyForm.controls.companyName.hasError('blankOrNull')">Este campo no puede estar vacio</p>
+            <mat-error *ngIf="apiErrors">{{getDuplicatedNameError}}</mat-error>
         </div>
         <div>
             <mat-form-field>
@@ -27,32 +27,42 @@
                         {{clasification.value}}
                     </mat-option>
                 </mat-select>
+                <mat-error
+                    *ngIf="companyForm.controls.companyCategory.touched && companyForm.controls.companyCategory.hasError('required')">
+                    Este campo no puede estar vacio</mat-error>
             </mat-form-field>
-            <p class="error" *ngIf="companyForm.controls.companyCategory.touched && companyForm.controls.companyCategory.hasError('required')">Este campo no puede estar vacio</p>
         </div>
         <div>
             <mat-form-field>
                 <mat-label>Correo de la Compañía</mat-label>
                 <input matInput type="email" formControlName="companyEmail">
                 <mat-icon matSuffix class="fa fa-envelope" style="font-size:24px"></mat-icon>
+                <mat-error
+                    *ngIf="companyForm.controls.companyEmail.touched && companyForm.controls.companyEmail.hasError('email')">
+                    El formato no coincide con el de correo electrónico</mat-error>
             </mat-form-field>
-            <p class="error" *ngIf="companyForm.controls.companyEmail.touched && companyForm.controls.companyEmail.hasError('email')">El formato no coincide con el de correo electrónico</p>
+            <mat-error *ngIf="apiErrors">{{getDuplicatedEmailError}}</mat-error>
         </div>
         <div formArrayName="companyPhones">
-            <button type="button" (click)="addPhoneNumber()">Agregar Teléfono
-                <mat-icon>
-                    add_ic_call
-                </mat-icon>
-            </button>
+            <div>
+                <button type="button" (click)="addPhoneNumber()">Agregar Teléfono
+                    <mat-icon>
+                        add_ic_call
+                    </mat-icon>
+                </button>
+            </div>
+
             <div *ngFor="let control of phones.controls; let i = index">
                 <div [formGroupName]="i">
                     <mat-form-field>
                         <mat-label>Teléfono {{i + 1}} de la Compañía</mat-label>
                         <input matInput type="tel" formControlName="phone">
                         <mat-icon matSuffix>phone_enabled</mat-icon>
+                        <mat-error *ngIf="control">El teléfono se encuentra repetido</mat-error>
                     </mat-form-field>
                     <button (click)="removePhone(i)">Eliminar Número</button>
                 </div>
+                <mat-error *ngIf="apiErrors">{{getDuplicatedPhoneError}}</mat-error>
             </div>
         </div>
         <div>
@@ -85,7 +95,7 @@
             </mat-form-field>
         </div>
 
-        <button class="btn-insertar" mat-flat-button type="submit">Guardar</button>
+        <button class="btn-insertar" mat-flat-button [disabled]="companyForm.invalid" type="submit">Guardar</button>
         <button type="button" mat-flat-button (click)="dialogRef.close()">Cancelar</button>
 
     </form>

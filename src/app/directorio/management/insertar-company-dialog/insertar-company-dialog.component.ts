@@ -2,6 +2,8 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { RxwebValidators } from '@rxweb/reactive-form-validators';
+import { ToastrService } from 'ngx-toastr';
+import { Error } from 'src/app/model/error';
 import { DirectorioService } from 'src/app/services/directorio.service';
 import { notNullOrBlank } from 'src/app/shared/custome-validations';
 
@@ -14,12 +16,14 @@ export class InsertarCompanyDialogComponent implements OnInit {
   public companyForm: FormGroup;
   public companyClasifications;
   public uploadedFileName: string;
+  public apiErrors: Error[];
 
   constructor(
     public dialogRef: MatDialogRef<InsertarCompanyDialogComponent>,
     private formBuilder: FormBuilder,
     @Inject(MAT_DIALOG_DATA) public data,
-    private directorioService: DirectorioService
+    private directorioService: DirectorioService,
+    private toastr: ToastrService
   ) {
     this.companyClasifications = [
       { value: 'Actividades Térmicas' },
@@ -72,8 +76,43 @@ export class InsertarCompanyDialogComponent implements OnInit {
           this.data.companyId = data.body.companyId;
           this.data.companyName = companyData.companyName;
           this.dialogRef.close(this.data);
+          this.toastr.success(
+            `Se ha insertado la compañía ${companyData.companyName}`,
+            'Insertado!!!'
+          );
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+          this.toastr.error('Se produjo un error al insertar', 'Error');
+          this.apiErrors = Object.values(err.error.errors);
+        });
+    }
+  }
+
+  get getCompanyNameError(): string {
+    return this.companyForm.controls.companyName.hasError('required') ||
+      this.companyForm.controls.companyName.hasError('blankOrNull')
+      ? 'Este campo no puede estar vacio'
+      : '';
+  }
+
+  get getDuplicatedNameError(): string {
+    if (this.apiErrors) {
+      const companyNameError = this.apiErrors.find(error => error.errorId === 'invalidCompanyName');
+      return companyNameError !== undefined ? companyNameError.errorMessage : '' ;
+    }
+  }
+
+  get getDuplicatedEmailError(): string {
+    if (this.apiErrors) {
+      const companyEmailError = this.apiErrors.find(error => error.errorId === 'invalidCompanyEmail');
+      return companyEmailError !== undefined ? companyEmailError.errorMessage : '' ;
+    }
+  }
+
+  get getDuplicatedPhoneError(): string {
+    if (this.apiErrors) {
+      const companyPhoneError = this.apiErrors.find(error => error.errorId === 'invalidPhoneNumber');
+      return companyPhoneError !== undefined ? companyPhoneError.errorMessage : '' ;
     }
   }
 }

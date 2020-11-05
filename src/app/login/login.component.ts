@@ -15,6 +15,8 @@ export class LoginComponent implements OnInit {
     password: new FormControl('')
   });
 
+  loading = false;
+
   error = '';
 
   constructor(private loginService: LoginService, private router: Router) { }
@@ -23,12 +25,14 @@ export class LoginComponent implements OnInit {
   }
 
   public onSubmit(): void {
+    this.loading = true;
     this.loginService
     .login(this.loginForm.get('username').value, this.loginForm.get('password').value)
     .then((res) => {
       localStorage.setItem('currentUser', res.headers.get('Authorization'));
       this.router.navigate(['/']);
     }).catch(err => {
+      this.loading = false;
       this.error = 'Nombre de Usuario o Contraseña inválidos';
     });
     }

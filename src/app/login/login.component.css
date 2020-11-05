@@ -31,3 +31,13 @@
     width: 100px;
     font-size: 20px;
 }
+
+.error {
+    text-align: center;
+    color: red;
+}
+
+button {
+    background-color: #0c7c24;
+    color: white;
+}
