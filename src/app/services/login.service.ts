@@ -40,6 +40,6 @@ export class LoginService {
       headers: this.currentUser,
     });
     localStorage.removeItem('currentUser');
-    this.router.navigate(['/login']);
+    this.router.navigate(['/login']).then(() => location.reload());
   }
 }
