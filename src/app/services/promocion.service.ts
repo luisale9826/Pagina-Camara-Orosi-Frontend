@@ -12,11 +12,10 @@ import { environment } from 'src/environments/environment';
 export class PromocionService {
   readonly PATH = environment.apiURL;
 
-  productoURL = 'http://localhost:8080/producto/';
 
   constructor(private httpClient: HttpClient) { }
 
-  Url='http://localhost:8080/visiter/promotion/agregar';
+
 
 
   insertPromotion(promocion:Promocion){
@@ -25,6 +24,19 @@ export class PromocionService {
 
   getPromotions(){
     return this.httpClient.get<Promocion[]>(this.PATH + "visiter/promotion");
+  }
+
+  insertPromotionFile(uploadImageData:FormData){
+
+    return this.httpClient.post(this.PATH + "visiter/promotion/savefile", uploadImageData, { observe: 'response' })
+    .subscribe((response) => {   
+    }
+    );
+  }
+
+  public deletePromotion(link: string): Observable<any> {
+    return this.httpClient.post<Promocion>(this.PATH + "visiter/promotion/deletePromotion",link);
+
   }
 
  
