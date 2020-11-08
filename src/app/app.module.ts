@@ -14,8 +14,8 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginModule } from './login/login.module';
 import { ConozcanosAfiliarseComponent } from './conozcanos-afiliarse/conozcanos-afiliarse.component';
 import { ConozcanosAfiliarseModule } from './conozcanos-afiliarse/conozcanos-afiliarse.module';
-import { PromocionModule } from './promocion/promocion.module';
-import { DetallesPromocionModule } from './promocion/detallesPromocion/detallesPromocion.module';
+import { PromocionModule } from './promocion/newPromo/promocion.module';
+import { EliminarPromocionModule } from './promocion/deletePromo/eliminarPromocion.module';
 import { SocialMediaComponent } from './social-media/social-media.component';
 
 @NgModule({
@@ -36,7 +36,7 @@ import { SocialMediaComponent } from './social-media/social-media.component';
     NoopAnimationsModule,
     ConozcanosAfiliarseModule,
     PromocionModule,
-    DetallesPromocionModule
+    EliminarPromocionModule
   ],
   providers: [],
   bootstrap: [AppComponent]
