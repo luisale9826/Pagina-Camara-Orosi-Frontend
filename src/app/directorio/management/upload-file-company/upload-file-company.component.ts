@@ -54,9 +54,7 @@ export class UploadFileCompanyComponent implements OnInit {
       this.companyForm.valid &&
       this.companyForm.get('companyLogo').value !== ''
     ) {
-      if (
-        this.data.titulo === `Editar Image de ${this.data.companyName}`
-      ) {
+      if (this.data.titulo === `Editar Image de ${this.data.companyName}`) {
         this.directorioService
           .editFile(
             this.data.companyId,
@@ -79,8 +77,13 @@ export class UploadFileCompanyComponent implements OnInit {
           )
           .then((data) => {
             this.dialogRef.close();
-            this.toastr.success('Imagen subida correctamente', 'Imagen subida');
-            this.router.navigate(['/directorio']).then(() => location.reload());
+            this.router.navigate(['/directorio']).then(() => {
+              location.reload();
+              this.toastr.success(
+                'Imagen subida correctamente',
+                'Imagen subida'
+              );
+            });
           })
           .catch((err) => {
             console.log(err);

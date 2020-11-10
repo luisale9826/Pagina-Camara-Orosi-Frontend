@@ -21,16 +21,24 @@ export class EliminarCompanyDialogComponent implements OnInit {
   ngOnInit(): void {}
 
   eliminarCompany(): void {
-    this.directorioService.eliminarCompany(this.data.companyId).then(data => {
-      this.dialogRef.close(this.data);
-      this.toastr.success(
-        `Se ha eliminado la compañía ${this.data.companyName}`,
-        'Eliminado!!!'
-      );
-      this.router.navigate(['/directorio']).then(() => location.reload());
-    }).catch(err => {
-      console.log(err);
-      this.toastr.error('Se produjo un error al Eliminar la compañía', 'Error');
-    });
+    this.directorioService
+      .eliminarCompany(this.data.companyId)
+      .then((data) => {
+        this.dialogRef.close(this.data);
+        this.router.navigate(['/directorio']).then(() => {
+          location.reload();
+          this.toastr.success(
+            `Se ha eliminado la compañía ${this.data.companyName}`,
+            'Eliminado!!!'
+          );
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+        this.toastr.error(
+          'Se produjo un error al Eliminar la compañía',
+          'Error'
+        );
+      });
   }
 }

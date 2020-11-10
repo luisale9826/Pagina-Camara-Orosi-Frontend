@@ -116,11 +116,13 @@ export class InsertarCompanyDialogComponent implements OnInit {
             this.data.companyId = data.body.companyId;
             this.data.companyName = companyData.companyName;
             this.dialogRef.close(this.data);
-            this.toastr.success(
-              `Se ha modificado la compañía ${companyData.companyName}`,
-              'Modificado!!!'
-            );
-            this.router.navigate(['/directorio']).then(() => location.reload());
+            this.router.navigate(['/directorio']).then(() => {
+              location.reload();
+              this.toastr.success(
+                `Se ha modificado la compañía ${companyData.companyName}`,
+                'Modificado!!!'
+              );
+            });
           })
           .catch((err) => {
             this.toastr.error('Se produjo un error al insertar', 'Error');
@@ -133,11 +135,13 @@ export class InsertarCompanyDialogComponent implements OnInit {
             this.data.companyId = data.body.companyId;
             this.data.companyName = companyData.companyName;
             this.dialogRef.close(this.data);
-            this.toastr.success(
-              `Se ha insertado la compañía ${companyData.companyName}`,
-              'Insertado!!!'
-            );
-            this.router.navigate(['/directorio']).then(() => location.reload());
+            this.router.navigate(['/directorio']).then(() => {
+              location.reload();
+              this.toastr.success(
+                `Se ha insertado la compañía ${companyData.companyName}`,
+                'Insertado!!!'
+              );
+            });
           })
           .catch((err) => {
             this.toastr.error('Se produjo un error al insertar', 'Error');
