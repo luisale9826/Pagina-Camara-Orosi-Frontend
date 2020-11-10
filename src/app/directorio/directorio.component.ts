@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Company } from '../model/company';
+import { DirectorioService } from '../services/directorio.service';
 import { LoginService } from '../services/login.service';
 import { InsertarCompanyDialogComponent } from './management/insertar-company-dialog/insertar-company-dialog.component';
 import { UploadFileCompanyComponent } from './management/upload-file-company/upload-file-company.component';
+import { VerCompanyDialogComponent } from './visitante/ver-company-dialog/ver-company-dialog.component';
 
 @Component({
   selector: 'app-directorio',
@@ -11,18 +14,21 @@ import { UploadFileCompanyComponent } from './management/upload-file-company/upl
 })
 export class DirectorioComponent implements OnInit {
   status: boolean;
+  companies: Company[];
   constructor(
     private loginService: LoginService,
-    private insertDialog: MatDialog,
-    private uploadFileDialog: MatDialog
+    private dialog: MatDialog,
+    private directoryService: DirectorioService
   ) {
     this.status = this.loginService.isAuthenticated();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.directoryService.getCompany().then((data) => (this.companies = data));
+  }
 
   openDialogInsertCompany(): void {
-    const insertCompanyDialog = this.insertDialog.open(
+    const insertCompanyDialog = this.dialog.open(
       InsertarCompanyDialogComponent,
       {
         data: {
@@ -37,15 +43,25 @@ export class DirectorioComponent implements OnInit {
       .afterClosed()
       .toPromise()
       .then((data) => {
-        uploadFile = this.uploadFileDialog.open(UploadFileCompanyComponent, {
-          data: {
-            titulo: `Subir Imagen para compañía ${data.companyName}`,
-            companyId: data.companyId,
-          },
-        });
+        if (data) {
+          uploadFile = this.dialog.open(UploadFileCompanyComponent, {
+            data: {
+              titulo: `Subir Imagen para compañía ${data.companyName}`,
+              companyId: data.companyId,
+            },
+          });
+        }
       });
     if (uploadFile) {
       uploadFile.afterClosed();
     }
+  }
+
+  openDialogVerCompany(company: Company): void {
+    this.dialog.open(VerCompanyDialogComponent, {
+      height: '500px',
+      width: '500px',
+      data: { company },
+    });
   }
 }

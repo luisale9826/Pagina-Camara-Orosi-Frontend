@@ -7,9 +7,19 @@ mat-form-field {
     color: white;
 }
 
+.btn-delete {
+    background-color: red;
+    color: white;
+    margin-left: 2%;
+}
+
 
 @media only screen and (max-width: 768px) {
     mat-form-field {
-        width: 400px !important;
+        width: 300px !important;
+    }
+
+    .field-phone {
+        width: 230px !important;
     }
 }

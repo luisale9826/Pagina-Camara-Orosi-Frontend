@@ -8,8 +8,8 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class LoginService {
-  readonly PATH = environment.apiURL;
-  jwtHelper = new JwtHelperService();
+  private readonly PATH = environment.BASICURL;
+  private jwtHelper = new JwtHelperService();
 
   constructor(
     private http: HttpClient,
@@ -28,7 +28,7 @@ export class LoginService {
   login(userName: string, password: string): Promise<HttpResponse<any>> {
     return this.http
       .post<any>(
-        this.PATH + 'login',
+        `${this.PATH}login`,
         { userName, password },
         { observe: 'response' }
       )

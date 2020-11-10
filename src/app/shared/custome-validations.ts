@@ -19,6 +19,6 @@ export function isImage(
 }
 
 const verifyImage = (type: string): boolean => {
-  const types = ['image/png', 'image/jpg'];
+  const types = ['image/png', 'image/jpg', 'image/jpeg'];
   return types.includes(type);
 };

@@ -1,43 +1,35 @@
 <header>
   <!-- Navbar -->
- 
-    <nav class="navbar navbar-expand-md">  
-      <a href="/" class="navbar-brand"></a>
+  <nav class="navbar navbar-expand-md">
+    <a href="/" class="navbar-brand"></a>
     <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-        <span class="navbar-toggler-icon my-toggler"></span>
+      <span class="navbar-toggler-icon my-toggler"></span>
     </button>
-      <div class="collapse navbar-collapse justify-content-center" id="collapsibleNavbar">
-        <ul class="navbar-nav">
-          <li class="nav-item" id="nav-item">
-            <a class="nav-link" href="#">INICIO</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/directorio">DIRECTORIO</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/conozcanos">CONOZCANOS/AFILIARSE</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/tourVirtual">TOUR VIRTUAL</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/armarTour">ARMA TU PROPIO TOUR</a>
-          </li>
-          <div *ngIf="!status">
-            <li class="nav-item" >
-              <a class="nav-link" routerLink="/usuarios">USUARIOS</a>
-            </li>
-          </div>
-          <div *ngIf="!status">
-            <li class="nav-item" >
-              <a class="nav-link" (click)="logout()">CERRAR SESSIÓN</a>
-            </li>
-          </div>
-        </ul>
-      </div>  
-    </nav>
-
- 
- 
+    <div class="collapse navbar-collapse justify-content-center" id="collapsibleNavbar">
+      <ul class="navbar-nav">
+        <li class="nav-item" id="nav-item">
+          <a class="nav-link" href="#">INICIO</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/directorio">DIRECTORIO</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/conozcanos">CONOZCANOS/AFILIARSE</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/tourVirtual">TOUR VIRTUAL</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/armarTour">ARMA TU PROPIO TOUR</a>
+        </li>
+        <li *ngIf="!status" class="nav-item">
+          <a class="nav-link" routerLink="/usuarios">USUARIOS</a>
+        </li>
+        <li *ngIf="!status" class="nav-item">
+          <a class="nav-link" (click)="logout()">CERRAR SESSIÓN</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
   <!-- End Navbar -->
 </header>

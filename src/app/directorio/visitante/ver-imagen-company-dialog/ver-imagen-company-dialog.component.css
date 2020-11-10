@@ -1,0 +1,11 @@
+img {
+    height: auto;
+    width: 650px;
+}
+
+@media only screen and (max-width: 768px) {
+    img {
+        height: auto;
+        width: 350px;
+    }
+}

@@ -4,7 +4,9 @@
 
 export const environment = {
   production: false,
-  apiURL: 'http://localhost:8080/'
+  BASICURL: 'http://localhost:8080/',
+  VISITERURL: 'http://localhost:8080/visiter/cto/',
+  ADMINURL: 'http://localhost:8080/management/cto/'
 };
 
 /*

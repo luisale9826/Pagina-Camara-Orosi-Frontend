@@ -1,10 +1,11 @@
 <div class="container">
     <h1>Directorio de Asociados</h1>
-    <div class="buttons" *ngIf="!status">
-        <button type="button" (click)="openDialogInsertCompany()">Insertar Compañía</button>
-    </div>
+    <button mat-button *ngIf="!status" (click)="openDialogInsertCompany()">Insertar Compañía</button>
+
 
     <div class="table">
-        <p>Tabla</p>
+        <div *ngFor="let company of companies">
+            <a (click)="openDialogVerCompany(company)">{{company.companyName}}</a>
+        </div>
     </div>
 </div>

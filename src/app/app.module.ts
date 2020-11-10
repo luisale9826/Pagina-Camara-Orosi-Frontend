@@ -29,6 +29,7 @@ import { AngularMaterialModule } from './angular-material.module';
     PromocionComponent,
   ],
   imports: [
+    AngularMaterialModule,
     BrowserModule,
     HttpClientModule,
     LoginModule,
@@ -37,7 +38,7 @@ import { AngularMaterialModule } from './angular-material.module';
     ConozcanosAfiliarseModule,
     PromocionModule,
     ToastrModule.forRoot(),
-    BrowserAnimationsModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
