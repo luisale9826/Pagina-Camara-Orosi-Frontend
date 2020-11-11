@@ -4,19 +4,14 @@ import { Observable } from 'rxjs';
 import { Promocion } from '../models/Promocion';
 import { environment } from 'src/environments/environment';
 
-
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PromocionService {
-  readonly PATH = environment.apiURL;
-
-
-  constructor(private httpClient: HttpClient) { }
-
+  readonly PATH = environment.BASICURL;
   
-
+  constructor(private httpClient: HttpClient) { }
+  
   getPromotions(): Promise<HttpResponse<any>> {
     return this.httpClient
       .get<Promocion[]>(
@@ -49,9 +44,9 @@ export class PromocionService {
   //}
 
   public deletePromotion(link: string): Observable<any> {
-    return this.httpClient.post<Promocion>(this.PATH + "visiter/promotion/deletePromotion",link);
-
+    return this.httpClient.post<Promocion>(
+      this.PATH + 'visiter/promotion/deletePromotion',
+      link
+    );
   }
-
- 
 }

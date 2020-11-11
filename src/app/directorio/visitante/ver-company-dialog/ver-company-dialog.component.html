@@ -1,0 +1,91 @@
+<div fxFlex>
+    <div mat-dialog-content>
+        <div fxLayout="row">
+            <div fxFlex="0 20 auto">
+                <ng-container *ngIf="company.companyLogo; else elseTemplate">
+                    <img [src]="company.companyLogo" alt="Logo" (click)="abrirImagen(company)">
+                </ng-container>
+                <ng-template #elseTemplate>
+                    <img src="/assets/images/sin-imagen.jpg" alt="Logo">
+                </ng-template>
+                <div>
+                    <button mat-button *ngIf="!status" (click)="editarImagen(company)">Editar Imagen</button>
+                </div>
+            </div>
+            <div fxFlex="0 30 60">
+                <h2>
+                    {{company.companyName}}
+                </h2>
+            </div>
+        </div>
+        <div fxLayout="row">
+            <span class="badge badge-pill">{{company.companyCategory}}</span>
+        </div>
+        <div fxLayout="column">
+            <div>
+                <h4>Descripción</h4>
+            </div>
+            <div fxLayout="row">
+                <p>
+                    {{company.companyDescription}}
+                </p>
+            </div>
+        </div>
+        <div fxLayout="column">
+            <div>
+                <h4>Correo Electrónico</h4>
+            </div>
+            <div fxLayout="row">
+                <p>
+                    {{company.companyEmail}}
+                </p>
+            </div>
+        </div>
+        <div fxLayout="column">
+            <div>
+                <h4>Dirección</h4>
+            </div>
+            <div fxLayout="row">
+                <p>
+                    {{company.companyAddress}}
+                </p>
+            </div>
+        </div>
+        <div fxLayout="column">
+            <div>
+                <h4>Teléfonos</h4>
+            </div>
+            <div fxLayout="row">
+                <mat-list role="list" *ngFor="let phone of company.companyPhones">
+                    <mat-list-item role="listitem">{{phone.phone}}</mat-list-item>
+                </mat-list>
+            </div>
+        </div>
+        <div>
+            <div>
+                <h4>Redes Sociales y Ubicación en Mapa</h4>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="center center">
+                <a class="badge badge-primary" *ngIf="company.companyLocation" [href]="company.companyLocation"
+                    target="_blank">
+                    Google Maps
+                </a>
+                <a class="badge badge-primary" *ngIf="company.companyFacebookProfile"
+                    [href]="company.companyFacebookProfile" target="_blank">
+                    Facebook
+                </a>
+                <a class="badge badge-primary" *ngIf="company.companyInstagramProfile"
+                    [href]="company.companyInstagramProfile" target="_blank">
+                    Instagram
+                </a>
+            </div>
+        </div>
+    </div>
+    <mat-dialog-actions align="end">
+        <div *ngIf="!status">
+            <button mat-button (click)="modificarCompany(company)">Editar</button>
+            <button mat-button (click)="eliminarCompany(company)">Eliminar</button>
+        </div>
+        <button mat-button mat-dialog-close>Cerrar</button>
+    </mat-dialog-actions>
+</div>

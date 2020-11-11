@@ -8,17 +8,15 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { IndexComponent } from './index/index.component';
-import { DirectorioComponent } from './directorio/directorio.component';
-import { ArmarTourComponent } from './armar-tour/armar-tour.component';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginModule } from './login/login.module';
-import { ConozcanosAfiliarseComponent } from './conozcanos-afiliarse/conozcanos-afiliarse.component';
 import { ConozcanosAfiliarseModule } from './conozcanos-afiliarse/conozcanos-afiliarse.module';
 import { PromocionModule } from './promocion/newPromo/promocion.module';
 import { EliminarPromocionModule } from './promocion/deletePromo/eliminarPromocion.module';
-import { SocialMediaComponent } from './social-media/social-media.component';
-import { CompanyService} from './services/company.service';
+import { AngularMaterialModule } from './angular-material.module';
 import { HeaderDirectoryComponent } from './header-directory/header-directory.component';
+import { ToastrModule } from 'ngx-toastr';
+import { SocialMediaComponent } from './social-media/social-media.component';
 
 @NgModule({
   declarations: [
@@ -26,13 +24,11 @@ import { HeaderDirectoryComponent } from './header-directory/header-directory.co
     HeaderComponent,
     FooterComponent,
     IndexComponent,
-    DirectorioComponent,
-    ArmarTourComponent,
-    PromocionComponent,
     SocialMediaComponent,
     HeaderDirectoryComponent,
   ],
   imports: [
+    AngularMaterialModule,
     BrowserModule,
     HttpClientModule,
     LoginModule,
@@ -40,9 +36,12 @@ import { HeaderDirectoryComponent } from './header-directory/header-directory.co
     NoopAnimationsModule,
     ConozcanosAfiliarseModule,
     PromocionModule,
-    EliminarPromocionModule
+    EliminarPromocionModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
+    PromocionModule,
   ],
-  providers: [CompanyService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

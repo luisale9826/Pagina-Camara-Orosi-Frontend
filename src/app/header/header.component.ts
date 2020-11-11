@@ -9,14 +9,13 @@ import { LoginService } from '../services/login.service';
 export class HeaderComponent implements OnInit {
   status: boolean;
   constructor(private loginService: LoginService) {
-    this.loginService.statusProvider.subscribe((status) => {
-      this.status = status;
-    });
+    this.status = this.loginService.isAuthenticated();
   }
 
   ngOnInit(): void {}
 
   logout(): void {
     this.loginService.logout();
+    location.reload();
   }
 }

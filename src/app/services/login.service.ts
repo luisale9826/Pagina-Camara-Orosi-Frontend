@@ -1,41 +1,45 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LoginService {
-  readonly PATH = environment.BASICURL;
-  statusProvider: BehaviorSubject<boolean>;
-  private status = false;
+  private readonly PATH = environment.BASICURL;
+  private jwtHelper = new JwtHelperService();
 
-  constructor(private http: HttpClient, private router: Router) {
-    if (localStorage.getItem('currentUser') !== null) {
-      this.status = true;
-    }
-    this.statusProvider = new BehaviorSubject<boolean>(this.status);
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+  ) {}
+
+  get currentUser(): any {
+    return localStorage.getItem('currentUser');
+  }
+
+  public isAuthenticated(): boolean {
+    const token = this.currentUser;
+    return this.jwtHelper.isTokenExpired(token);
   }
 
   login(userName: string, password: string): Promise<HttpResponse<any>> {
     return this.http
       .post<any>(
-        this.PATH + 'login',
+        `${this.PATH}login`,
         { userName, password },
         { observe: 'response' }
       )
       .toPromise();
   }
 
-
   logout(): void {
     this.http.post<any>(this.PATH + 'logout', {
-      headers: localStorage.getItem('currentUser'),
+      headers: this.currentUser,
     });
     localStorage.removeItem('currentUser');
-    this.statusProvider.next(false);
-    this.router.navigate(['/login']);
+    this.router.navigate(['/login']).then(() => location.reload());
   }
 }

@@ -1,0 +1,26 @@
+img {
+    height: auto;
+    width: 150px;
+    margin-bottom: 5%;
+}
+
+h2 {
+    margin-left: 5%;
+}
+
+span {
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+span, a {
+    font-size: 15px;
+    background-color: #0c7c24;
+    font-weight: normal;
+}
+
+a {
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-bottom: 5%;
+}
