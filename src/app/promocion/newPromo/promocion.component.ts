@@ -40,7 +40,7 @@ export class PromocionComponent implements OnInit {
     uploadImageData.append('archivo', this.selectedFile, this.selectedFile.name);
     uploadImageData.append('nombre',this.myForm.get('name').value);
     this.promocionService.insertPromotionFile(uploadImageData);
-
+    alert("Promocion Guardada");
   }
  
 

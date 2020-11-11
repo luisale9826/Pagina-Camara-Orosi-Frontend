@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Promocion } from '../models/Promocion';
 import { environment } from 'src/environments/environment';
@@ -15,24 +15,38 @@ export class PromocionService {
 
   constructor(private httpClient: HttpClient) { }
 
+  
 
-
-
-  insertPromotion(promocion:Promocion){
-    return this.httpClient.post<Promocion>(this.PATH + "visiter/promotion/addPromotion",promocion);
+  getPromotions(): Promise<HttpResponse<any>> {
+    return this.httpClient
+      .get<Promocion[]>(
+        this.PATH + "visiter/promotion",
+        { observe: 'response' }
+      )
+      .toPromise();
   }
 
-  getPromotions(){
-    return this.httpClient.get<Promocion[]>(this.PATH + "visiter/promotion");
+  //getPromotions(){
+    //return this.httpClient.get<Promocion[]>(this.PATH + "visiter/promotion");
+  //}
+
+  insertPromotionFile(uploadImageData:FormData): Promise<HttpResponse<any>> {
+    return this.httpClient
+      .post<any>(
+        this.PATH + "visiter/promotion/savefile",
+        {uploadImageData},
+        { observe: 'response' }
+      )
+      .toPromise();
   }
 
-  insertPromotionFile(uploadImageData:FormData){
+ // insertPromotionFile(uploadImageData:FormData){
 
-    return this.httpClient.post(this.PATH + "visiter/promotion/savefile", uploadImageData, { observe: 'response' })
-    .subscribe((response) => {   
-    }
-    );
-  }
+    //return this.httpClient.post(this.PATH + "visiter/promotion/savefile", uploadImageData, { observe: 'response' })
+    //.subscribe((response) => {   
+    //}
+    //);
+  //}
 
   public deletePromotion(link: string): Observable<any> {
     return this.httpClient.post<Promocion>(this.PATH + "visiter/promotion/deletePromotion",link);
