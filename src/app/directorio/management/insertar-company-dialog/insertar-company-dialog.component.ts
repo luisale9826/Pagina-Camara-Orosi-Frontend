@@ -4,9 +4,9 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { RxwebValidators } from '@rxweb/reactive-form-validators';
 import { ToastrService } from 'ngx-toastr';
-import { Company } from 'src/app/model/company';
-import { Error } from 'src/app/model/error';
-import { Phone } from 'src/app/model/phone';
+import { Company } from 'src/app/models/company';
+import { Phone } from 'src/app/models/phone';
+import { Error } from 'src/app/models/error';
 import { DirectorioService } from 'src/app/services/directorio.service';
 import { notNullOrBlank } from 'src/app/shared/custome-validations';
 

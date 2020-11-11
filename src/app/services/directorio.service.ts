@@ -1,7 +1,7 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { Company } from '../model/company';
+import { Company } from '../models/company';
 import { LoginService } from './login.service';
 
 @Injectable({

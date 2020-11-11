@@ -51,6 +51,8 @@
   .img{
     display: flex;
     justify-content: center;
+    height: auto;
+    width: 100%;
   }
 
   .div0{

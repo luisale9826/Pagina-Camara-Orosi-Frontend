@@ -8,6 +8,7 @@ import { EliminarCompanyDialogComponent } from './management/eliminar-company-di
 import { AngularMaterialModule } from '../angular-material.module';
 import { VerCompanyDialogComponent } from './visitante/ver-company-dialog/ver-company-dialog.component';
 import { VerImagenCompanyDialogComponent } from './visitante/ver-imagen-company-dialog/ver-imagen-company-dialog.component';
+import { DirectorioComponent } from './directorio.component';
 
 @NgModule({
   declarations: [
@@ -17,11 +18,9 @@ import { VerImagenCompanyDialogComponent } from './visitante/ver-imagen-company-
     EliminarCompanyDialogComponent,
     VerCompanyDialogComponent,
     VerImagenCompanyDialogComponent,
+    DirectorioComponent,
   ],
   imports: [DirectorioRoutingModule, AngularMaterialModule],
   exports: [DirectorioRoutingModule],
 })
-export class DirectorioModule {
-  
-
-}
+export class DirectorioModule {}

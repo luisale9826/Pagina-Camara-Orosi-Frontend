@@ -4,9 +4,7 @@ import {
   MatDialogRef,
   MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
-import { ToastrService } from 'ngx-toastr';
-import { Company } from 'src/app/model/company';
-import { DirectorioService } from 'src/app/services/directorio.service';
+import { Company } from 'src/app/models/company';
 import { LoginService } from 'src/app/services/login.service';
 import { EliminarCompanyDialogComponent } from '../../management/eliminar-company-dialog/eliminar-company-dialog.component';
 import { InsertarCompanyDialogComponent } from '../../management/insertar-company-dialog/insertar-company-dialog.component';

@@ -1,13 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Company } from '../model/company';
 import { DirectorioService } from '../services/directorio.service';
 import { LoginService } from '../services/login.service';
 import { InsertarCompanyDialogComponent } from './management/insertar-company-dialog/insertar-company-dialog.component';
 import { UploadFileCompanyComponent } from './management/upload-file-company/upload-file-company.component';
 import { VerCompanyDialogComponent } from './visitante/ver-company-dialog/ver-company-dialog.component';
-import {Company} from '../model/company.model'; 
-import {CompanyService} from '../services/company.service';
+import { Company } from '../models/company';
 
 @Component({
   selector: 'app-directorio',
@@ -15,28 +13,20 @@ import {CompanyService} from '../services/company.service';
   styleUrls: ['./directorio.component.css'],
 })
 export class DirectorioComponent implements OnInit {
-  
-  dataJSON: any;
-  directory:Object;
-  companyPhones:Object;
+  companyPhones: object;
   status: boolean;
 
-  constructor(private loginService: LoginService, public companyService:CompanyService) {
-    this.loginService.statusProvider.subscribe((status) => {
-      this.status = status;
-    });
-  status: boolean;
   companies: Company[];
   constructor(
     private loginService: LoginService,
     private dialog: MatDialog,
-    private directoryService: DirectorioService
+    private directoryService: DirectorioService,
   ) {
     this.status = this.loginService.isAuthenticated();
   }
 
   ngOnInit(): void {
-   this.getCompanies();
+    this.getCompanies();
   }
 
   openDialogInsertCompany(): void {
@@ -77,17 +67,9 @@ export class DirectorioComponent implements OnInit {
     });
   }
 
-
-  getCompanies(){
-    return  this.companyService.getCompanies().then((data) => {
-      this.dataJSON =JSON.stringify(data) 
-      this.directory = JSON.parse(this.dataJSON);
-      
-    });
-      
+  getCompanies(): any {
+    this.directoryService.getCompany().then(data => {
+      this.companies = data;
+    }).catch(err => {});
   }
-
-
-  
-
 }
