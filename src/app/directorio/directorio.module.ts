@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { DirectorioRoutingModule } from './directorio-routing.module';
 import { InsertarCompanyDialogComponent } from './management/insertar-company-dialog/insertar-company-dialog.component';
 import { UploadFileCompanyComponent } from './management/upload-file-company/upload-file-company.component';
@@ -22,4 +21,7 @@ import { VerImagenCompanyDialogComponent } from './visitante/ver-imagen-company-
   imports: [DirectorioRoutingModule, AngularMaterialModule],
   exports: [DirectorioRoutingModule],
 })
-export class DirectorioModule {}
+export class DirectorioModule {
+  
+
+}

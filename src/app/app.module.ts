@@ -13,10 +13,14 @@ import { ArmarTourComponent } from './armar-tour/armar-tour.component';
 import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginModule } from './login/login.module';
 import { ConozcanosAfiliarseModule } from './conozcanos-afiliarse/conozcanos-afiliarse.module';
-import { PromocionComponent } from './promocion/promocion.component';
-import { PromocionModule } from './promocion/promocion.module';
-import { ToastrModule } from 'ngx-toastr';
+import { PromocionModule } from './promocion/newPromo/promocion.module';
+import { EliminarPromocionModule } from './promocion/deletePromo/eliminarPromocion.module';
 import { AngularMaterialModule } from './angular-material.module';
+import { HeaderDirectoryComponent } from './header-directory/header-directory.component';
+import { CompanyService} from './services/company.service';
+import { ToastrModule } from 'ngx-toastr';
+import { SocialMediaComponent } from './social-media/social-media.component';
+import { PromocionComponent } from './promocion/promocion.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +31,8 @@ import { AngularMaterialModule } from './angular-material.module';
     DirectorioComponent,
     ArmarTourComponent,
     PromocionComponent,
+    SocialMediaComponent,
+    HeaderDirectoryComponent,
   ],
   imports: [
     AngularMaterialModule,
@@ -37,10 +43,12 @@ import { AngularMaterialModule } from './angular-material.module';
     NoopAnimationsModule,
     ConozcanosAfiliarseModule,
     PromocionModule,
-    ToastrModule.forRoot(),
+    EliminarPromocionModule
     BrowserAnimationsModule
+    ToastrModule.forRoot(),
+    PromocionModule,
   ],
-  providers: [],
+  providers: [CompanyService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

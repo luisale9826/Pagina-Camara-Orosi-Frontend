@@ -6,6 +6,8 @@ import { LoginService } from '../services/login.service';
 import { InsertarCompanyDialogComponent } from './management/insertar-company-dialog/insertar-company-dialog.component';
 import { UploadFileCompanyComponent } from './management/upload-file-company/upload-file-company.component';
 import { VerCompanyDialogComponent } from './visitante/ver-company-dialog/ver-company-dialog.component';
+import {Company} from '../model/company.model'; 
+import {CompanyService} from '../services/company.service';
 
 @Component({
   selector: 'app-directorio',
@@ -13,6 +15,16 @@ import { VerCompanyDialogComponent } from './visitante/ver-company-dialog/ver-co
   styleUrls: ['./directorio.component.css'],
 })
 export class DirectorioComponent implements OnInit {
+  
+  dataJSON: any;
+  directory:Object;
+  companyPhones:Object;
+  status: boolean;
+
+  constructor(private loginService: LoginService, public companyService:CompanyService) {
+    this.loginService.statusProvider.subscribe((status) => {
+      this.status = status;
+    });
   status: boolean;
   companies: Company[];
   constructor(
@@ -24,7 +36,7 @@ export class DirectorioComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.directoryService.getCompany().then((data) => (this.companies = data));
+   this.getCompanies();
   }
 
   openDialogInsertCompany(): void {
@@ -64,4 +76,18 @@ export class DirectorioComponent implements OnInit {
       data: { company },
     });
   }
+
+
+  getCompanies(){
+    return  this.companyService.getCompanies().then((data) => {
+      this.dataJSON =JSON.stringify(data) 
+      this.directory = JSON.parse(this.dataJSON);
+      
+    });
+      
+  }
+
+
+  
+
 }
