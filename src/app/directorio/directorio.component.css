@@ -241,8 +241,7 @@ button:focus{
 .cart-circle li i {
     margin: 0;
     line-height: 30px;
-    text-align: center;
-   
+    text-align: center;   
 }
 
 .cart-circle li a:hover i,
@@ -285,5 +284,3 @@ ul.cart-network li {
     display: inline;
     margin: 0 5px;
 }
-
- 

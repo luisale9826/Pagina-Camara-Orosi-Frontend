@@ -6,7 +6,8 @@ import { DirectorioModule } from './directorio/directorio.module';
 import { ArmarTourModule } from './armar-tour/armar-tour.module';
 import { LoginModule } from './login/login.module';
 import { ConozcanosAfiliarseModule } from './conozcanos-afiliarse/conozcanos-afiliarse.module';
-import { PromocionModule } from './promocion/promocion.module';
+import { PromocionModule } from './promocion/newPromo/promocion.module';
+import { EliminarPromocionModule } from './promocion/deletePromo/eliminarPromocion.module';
 
 const routes: Routes = [{ path: '', component: IndexComponent }];
 
@@ -17,6 +18,7 @@ const routes: Routes = [{ path: '', component: IndexComponent }];
     LoginModule,
     ConozcanosAfiliarseModule,
     PromocionModule,
+    EliminarPromocionModule,
     RouterModule.forRoot(routes),
   ],
   exports: [RouterModule],
