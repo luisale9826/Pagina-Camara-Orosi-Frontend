@@ -1,36 +1,99 @@
-<div class="container">
-    <h1>Directorio de Asociados</h1>
-    <div class="buttons" *ngIf="status">
-        <a type="button">Insertar Compañía</a>
-    </div>
-    <div >
-        <a>
-            <div class="col-md-3 col-sm-4 col-xs-6 c-img">
-                <img src="../../assets/images/item.jpg" alt="Compañía" class="img-responsive">
-                <div class="info-img">
-                    <label><h4>Categoria</h4></label>
-                    <div class="hover-img">
-                        <div class="text-img">                        
-                            <b><p>Restaurante EL CLON</p></b>
-                            <p>Tel: 8985 4100</p>
-                            <p>Facebook: Restaurante el Clon</p>
-                            <p>Juan Vinas, Jimenez, Cartago</p>
-                        </div>
-                        <div class="buttons-img">
-                            <input type="button" class="button-left" value="Añadir al carrito">
-                            <input type="button" class="button-right" value="Información">
-                        </div>
-                    </div>
-                </div>
+
+<section>
+
+  <div class="search" >
+    <button class="search-format" >
+      <span class="fa fa-plus-circle fa-active-hidden">MOSTRAR TODO</span>
+      <span class="fa fa-minus-circle fa-active-show">MOSTRAR TODO</span>
+    </button>
+    <button class="search-format" >
+      <span class="fa fa-plus-circle fa-active-hidden">GASTRONOMÍA</span>
+      <span class="fa fa-minus-circle fa-active-show">GASTRONOMÍA</span>
+    </button>
+    <button class="search-format" >
+      <span class="fa fa-plus-circle fa-active-hidden">AVENTURA</span>
+      <span class="fa fa-minus-circle fa-active-show">AVENTURA</span>
+    </button>
+    <button class="search-format" >
+      <span class="fa fa-plus-circle fa-active-hidden">CULTURA</span>
+      <span class="fa fa-minus-circle fa-active-show">CULTURA</span>
+    </button>
+    
+  </div>
+
+
+
+
+
+<div class="div0">
+  <div class="container-block" *ngFor="let company of directory">
+    <div class="card">
+      <div class="side front-side">
+        <div class="block-format">
+          <div class="header-format">
+            <div class="category-format">
+              <h5>{{company.companyCategory}}</h5>
             </div>
-        </a>
-        <a href="#"><div class="col-md-3 col-sm-4 col-xs-6"><img src="../../assets/images/item.jpg" alt="Compañía" class="img-responsive"></div></a>
-        <a href="#"><div class="col-md-3 col-sm-4 col-xs-6"><img src="../../assets/images/item.jpg" alt="Compañía" class="img-responsive"></div></a>
-        <a href="#"><div class="col-md-3 col-sm-4 col-xs-6"><img src="../../assets/images/item.jpg" alt="Compañía" class="img-responsive"></div></a>
-        <a href="#"><div class="col-md-3 col-sm-4 col-xs-6"><img src="../../assets/images/item.jpg" alt="Compañía" class="img-responsive"></div></a>
-        <a href="#"><div class="col-md-3 col-sm-4 col-xs-6"><img src="../../assets/images/item.jpg" alt="Compañía" class="img-responsive"></div></a>
-        <a href="#"><div class="col-md-3 col-sm-4 col-xs-6"><img src="../../assets/images/item.jpg" alt="Compañía" class="img-responsive"></div></a>
-        <a href="#"><div class="col-md-3 col-sm-4 col-xs-6"><img src="../../assets/images/item.jpg" alt="Compañía" class="img-responsive"></div></a>
-        <a href="#"><div class="col-md-3 col-sm-4 col-xs-6"><img src="../../assets/images/item.jpg" alt="Compañía" class="img-responsive"></div></a>
+            <div class="info-cart"></div>
+          </div>  
+          <div class="body-format">
+            <h4 class="p-format">{{company.companyName}}</h4>
+            <p class="p-format">{{company.companyDescription}}</p> 
+            <p class="p-format">Dirección</p>
+            <p class="p-format">{{company.companyAddress}}</p>     
+          </div>
+            <div class="footer-format">
+              <Button class="button-format button-format-left fa fa-cart-plus"> Añadir al carrito</Button>
+              <Button class="button-format button-format-right fa fa-plus-circle"> Información</Button>
+            </div>
+        </div>
+      </div>
+      <div class="side back-side">
+          <div class="block-format">
+            <div class="header-format">
+              <div class="category-format">
+                <h5>{{company.companyCategory}}</h5>
+              </div>
+              <div class="info-cart">
+                
+                <ul class="cart-network cart-circle cart-direction ">
+                  <li ><a class="cart-shop" href="#"><i class="fa fa-shopping-cart" aria-hidden="true" ></i></a></li>
+                  <li ><a class="more-info" href="#" ><i class="fa fa-plus-circle" aria-hidden="true" ></i></a></li>   
+                </ul>	
+              </div>
+            </div>  
+            <div class="body-format">
+              <h4 class="p-format">{{company.companyName}}</h4>
+              <h5 class="p-format">Información de contacto</h5>
+              <p class="p-format"> Correo: {{company.companyEmail}}</p>
+              <p class="p-format"> Teléfonos: </p>
+              <div *ngFor="let phone of company.companyPhones">
+                <p class="p-format">{{phone.phone}}</p>
+              </div>
+                  
+            </div>
+            <div class="footer-format">
+              <a class="button-format  button-facebook" href="{{company.companyFacebookProfile}}"><i class="fa fa-facebook" aria-hidden="true"></i>   Facebook</a>
+              <a class="button-format button-maps" href="{{company.companyLocation}}"> <i class="fa fa-map-marker" aria-hidden="true"></i>   Google Maps</a>
+              <a class="button-format  button-instagram" href="{{company.companyInstagramProfile}}" ><i class="fa fa-instagram" aria-hidden="true"></i>   Instagram</a>
+              
+            </div>
+          </div> 
+      </div>
     </div>
+  </div>
+
+  
+
+  
+
+
 </div>
+
+
+
+
+
+
+</section>
+

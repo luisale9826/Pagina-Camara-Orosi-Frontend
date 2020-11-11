@@ -128,5 +128,8 @@
       }
     }
   },
-  "defaultProject": "Camara-Turismo-Orosi"
+  "defaultProject": "Camara-Turismo-Orosi",
+  "cli": {
+    "analytics": "8e7409fa-5aca-4f8d-8993-4c8b47c860bb"
+  }
 }

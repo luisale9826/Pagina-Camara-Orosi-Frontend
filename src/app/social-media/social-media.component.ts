@@ -10,6 +10,7 @@ export class SocialMediaComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    
   }
 
 }

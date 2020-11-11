@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class LoginService {
-  readonly PATH = environment.apiURL;
+  readonly PATH = environment.BASICURL;
   statusProvider: BehaviorSubject<boolean>;
   private status = false;
 

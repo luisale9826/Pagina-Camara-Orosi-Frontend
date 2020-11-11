@@ -17,6 +17,8 @@ import { ConozcanosAfiliarseModule } from './conozcanos-afiliarse/conozcanos-afi
 import { PromocionModule } from './promocion/newPromo/promocion.module';
 import { EliminarPromocionModule } from './promocion/deletePromo/eliminarPromocion.module';
 import { SocialMediaComponent } from './social-media/social-media.component';
+import { CompanyService} from './services/company.service';
+import { HeaderDirectoryComponent } from './header-directory/header-directory.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { SocialMediaComponent } from './social-media/social-media.component';
     IndexComponent,
     DirectorioComponent,
     ArmarTourComponent,
-    SocialMediaComponent
+    PromocionComponent,
+    SocialMediaComponent,
+    HeaderDirectoryComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,7 +42,7 @@ import { SocialMediaComponent } from './social-media/social-media.component';
     PromocionModule,
     EliminarPromocionModule
   ],
-  providers: [],
+  providers: [CompanyService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
