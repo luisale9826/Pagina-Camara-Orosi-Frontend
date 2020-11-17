@@ -51,8 +51,12 @@
   .img{
     display: flex;
     justify-content: center;
+    align-self: center;
+  }
+
+  img {
+    width: 75%;
     height: auto;
-    width: 100%;
   }
 
   .div0{
