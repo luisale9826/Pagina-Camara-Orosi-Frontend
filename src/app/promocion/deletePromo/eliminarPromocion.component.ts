@@ -18,7 +18,7 @@ export class EliminarPromocionComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.promocionService.getPromotions().subscribe((data) => {
+    this.promocionService.getPromotions().then((data) => {
       this.promocion = data;
     });
   }

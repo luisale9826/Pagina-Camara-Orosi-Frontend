@@ -16,8 +16,11 @@ export class IndexComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.promocionService.getPromotions().subscribe((data) => {
-      this.promocion = data;
-    });
+    this.promocionService
+      .getPromotions()
+      .then((data) => {
+        this.promocion = data;
+      })
+      .catch((err) => console.log(err));
   }
 }

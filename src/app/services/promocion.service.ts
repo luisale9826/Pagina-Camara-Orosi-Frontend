@@ -9,39 +9,36 @@ import { environment } from 'src/environments/environment';
 })
 export class PromocionService {
   readonly PATH = environment.BASICURL;
-  
-  constructor(private httpClient: HttpClient) { }
-  
-  getPromotions(): Promise<HttpResponse<any>> {
+
+  constructor(private httpClient: HttpClient) {}
+
+  getPromotions(): Promise<Promocion[]> {
     return this.httpClient
-      .get<Promocion[]>(
-        this.PATH + "visiter/promotion",
-        { observe: 'response' }
-      )
+      .get<Promocion[]>(this.PATH + 'visiter/promotion')
       .toPromise();
   }
 
-  //getPromotions(){
-    //return this.httpClient.get<Promocion[]>(this.PATH + "visiter/promotion");
-  //}
+  // getPromotions(){
+  // return this.httpClient.get<Promocion[]>(this.PATH + "visiter/promotion");
+  // }
 
-  insertPromotionFile(uploadImageData:FormData): Promise<HttpResponse<any>> {
+  insertPromotionFile(uploadImageData: FormData): Promise<HttpResponse<any>> {
     return this.httpClient
       .post<any>(
-        this.PATH + "visiter/promotion/savefile",
-        {uploadImageData},
+        this.PATH + 'visiter/promotion/savefile',
+        { uploadImageData },
         { observe: 'response' }
       )
       .toPromise();
   }
 
- // insertPromotionFile(uploadImageData:FormData){
+  // insertPromotionFile(uploadImageData:FormData){
 
-    //return this.httpClient.post(this.PATH + "visiter/promotion/savefile", uploadImageData, { observe: 'response' })
-    //.subscribe((response) => {   
-    //}
-    //);
-  //}
+  // return this.httpClient.post(this.PATH + "visiter/promotion/savefile", uploadImageData, { observe: 'response' })
+  // .subscribe((response) => {
+  // }
+  // );
+  // }
 
   public deletePromotion(link: string): Observable<any> {
     return this.httpClient.post<Promocion>(
