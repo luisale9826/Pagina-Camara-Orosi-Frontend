@@ -17,6 +17,7 @@ import { AngularMaterialModule } from './angular-material.module';
 import { HeaderDirectoryComponent } from './header-directory/header-directory.component';
 import { ToastrModule } from 'ngx-toastr';
 import { SocialMediaComponent } from './social-media/social-media.component';
+import { PromocionesModule } from './promociones/promociones.module';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { SocialMediaComponent } from './social-media/social-media.component';
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     PromocionModule,
+    PromocionesModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,11 @@
+<div class="container">
+    <swiper class="swiper-container" fxFlex="auto" [config]="config">
+        <div *ngFor="let promocion of promociones" class="swiper-slide">
+            <div fxLayout="column" fxLayoutAlign="center center" fxFlexFill>
+                <img [src]="promocion.link" [alt]="promocion.name">
+            </div>
+        </div>
+        <div class="swiper-pagination"></div>
+    </swiper>
+</div>
+  

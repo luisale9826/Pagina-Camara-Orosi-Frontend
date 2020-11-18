@@ -10,6 +10,7 @@ import { RxReactiveFormsModule } from '@rxweb/reactive-form-validators';
 import { MatListModule } from '@angular/material/list';
 import { MatDialogModule } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
+import { SwiperModule } from 'ngx-swiper-wrapper';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { CommonModule } from '@angular/common';
     RxReactiveFormsModule,
     FlexLayoutModule,
     MatListModule,
+    SwiperModule
   ],
 })
 export class AngularMaterialModule {}
