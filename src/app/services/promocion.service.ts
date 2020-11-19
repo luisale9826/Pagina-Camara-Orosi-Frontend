@@ -3,14 +3,18 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Promocion } from '../models/Promocion';
 import { environment } from 'src/environments/environment';
+import { LoginService } from './login.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PromocionService {
   readonly PATH = environment.BASICURL;
+  private readonly PATHVISITER = `${environment.VISITERURL}promotion`;
+  private readonly PATHADMIN = `${environment.ADMINURL}promotion`;
+  private readonly headers = { Authorization: this.loginService.currentUser };
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient, private loginService: LoginService) {}
 
   getPromotions(): Promise<Promocion[]> {
     return this.httpClient
@@ -18,19 +22,29 @@ export class PromocionService {
       .toPromise();
   }
 
-  // getPromotions(){
-  // return this.httpClient.get<Promocion[]>(this.PATH + "visiter/promotion");
-  // }
-
-  insertPromotionFile(uploadImageData: FormData): Promise<HttpResponse<any>> {
+  /*insertPromotionFile(uploadImageData: FormData): Promise<HttpResponse<any>> {
     return this.httpClient
       .post<any>(
-        this.PATH + 'visiter/promotion/savefile',
+        `${this.PATHADMIN}/savefile`,
         { uploadImageData },
-        { observe: 'response' }
+        { observe: 'response', headers: this.headers, }
       )
       .toPromise();
+  }*/
+
+  insertPromotionFile(nombre: string, imagen: File): Promise<HttpResponse<any>> {
+    const formData = new FormData();
+    formData.append('name', nombre);
+    formData.append('file', imagen);
+
+    return this.httpClient
+      .post<any>(`${this.PATHADMIN}/saveFile`, formData, {
+        observe: 'response',
+        headers: this.headers,
+      })
+      .toPromise();
   }
+
 
   // insertPromotionFile(uploadImageData:FormData){
 

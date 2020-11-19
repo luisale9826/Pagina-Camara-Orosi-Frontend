@@ -26,6 +26,9 @@
           <a class="nav-link" routerLink="/usuarios">USUARIOS</a>
         </li>
         <li *ngIf="!status" class="nav-item">
+          <a class="nav-link" routerLink="/promocion">PROMOCION</a>
+        </li>
+        <li *ngIf="!status" class="nav-item">
           <a class="nav-link" (click)="logout()">CERRAR SESSIÓN</a>
         </li>
       </ul>
