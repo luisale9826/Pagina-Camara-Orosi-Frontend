@@ -7,10 +7,15 @@
   <div class="row justify-content-center" id="container-promo">
 
 
-    <div class="col-sm-11">
+    <div class="col-sm-12">
       <h2>PROMOCIONES</h2>
       <div class="row">
         <app-promociones></app-promociones>
+        
+        <div *ngFor="let promocion of promocion" class="col">
+          <img src="{{promocion.link}}" alt="Snow" style="width:250px; height: 250px;">
+
+        </div>
       </div>
     </div>
   </div>
