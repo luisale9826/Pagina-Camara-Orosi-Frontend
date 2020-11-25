@@ -11,7 +11,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatDialogModule } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
 import { SwiperModule } from 'ngx-swiper-wrapper';
-
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [],
@@ -28,7 +28,8 @@ import { SwiperModule } from 'ngx-swiper-wrapper';
     RxReactiveFormsModule,
     FlexLayoutModule,
     MatListModule,
-    SwiperModule
+    SwiperModule,
+    MatCardModule,
   ],
 })
 export class AngularMaterialModule {}
