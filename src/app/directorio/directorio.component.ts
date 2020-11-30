@@ -20,7 +20,7 @@ export class DirectorioComponent implements OnInit {
   constructor(
     private loginService: LoginService,
     private dialog: MatDialog,
-    private directoryService: DirectorioService,
+    private directoryService: DirectorioService
   ) {
     this.status = this.loginService.isAuthenticated();
   }
@@ -68,8 +68,11 @@ export class DirectorioComponent implements OnInit {
   }
 
   getCompanies(): any {
-    this.directoryService.getCompany().then(data => {
-      this.companies = data;
-    }).catch(err => {});
+    this.directoryService
+      .getCompany()
+      .then((data) => {
+        this.companies = data;
+      })
+      .catch((err) => console.log(err));
   }
 }

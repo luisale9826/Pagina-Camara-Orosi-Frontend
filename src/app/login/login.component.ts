@@ -31,6 +31,7 @@ export class LoginComponent implements OnInit {
       )
       .then((res) => {
         localStorage.setItem('currentUser', res.headers.get('Authorization'));
+        localStorage.setItem('userName', this.loginForm.get('username').value);
         this.router.navigate(['/']).then(() => location.reload());
       })
       .catch((err) => {

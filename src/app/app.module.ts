@@ -18,6 +18,7 @@ import { HeaderDirectoryComponent } from './header-directory/header-directory.co
 import { ToastrModule } from 'ngx-toastr';
 import { SocialMediaComponent } from './social-media/social-media.component';
 import { PromocionesModule } from './promociones/promociones.module';
+import { UserModule } from './user/user.module';
 
 @NgModule({
   declarations: [
@@ -30,18 +31,19 @@ import { PromocionesModule } from './promociones/promociones.module';
   ],
   imports: [
     AngularMaterialModule,
+    AppRoutingModule,
     BrowserModule,
+    BrowserAnimationsModule,
+    ConozcanosAfiliarseModule,
     HttpClientModule,
     LoginModule,
-    AppRoutingModule,
     NoopAnimationsModule,
-    ConozcanosAfiliarseModule,
     PromocionModule,
     EliminarPromocionModule,
-    BrowserAnimationsModule,
     ToastrModule.forRoot(),
     PromocionModule,
-    PromocionesModule
+    PromocionesModule,
+    UserModule
   ],
   providers: [],
   bootstrap: [AppComponent]

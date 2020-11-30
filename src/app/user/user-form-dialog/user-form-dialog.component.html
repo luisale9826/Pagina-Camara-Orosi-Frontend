@@ -1,1 +1,36 @@
-<p>user-form-dialog works!</p>
+<h1>{{titulo}} Usuario</h1>
+<mat-dialog-content>
+    <form [formGroup]="userForm">
+        <div>
+            <mat-form-field class="example-full-width">
+                <mat-label>Nombre de la persona</mat-label>
+                <input matInput placeholder="Nombre de la persona" formControlName="userName">
+            </mat-form-field>
+            <div *ngIf="userForm.controls.userName.touched && userForm.get('userName').invalid">
+                <div *ngFor="let error of getUserNameErrors">
+                    <p class="error">{{error.errorMessage}}</p>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="habilitado === false">
+            <mat-form-field class="example-full-width">
+                <mat-label>Contraseña</mat-label>
+                <input type="password" matInput placeholder="contraseña" formControlName="password">
+            </mat-form-field>
+            <div *ngIf="userForm.controls.password.touched && userForm.get('password').invalid">
+                <div *ngFor="let error of getPasswordErrors">
+                    <p class="error">{{error.errorMessage}}</p>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="this.data.user !== undefined">
+            <button mat-button (click)="habilitar(!habilitado)">Cambiar Contraseña</button>
+        </div>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button class="btn-insertar" mat-flat-button [disabled]="userForm.invalid"
+        (click)="onSubmit(userForm.value)">Guardar</button>
+    <button type="button" mat-flat-button (click)="dialogRef.close()">Cancelar</button>
+</mat-dialog-actions>

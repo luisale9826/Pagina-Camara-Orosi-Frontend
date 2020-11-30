@@ -1,1 +1,8 @@
-<p>user-delete-dialog works!</p>
+<h2 mat-dialog-title>Eliminar {{this.data.userName}}</h2>
+<mat-dialog-content class="mat-typography">
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button (click)="eliminarUsuario()">Eliminar</button>
+</mat-dialog-actions>

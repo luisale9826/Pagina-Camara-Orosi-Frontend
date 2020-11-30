@@ -4,6 +4,7 @@ import { UserComponent } from './user.component';
 import { UserFormDialogComponent } from './user-form-dialog/user-form-dialog.component';
 import { UserDeleteDialogComponent } from './user-delete-dialog/user-delete-dialog.component';
 import { AngularMaterialModule } from '../angular-material.module';
+import { UserRoutingModule } from './user-routing.module';
 
 
 
@@ -12,6 +13,7 @@ import { AngularMaterialModule } from '../angular-material.module';
   imports: [
     CommonModule,
     AngularMaterialModule
-  ]
+  ],
+  exports: [UserRoutingModule]
 })
 export class UserModule { }

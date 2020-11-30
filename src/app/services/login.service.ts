@@ -16,8 +16,12 @@ export class LoginService {
     private router: Router,
   ) {}
 
-  get currentUser(): any {
+  get currentUser(): string {
     return localStorage.getItem('currentUser');
+  }
+
+  get user(): string {
+    return localStorage.getItem('userName');
   }
 
   public isAuthenticated(): boolean {
