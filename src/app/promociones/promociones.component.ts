@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { SwiperComponent, SwiperDirective } from 'ngx-swiper-wrapper';
 import { SwiperOptions } from 'swiper';
+import { AutoplayOptions } from 'swiper/types/components/autoplay';
 import { PaginationOptions } from 'swiper/types/components/pagination';
 import { ScrollbarOptions } from 'swiper/types/components/scrollbar';
 import { Promocion } from '../models/Promocion';
@@ -15,14 +16,22 @@ export class PromocionesComponent implements OnInit {
   public promociones: Promocion[];
 
   public config: SwiperOptions = {
-    a11y: { enabled: true },
     direction: 'horizontal',
-    slidesPerView: 1,
     keyboard: true,
     mousewheel: true,
     scrollbar: false,
-    navigation: true,
-    pagination: false,
+    navigation: false,
+    pagination: {
+      clickable: true,
+      el: '.swiper-pagination',
+      type: 'bullets',
+      bulletElement: 'span'
+    },
+    autoplay: {
+      delay: 5000,
+    },
+    effect: 'fade',
+    speed: 4000,
   };
 
   constructor(public promocionService: PromocionService) {}

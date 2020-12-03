@@ -1,8 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { password } from '@rxweb/reactive-form-validators';
 import { ToastrService } from 'ngx-toastr';
 import { Error } from 'src/app/models/error';
 import { User } from 'src/app/models/user';
@@ -55,7 +54,7 @@ export class UserFormDialogComponent implements OnInit {
         user.role = this.data.user.role;
         this.userService
           .modificarUser(user)
-          .then((data) => {
+          .then(() => {
             this.data.userName = user.userName;
             this.dialogRef.close(this.data);
             this.router.navigate(['/usuarios']).then(() => {
@@ -73,7 +72,7 @@ export class UserFormDialogComponent implements OnInit {
       } else {
         this.userService
           .insertarUser(user)
-          .then((data) => {
+          .then(() => {
             this.data.userName = user.userName;
             this.dialogRef.close(this.data);
             this.router.navigate(['/usuarios']).then(() => {

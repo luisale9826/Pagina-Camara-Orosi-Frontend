@@ -16,7 +16,6 @@ import { EliminarPromocionModule } from './promocion/deletePromo/eliminarPromoci
 import { AngularMaterialModule } from './angular-material.module';
 import { HeaderDirectoryComponent } from './header-directory/header-directory.component';
 import { ToastrModule } from 'ngx-toastr';
-import { SocialMediaComponent } from './social-media/social-media.component';
 import { PromocionesModule } from './promociones/promociones.module';
 import { UserModule } from './user/user.module';
 
@@ -26,7 +25,6 @@ import { UserModule } from './user/user.module';
     HeaderComponent,
     FooterComponent,
     IndexComponent,
-    SocialMediaComponent,
     HeaderDirectoryComponent,
   ],
   imports: [
