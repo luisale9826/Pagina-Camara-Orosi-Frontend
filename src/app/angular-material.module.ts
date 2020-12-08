@@ -10,10 +10,10 @@ import { RxReactiveFormsModule } from '@rxweb/reactive-form-validators';
 import { MatListModule } from '@angular/material/list';
 import { MatDialogModule } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
-import { SwiperModule } from 'ngx-swiper-wrapper';
 import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [],
@@ -30,10 +30,10 @@ import { MatMenuModule } from '@angular/material/menu';
     RxReactiveFormsModule,
     FlexLayoutModule,
     MatListModule,
-    SwiperModule,
     MatCardModule,
     MatToolbarModule,
-    MatMenuModule
+    MatMenuModule,
+    NgbModule
   ],
 })
 export class AngularMaterialModule {}

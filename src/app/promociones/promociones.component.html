@@ -1,8 +1,6 @@
-<swiper [config]="config" fxLayout="row">
-    <div *ngFor="let promocion of promociones">
-        <div fxLayoutAlign="center center">
-            <img [src]="promocion.link" [alt]="promocion.name">
-        </div>
-    </div>
-</swiper>
-<div class="swiper-pagination"></div>
+<ngb-carousel #carousel [interval]="1000" [pauseOnHover]="pauseOnHover" [pauseOnFocus]="pauseOnFocus"
+    (slide)="onSlide($event)">
+    <ng-template ngbSlide *ngFor="let promocion of promociones; index as i">
+        <img [src]="promocion.link">
+    </ng-template>
+</ngb-carousel>

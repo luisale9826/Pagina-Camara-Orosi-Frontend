@@ -11,6 +11,11 @@ h2, p {
   color: #66af74;
   margin-left: 5%;
 }
+
+p {
+  font-weight: normal;
+}
+
 .asociados .content h3 {
   position: absolute;
   top: 85px;

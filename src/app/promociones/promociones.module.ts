@@ -15,7 +15,7 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
 
 @NgModule({
   declarations: [PromocionesComponent],
-  imports: [CommonModule, AngularMaterialModule],
+  imports: [CommonModule, AngularMaterialModule, ],
   exports: [PromocionesComponent],
   providers: [
     {
