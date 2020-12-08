@@ -12,6 +12,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
 import { SwiperModule } from 'ngx-swiper-wrapper';
 import { MatCardModule } from '@angular/material/card';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   declarations: [],
@@ -30,6 +32,8 @@ import { MatCardModule } from '@angular/material/card';
     MatListModule,
     SwiperModule,
     MatCardModule,
+    MatToolbarModule,
+    MatMenuModule
   ],
 })
 export class AngularMaterialModule {}

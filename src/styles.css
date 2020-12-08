@@ -1,4 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
-body { font-family: Roboto, "Helvetica Neue", sans-serif; }
+h1 {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 45px;
+}
+
+h2 {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 38px;
+}
+
+button {
+    font-family: 'Open Sans', sans-serif;
+    text-transform: uppercase;
+    font-size: 30px;
+}
+
+p {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 28px;
+}

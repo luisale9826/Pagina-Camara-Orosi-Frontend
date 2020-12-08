@@ -2,3 +2,53 @@ img {
   width: 100%;
   height: auto;
 }
+
+.content {
+  position: relative;
+}
+
+h2, p {
+  color: #66af74;
+  margin-left: 5%;
+}
+.asociados .content h3 {
+  position: absolute;
+  top: 85px;
+  left: 33.5%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  color: #66af74;
+  text-align: center;
+}
+
+.asociados .content .btn-directorio {
+  position: absolute;
+  top: 170px;
+  left: 20%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: transparent;
+  color: #66af74;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 10px 24px;
+  text-align: center;
+  border: 2px solid #66af74;
+  border-radius: 8px;
+}
+
+.btn-directorio:hover {
+  color: white !important;
+  background-color: #66af74 !important;
+}
+
+@media only screen and (max-width: 600px) {
+  .asociados .content h3 {
+    top: 29px;
+  }
+  
+  .asociados .content .btn-directorio {
+    top: 114px;
+    padding: 5px 12px;
+  }
+}

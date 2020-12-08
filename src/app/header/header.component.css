@@ -1,33 +1,49 @@
-
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    margin: 8px 0;
-  }
-
-  p {
-    margin: 0;
-  }
-
-  a {
-      color: #01050a;
-      font-weight: bold;
-      font-size: 20px;
-      margin-right: 20px;
-  }
-  a:active,
-  a:hover {
-    color:  #0c7c24;
-  }
-
- .navbar-toggler-icon {
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0,0,0, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+img {
+  width: 110px;
+  height: auto;
+  margin-top: 67.5px;
 }
-  
-.navbar-toggler {
-  border-color: rgb(0, 0, 0);
-} 
+
+.menu {
+  margin-top: 67.5px;
+  margin-left: 85%;
+}
+
+mat-icon {
+  font-size: 40px;
+  color: white;
+}
+
+button {
+  color: #66af74;
+  font-size: 15px;
+}
+
+.cdk-overlay-pane {
+  width: 100% !important;
+}
+.mat-menu-panel {
+  width: 100% !important;
+}
+
+mat-toolbar {
+  background-color: #66af74;
+  height: 135px;
+}
+
+@media only screen and (max-width: 600px) {
+  mat-toolbar {
+    height: 83px;
+  }
+
+  img {
+    width: 55px;
+    height: auto;
+    margin-top: 41.5px;
+  }
+
+  .menu {
+    margin-top: 41.5px;
+    margin-left: 70%;
+  }
+}

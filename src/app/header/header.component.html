@@ -1,24 +1,20 @@
 <header>
-  <!-- Navbar -->
-  <nav class="navbar navbar-light navbar-expand-md" style="background-color: rgb(169, 199, 117);">
-    <a href="/" >
-      <img src="/assets/images/logo-camara.png" alt="Logo camara orosi" width="90" height="90" class="d-inline-block align-top">
-    </a>
-    <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#collapsibleNavbar" aria-controls="collapsibleNavbar">
-      <span class="navbar-toggler-icon my-toggler"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="collapsibleNavbar">
-      <div class="navbar-nav ml-auto text-center">
-          <a class="nav-item nav-link" href="#">INICIO</a>
-          <a class="nav-item nav-link" routerLink="/directorio">DIRECTORIO</a>
-          <a class="nav-item nav-link" routerLink="/conozcanos">CONOZCANOS/AFILIARSE</a>
-          <a class="nav-item nav-link" routerLink="/tourVirtual">TOUR VIRTUAL</a>
-          <a class="nav-item nav-link" routerLink="/armarTour">ARMA TU PROPIO TOUR</a>
-          <a *ngIf="!status" class="nav-item nav-link" routerLink="/usuarios">USUARIOS</a>
-          <a *ngIf="!status" class="nav-item nav-link" routerLink="/promocion">PROMOCION</a>
-          <a *ngIf="!status" class="nav-item nav-link" (click)="logout()">CERRAR SESSIÓN</a>
-      </div>
-    </div>
-  </nav>
-  <!-- End Navbar -->
+  <mat-toolbar fxLayout="row">
+    <mat-toolbar-row fxFlex="100%">
+      <a href="/">
+        <img src="/assets/images/logos/logo-camara.png" alt="Logo camara orosi">
+      </a>
+      <button class="menu" mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item routerLink="/directorio">Directorio</button>
+    <button mat-menu-item routerLink="/conozcanos">Conózcanos/Afiliarse</button>
+    <button *ngIf="!status" mat-menu-item routerLink="/promocion">Promoción</button>
+    <button mat-menu-item routerLink="/tourVirtual">Tour Virtual</button>
+    <button *ngIf="!status" mat-menu-item routerLink="/usuarios">Usuario</button>
+    <button *ngIf="!status" mat-menu-item (click)="logout()">Cerrar sesión</button>
+  </mat-menu>
 </header>
