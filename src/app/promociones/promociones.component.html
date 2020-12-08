@@ -1,0 +1,6 @@
+<ngb-carousel #carousel [interval]="1000" [pauseOnHover]="pauseOnHover" [pauseOnFocus]="pauseOnFocus"
+    (slide)="onSlide($event)">
+    <ng-template ngbSlide *ngFor="let promocion of promociones; index as i">
+        <img [src]="promocion.link">
+    </ng-template>
+</ngb-carousel>

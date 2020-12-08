@@ -125,7 +125,7 @@ export class InsertarCompanyDialogComponent implements OnInit {
             });
           })
           .catch((err) => {
-            this.toastr.error('Se produjo un error al insertar', 'Error');
+            this.toastr.error('Se produjo un error al modificar', 'Error');
             this.apiErrors = Object.values(err.error.errors);
           });
       } else {

@@ -12,14 +12,14 @@ export class DirectorioService {
   private readonly PATHADMIN = `${environment.ADMINURL}directory`;
   private readonly headers = { Authorization: this.loginService.currentUser };
 
-  constructor(private http: HttpClient, private loginService: LoginService) {}
+  constructor(private httpClient: HttpClient, private loginService: LoginService) {}
 
   getCompany(): Promise<Company[]> {
-    return this.http.get<Company[]>(`${this.PATHVISITER}directory`).toPromise();
+    return this.httpClient.get<Company[]>(`${this.PATHVISITER}directory`).toPromise();
   }
 
   insertarCompany(company: Company): Promise<HttpResponse<any>> {
-    return this.http
+    return this.httpClient
       .post<any>(`${this.PATHADMIN}`, company, {
         observe: 'response',
         headers: this.headers,
@@ -32,7 +32,7 @@ export class DirectorioService {
     formData.append('companyId', companyId);
     formData.append('image', image);
 
-    return this.http
+    return this.httpClient
       .post<any>(`${this.PATHADMIN}/image`, formData, {
         observe: 'response',
         headers: this.headers,
@@ -45,7 +45,7 @@ export class DirectorioService {
     formData.append('companyId', companyId);
     formData.append('image', image);
 
-    return this.http
+    return this.httpClient
       .put<any>(`${this.PATHADMIN}/image`, formData, {
         observe: 'response',
         headers: this.headers,
@@ -56,7 +56,7 @@ export class DirectorioService {
   eliminarCompany(companyId: any): Promise<any> {
     const formData = new FormData();
     formData.append('companyId', companyId);
-    return this.http
+    return this.httpClient
       .request('delete', `${this.PATHADMIN}`, {
         body: companyId,
         observe: 'response',
@@ -66,7 +66,7 @@ export class DirectorioService {
   }
 
   modificarCompany(company: Company): Promise<HttpResponse<any>> {
-    return this.http
+    return this.httpClient
       .put(`${this.PATHADMIN}`, company, {
         observe: 'response',
         headers: this.headers,

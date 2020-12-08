@@ -16,7 +16,9 @@ import { EliminarPromocionModule } from './promocion/deletePromo/eliminarPromoci
 import { AngularMaterialModule } from './angular-material.module';
 import { HeaderDirectoryComponent } from './header-directory/header-directory.component';
 import { ToastrModule } from 'ngx-toastr';
-import { SocialMediaComponent } from './social-media/social-media.component';
+import { PromocionesModule } from './promociones/promociones.module';
+import { UserModule } from './user/user.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -24,22 +26,24 @@ import { SocialMediaComponent } from './social-media/social-media.component';
     HeaderComponent,
     FooterComponent,
     IndexComponent,
-    SocialMediaComponent,
     HeaderDirectoryComponent,
   ],
   imports: [
     AngularMaterialModule,
+    AppRoutingModule,
     BrowserModule,
+    BrowserAnimationsModule,
+    ConozcanosAfiliarseModule,
     HttpClientModule,
     LoginModule,
-    AppRoutingModule,
     NoopAnimationsModule,
-    ConozcanosAfiliarseModule,
     PromocionModule,
     EliminarPromocionModule,
-    BrowserAnimationsModule,
     ToastrModule.forRoot(),
     PromocionModule,
+    PromocionesModule,
+    UserModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
