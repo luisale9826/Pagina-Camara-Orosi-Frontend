@@ -1,5 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { NgbCarousel, NgbSlideEvent, NgbSlideEventSource } from '@ng-bootstrap/ng-bootstrap';
+import { Component, OnInit } from '@angular/core';
 import { Promocion } from '../models/Promocion';
 import { PromocionService } from '../services/promocion.service';
 
@@ -10,14 +9,8 @@ import { PromocionService } from '../services/promocion.service';
 })
 export class PromocionesComponent implements OnInit {
   public promociones: Promocion[];
-  paused = false;
-  unpauseOnArrow = false;
-  pauseOnIndicator = false;
-  pauseOnHover = true;
-  pauseOnFocus = true;
-
-  @ViewChild('carousel', { static: true }) carousel: NgbCarousel;
-
+  index = 0;
+  private hovered = false;
   constructor(public promocionService: PromocionService) {}
 
   ngOnInit(): void {
@@ -29,30 +22,21 @@ export class PromocionesComponent implements OnInit {
       .catch((err) => console.log(err));
   }
 
-  togglePaused(): void {
-    if (this.paused) {
-      this.carousel.cycle();
+  get getPromocion(): Promocion | null {
+    if (this.promociones === undefined) {
+      return null;
     } else {
-      this.carousel.pause();
+      return this.promociones[this.index];
     }
-    this.paused = !this.paused;
   }
 
-  onSlide(slideEvent: NgbSlideEvent): void {
-    if (
-      this.unpauseOnArrow &&
-      slideEvent.paused &&
-      (slideEvent.source === NgbSlideEventSource.ARROW_LEFT ||
-        slideEvent.source === NgbSlideEventSource.ARROW_RIGHT)
-    ) {
-      this.togglePaused();
-    }
-    if (
-      this.pauseOnIndicator &&
-      !slideEvent.paused &&
-      slideEvent.source === NgbSlideEventSource.INDICATOR
-    ) {
-      this.togglePaused();
+  setPromotion(newIndex: number): void {
+    if (newIndex < 0) {
+      this.index = this.promociones.length - 1;
+    } else if (newIndex > this.promociones.length - 1) {
+      this.index = 0;
+    } else {
+      this.index = newIndex;
     }
   }
 }

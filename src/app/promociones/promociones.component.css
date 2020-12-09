@@ -1,4 +1,45 @@
+h1 {
+    text-align: center;
+}
+
 img {
-    height: 300px;
-    width: 300px;
+    height: 600px;
+    width: 670px;
+}
+
+.content {
+    position: relative;
+}
+
+span {
+    font-size: 80px;
+}
+
+.content .btn-left {
+    right: 80%;
+}
+
+.content .btn-right {
+    left: 85%;
+}
+
+.btn-container button {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    background-color: black;
+    border: none;
+    opacity: 0.2;
+    transition: opacity 1s;
+}
+
+.btn-container button:hover {
+    opacity: 1;
+}
+
+.btn-container button:focus {
+    outline: 0;
 }

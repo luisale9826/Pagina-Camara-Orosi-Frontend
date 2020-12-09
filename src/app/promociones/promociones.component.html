@@ -1,6 +1,22 @@
-<ngb-carousel #carousel [interval]="1000" [pauseOnHover]="pauseOnHover" [pauseOnFocus]="pauseOnFocus"
-    (slide)="onSlide($event)">
-    <ng-template ngbSlide *ngFor="let promocion of promociones; index as i">
-        <img [src]="promocion.link">
-    </ng-template>
-</ngb-carousel>
+<ng-container *ngIf="this.promociones === undefined; else elseTemplate">
+    <h1>Cargando</h1>
+</ng-container>
+<ng-template #elseTemplate>
+    <div class="content">
+        <div class="btn-container">
+            <button class="btn-left" (click)="setPromotion(index - 1)">
+                <span class="material-icons">
+                    keyboard_arrow_left
+                </span>
+            </button>    
+        </div>
+        <img [src]="getPromocion.link" [alt]="getPromocion.name">
+        <div class="btn-container">
+            <button class="btn-right" (click)="setPromotion(index + 1)">
+                <span class="material-icons">
+                    keyboard_arrow_right
+                </span>
+            </button>
+        </div>
+    </div>
+</ng-template>

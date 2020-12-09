@@ -14,6 +14,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [],
@@ -33,7 +34,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     MatCardModule,
     MatToolbarModule,
     MatMenuModule,
-    NgbModule
+    NgbModule,
+    BrowserAnimationsModule
   ],
 })
 export class AngularMaterialModule {}
