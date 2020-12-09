@@ -12,7 +12,8 @@ h2 {
 }
 
 h2, p {
-  color: #66af74;
+  /* color: #66af74; */
+  color: #0c7c24;
   margin-left: 5%;
 }
 
@@ -26,7 +27,7 @@ p {
   left: 33.5%;
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
-  color: #66af74;
+  color: #0c7c24;
   text-align: center;
 }
 
@@ -37,23 +38,24 @@ p {
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   background-color: transparent;
-  color: #66af74;
+  color: #0c7c24;
   font-size: 20px;
   cursor: pointer;
   padding: 10px 24px;
   text-align: center;
-  border: 2px solid #66af74;
+  border: 2px solid #0c7c24;
   border-radius: 8px;
 }
 
 .btn-directorio:hover {
   color: white !important;
-  background-color: #66af74 !important;
+  background-color: #0c7c24 !important;
 }
 
 @media only screen and (max-width: 600px) {
-  .asociados .content h3 {
+  .asociados .content h2 {
     top: 29px;
+    font-size: 19px;
   }
   
   .asociados .content .btn-directorio {

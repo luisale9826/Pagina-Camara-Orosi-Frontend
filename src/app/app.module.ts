@@ -18,7 +18,6 @@ import { HeaderDirectoryComponent } from './header-directory/header-directory.co
 import { ToastrModule } from 'ngx-toastr';
 import { PromocionesModule } from './promociones/promociones.module';
 import { UserModule } from './user/user.module';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -43,7 +42,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     PromocionModule,
     PromocionesModule,
     UserModule,
-    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

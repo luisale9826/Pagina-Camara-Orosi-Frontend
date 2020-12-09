@@ -43,3 +43,14 @@ span {
 .btn-container button:focus {
     outline: 0;
 }
+
+@media only screen and (max-width: 600px) {
+    img {
+        height: auto;
+        width: 370px;
+    }
+
+    span {
+        font-size: 40px;
+    }
+}

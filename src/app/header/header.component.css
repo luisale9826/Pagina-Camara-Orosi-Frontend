@@ -15,7 +15,7 @@ mat-icon {
 }
 
 button {
-  color: #66af74;
+  color: #0c7c24;
   font-size: 15px;
 }
 
@@ -27,7 +27,7 @@ button {
 }
 
 mat-toolbar {
-  background-color: #66af74;
+  background-color: #0c7c24;
   height: 135px;
 }
 
