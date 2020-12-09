@@ -7,6 +7,10 @@ img {
   position: relative;
 }
 
+h2 {
+  font-weight: bold;
+}
+
 h2, p {
   color: #66af74;
   margin-left: 5%;
@@ -16,7 +20,7 @@ p {
   font-weight: normal;
 }
 
-.asociados .content h3 {
+.asociados .content h2 {
   position: absolute;
   top: 85px;
   left: 33.5%;
