@@ -20,7 +20,10 @@ export class LoginComponent implements OnInit {
 
   constructor(private loginService: LoginService, private router: Router) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    document.body.style.backgroundImage = `url('/assets/images/login/fondo.jpeg')`;
+    document.body.style.backgroundSize = 'auto 1000px';
+  }
 
   public onSubmit(): void {
     this.loading = true;

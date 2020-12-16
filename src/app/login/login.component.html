@@ -1,26 +1,43 @@
-<div class="container">
+<div class="container-login" fxLayout="column">
     <ng-container *ngIf="loading; else elseTemplate">
-        <div>
+        <div class="cargando" fxLayout="row" fxLayoutAlign="center center">
             <h1>Cargando...</h1>
         </div>
     </ng-container>
     <ng-template #elseTemplate>
-        <h1>
-            Ingreso al Sistema de la Cámara de Turismo de Orosí
-        </h1>
-        <div class="form">
-            <form [formGroup]="loginForm">
-                <div>
+        <div class="form" fxLayout="column" fxLayoutAlign="end end">
+            <h1 class="title" fxFlex="100%">
+                Inicio de Sesión
+            </h1>
+            <form [formGroup]="loginForm" fxLayout="column" fxFlex="100%">
+                <div fxLayout="column" fxLayoutAlign="center">
                     <p class="error">{{error}}</p>
                 </div>
-                <div>
-                    <p>Ingrese el nombre de Usuario</p>
-                    <input type="text" class="form-control" name="userName" id="userName" formControlName="username">
+                <div fxFlex="100%">
+                    <div>
+                        <h3 fxFlex="100%">
+                            Nombre de Usuario
+                        </h3>
+                    </div>
+                    <div>
+                        <mat-form-field>
+                            <mat-label></mat-label>
+                            <input matInput placeholder="Nombre de la persona" formControlName="username" required>
+                        </mat-form-field>
+                    </div>
                 </div>
-                <div>
-                    <p>Ingrese la contraseña</p>
-                    <input type="password" class="form-control" name="password" id="password"
-                        formControlName="password">
+                <div fxFlex="100%">
+                    <div>
+                        <h3 fxFlex="100%">
+                            Contraseña
+                        </h3>
+                    </div>
+                    <div>
+                        <mat-form-field>
+                            <mat-label></mat-label>
+                            <input matInput type="password" placeholder="Contraseña de la persona" formControlName="password" required>
+                        </mat-form-field>
+                    </div>
                 </div>
                 <button type="button" class="btn btn-primary" (click)="onSubmit()">Ingresar</button>
             </form>

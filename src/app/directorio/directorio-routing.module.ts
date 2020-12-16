@@ -2,7 +2,10 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DirectorioComponent } from './directorio.component';
 
-const routes: Routes = [{ path: 'directorio', component: DirectorioComponent }];
+const routes: Routes = [
+  { path: 'directorio', component: DirectorioComponent },
+  { path: 'directorio/:id', component: DirectorioComponent },
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

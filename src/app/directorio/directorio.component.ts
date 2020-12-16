@@ -6,6 +6,7 @@ import { InsertarCompanyDialogComponent } from './management/insertar-company-di
 import { UploadFileCompanyComponent } from './management/upload-file-company/upload-file-company.component';
 import { VerCompanyDialogComponent } from './visitante/ver-company-dialog/ver-company-dialog.component';
 import { Company } from '../models/company';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'app-directorio',
@@ -15,18 +16,23 @@ import { Company } from '../models/company';
 export class DirectorioComponent implements OnInit {
   companyPhones: object;
   status: boolean;
-
   companies: Company[];
   constructor(
     private loginService: LoginService,
     private dialog: MatDialog,
-    private directoryService: DirectorioService
+    private directoryService: DirectorioService,
+    private route: ActivatedRoute,
   ) {
     this.status = this.loginService.isAuthenticated();
   }
 
   ngOnInit(): void {
     this.getCompanies();
+    let id = '';
+    this.route.params.subscribe((params: ParamMap) => {
+      id = params.get('id');
+    });
+    this.openDialogCompanyById(id);
   }
 
   openDialogInsertCompany(): void {
@@ -70,9 +76,16 @@ export class DirectorioComponent implements OnInit {
   getCompanies(): any {
     this.directoryService
       .getCompany()
-      .then((data) => {
+      .then((data: Company[]) => {
         this.companies = data;
       })
       .catch((err) => console.log(err));
+  }
+
+  private openDialogCompanyById(id: string): void {
+    if (id !== '') {
+      const selectedCompany = this.companies.find((com: Company) => com.companyId === id);
+      this.openDialogVerCompany(selectedCompany);
+    }
   }
 }
