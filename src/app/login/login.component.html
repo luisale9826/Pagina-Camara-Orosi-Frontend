@@ -5,7 +5,7 @@
         </div>
     </ng-container>
     <ng-template #elseTemplate>
-        <div class="form" fxLayout="column" fxLayoutAlign="end end">
+        <div class="form" fxLayout="column" fxLayoutAlign="end end" fxLayoutAlign.xs="center start">
             <h1 class="title" fxFlex="100%">
                 Inicio de Sesión
             </h1>
@@ -39,7 +39,7 @@
                         </mat-form-field>
                     </div>
                 </div>
-                <button type="button" class="btn btn-primary" (click)="onSubmit()">Ingresar</button>
+                <button fxLayoutAlign="center center" type="button" class="btn btn-primary" (click)="onSubmit()">Ingresar</button>
             </form>
         </div>
     </ng-template>

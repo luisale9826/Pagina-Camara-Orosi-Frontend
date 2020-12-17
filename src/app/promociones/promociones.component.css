@@ -5,6 +5,8 @@ h1 {
 img {
     height: 600px;
     width: 670px;
+    z-index: -1;
+    position: relative;
 }
 
 .content {
@@ -15,19 +17,25 @@ span {
     font-size: 80px;
 }
 
-.content .btn-left {
+.btn-container {
+    display: flex;
+    justify-content: center;
+}
+
+.btn-container > button {
+    position: absolute;
+    top: 50%;
+}
+
+.btn-container .btn-left {
     right: 80%;
 }
 
-.content .btn-right {
+.btn-container .btn-right {
     left: 85%;
 }
 
 .btn-container button {
-    position: absolute;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
     color: white;
     text-align: center;
     background-color: black;
@@ -47,7 +55,11 @@ span {
 @media only screen and (max-width: 600px) {
     img {
         height: auto;
-        width: 370px;
+        width: 402px;
+    }
+
+    .content .btn-right {
+        left: 85%;
     }
 
     span {

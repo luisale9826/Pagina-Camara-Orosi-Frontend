@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from '../services/login.service';
@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     document.body.style.backgroundImage = `url('/assets/images/login/fondo.jpeg')`;
-    document.body.style.backgroundSize = 'auto 1000px';
+    document.body.style.backgroundSize = `cover`;
   }
 
   public onSubmit(): void {

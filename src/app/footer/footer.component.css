@@ -1,20 +1,18 @@
-footer {
-  background: #0c7c24;
-  display: flex;
+#footer {
+  background-color: #0c7c24;
   width: 100%;
   position: relative;
-  top: 100%;
-  left: 0;
   bottom: 0;
+  display: inline-block !important;
 }
 
-footer a {
+#footer a {
   color: #fff;
   font-size: 14px;
   transition-duration: 0.2s;
 }
   
-footer a:hover {
+#footer a:hover {
   color: #FA944B;
   text-decoration: none;
 }
@@ -35,6 +33,10 @@ img {
   img {
     width: auto;
     height: 40px;
+  }
+
+  #footer {
+    position: fixed;
   }
 }
   

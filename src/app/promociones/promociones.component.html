@@ -2,21 +2,19 @@
     <h1>Cargando</h1>
 </ng-container>
 <ng-template #elseTemplate>
-    <div class="content">
+    <div class="content" fxLayoutAlign.gt-sm="center center">
+        <img [src]="getPromocion.link" [alt]="getPromocion.name">
         <div class="btn-container">
             <button class="btn-left" (click)="setPromotion(index - 1)">
                 <span class="material-icons">
                     keyboard_arrow_left
                 </span>
-            </button>    
-        </div>
-        <img [src]="getPromocion.link" [alt]="getPromocion.name">
-        <div class="btn-container">
+            </button>
             <button class="btn-right" (click)="setPromotion(index + 1)">
                 <span class="material-icons">
                     keyboard_arrow_right
                 </span>
-            </button>
+            </button>    
         </div>
     </div>
 </ng-template>
