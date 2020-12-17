@@ -18,7 +18,6 @@ import { HeaderDirectoryComponent } from './header-directory/header-directory.co
 import { ToastrModule } from 'ngx-toastr';
 import { PromocionesModule } from './promociones/promociones.module';
 import { UserModule } from './user/user.module';
-
 @NgModule({
   declarations: [
     AppComponent,
