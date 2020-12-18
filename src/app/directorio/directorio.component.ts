@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DirectorioService } from '../services/directorio.service';
 import { LoginService } from '../services/login.service';
@@ -13,7 +13,7 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
   templateUrl: './directorio.component.html',
   styleUrls: ['./directorio.component.css'],
 })
-export class DirectorioComponent implements OnInit {
+export class DirectorioComponent implements OnInit, AfterViewInit {
   companyPhones: object;
   status: boolean;
   companies: Company[];
@@ -21,18 +21,19 @@ export class DirectorioComponent implements OnInit {
     private loginService: LoginService,
     private dialog: MatDialog,
     private directoryService: DirectorioService,
-    private route: ActivatedRoute,
+    private route: ActivatedRoute
   ) {
     this.status = this.loginService.isAuthenticated();
   }
 
   ngOnInit(): void {
     this.getCompanies();
-    let id = '';
-    this.route.params.subscribe((params: ParamMap) => {
-      id = params.get('id');
+  }
+
+  ngAfterViewInit(): void {
+    this.route.params.subscribe((params) => {
+      this.openDialogCompanyById(params.id);
     });
-    this.openDialogCompanyById(id);
   }
 
   openDialogInsertCompany(): void {
@@ -67,8 +68,6 @@ export class DirectorioComponent implements OnInit {
 
   openDialogVerCompany(company: Company): void {
     this.dialog.open(VerCompanyDialogComponent, {
-      height: '500px',
-      width: '500px',
       data: { company },
     });
   }
@@ -83,9 +82,13 @@ export class DirectorioComponent implements OnInit {
   }
 
   private openDialogCompanyById(id: string): void {
-    if (id !== '') {
-      const selectedCompany = this.companies.find((com: Company) => com.companyId === id);
-      this.openDialogVerCompany(selectedCompany);
+    if (id !== undefined) {
+      const selectedCompany = this.directoryService
+        .getCompanyById(id)
+        .then((data) => {
+          this.openDialogVerCompany(data.body.company);
+        })
+        .catch((err) => console.log(err));
     }
   }
 }

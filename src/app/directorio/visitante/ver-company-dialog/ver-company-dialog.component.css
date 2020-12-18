@@ -5,22 +5,54 @@ img {
 }
 
 h2 {
-    margin-left: 5%;
+    text-align: center;
 }
 
-span {
-    margin-top: 2%;
-    margin-bottom: 2%;
+p {
+    color: #767a77;
 }
 
-span, a {
+.telefonos {
+    margin-top: 10px;
+}
+
+.button {
     font-size: 15px;
-    background-color: #0c7c24;
-    font-weight: normal;
+    background-color: transparent;
+    color: #0c7c24;
+    cursor: pointer;
+    padding: 10px 24px;
+    text-align: center;
+    border: 2px solid #0c7c24;
+    border-radius: 8px;
+    text-decoration: none;
+}
+
+.button:hover {
+    color: white !important;
+    background-color: #0c7c24 !important;
+}
+
+button:focus {
+    outline: 0;
 }
 
 a {
-    margin-left: 2%;
-    margin-right: 2%;
-    margin-bottom: 5%;
+    font-size: 20px;
+    color: #0c7c24;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 600px) {
+    h2 {
+        font-size: 28px;
+    }
+
+    p {
+        font-size: 15px;
+    }
+
+    button {
+        font-size: 10px !important;
+    }
 }

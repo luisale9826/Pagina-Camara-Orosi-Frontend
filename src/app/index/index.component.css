@@ -7,13 +7,8 @@ img {
   position: relative;
 }
 
-h2 {
-  font-weight: bold;
-}
-
 h2, p {
   /* color: #66af74; */
-  color: #0c7c24;
   margin-left: 5%;
 }
 

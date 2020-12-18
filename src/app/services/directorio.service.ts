@@ -8,14 +8,19 @@ import { LoginService } from './login.service';
   providedIn: 'root',
 })
 export class DirectorioService {
-  private readonly PATHVISITER = `${environment.VISITERURL}`;
+  private readonly PATHVISITER = `${environment.VISITERURL}directory`;
   private readonly PATHADMIN = `${environment.ADMINURL}directory`;
   private readonly headers = { Authorization: this.loginService.currentUser };
 
-  constructor(private httpClient: HttpClient, private loginService: LoginService) {}
+  constructor(
+    private httpClient: HttpClient,
+    private loginService: LoginService
+  ) {}
 
   getCompany(): Promise<Company[]> {
-    return this.httpClient.get<Company[]>(`${this.PATHVISITER}directory`).toPromise();
+    return this.httpClient
+      .get<Company[]>(`${this.PATHVISITER}`)
+      .toPromise();
   }
 
   insertarCompany(company: Company): Promise<HttpResponse<any>> {
@@ -70,6 +75,15 @@ export class DirectorioService {
       .put(`${this.PATHADMIN}`, company, {
         observe: 'response',
         headers: this.headers,
+      })
+      .toPromise();
+  }
+
+  getCompanyById(id: string): Promise<HttpResponse<any>> {
+    return this.httpClient
+      .get(`${this.PATHVISITER}/`, {
+        observe: 'response',
+        params: { id },
       })
       .toPromise();
   }
