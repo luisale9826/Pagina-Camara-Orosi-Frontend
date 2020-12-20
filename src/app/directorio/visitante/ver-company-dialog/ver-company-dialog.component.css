@@ -49,10 +49,14 @@ a {
     }
 
     p {
-        font-size: 15px;
+        font-size: 12px;
     }
 
     button {
         font-size: 10px !important;
+    }
+
+    .content {
+        right: 0%;
     }
 }

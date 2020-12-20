@@ -6,7 +6,7 @@ import { InsertarCompanyDialogComponent } from './management/insertar-company-di
 import { UploadFileCompanyComponent } from './management/upload-file-company/upload-file-company.component';
 import { VerCompanyDialogComponent } from './visitante/ver-company-dialog/ver-company-dialog.component';
 import { Company } from '../models/company';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-directorio',
@@ -17,6 +17,8 @@ export class DirectorioComponent implements OnInit, AfterViewInit {
   companyPhones: object;
   status: boolean;
   companies: Company[];
+  directory: Map<string, Company[]> = new Map();
+
   constructor(
     private loginService: LoginService,
     private dialog: MatDialog,
@@ -77,13 +79,22 @@ export class DirectorioComponent implements OnInit, AfterViewInit {
       .getCompany()
       .then((data: Company[]) => {
         this.companies = data;
+        this.companies.forEach((com) => {
+          const category = this.directory.get(com.companyCategory);
+          if (category === undefined) {
+            this.directory.set(com.companyCategory, [com]);
+          } else {
+            category.push(com);
+            this.directory.set(com.companyCategory, category);
+          }
+        });
       })
       .catch((err) => console.log(err));
   }
 
   private openDialogCompanyById(id: string): void {
     if (id !== undefined) {
-      const selectedCompany = this.directoryService
+      this.directoryService
         .getCompanyById(id)
         .then((data) => {
           this.openDialogVerCompany(data.body.company);
