@@ -10,6 +10,7 @@
     </mat-toolbar-row>
   </mat-toolbar>
   <mat-menu #menu="matMenu">
+    <button mat-menu-item routerLink="/">Inicio</button>
     <button mat-menu-item routerLink="/directorio">Directorio</button>
     <button mat-menu-item routerLink="/conozcanos">Conózcanos/Afiliarse</button>
     <button *ngIf="!status" mat-menu-item routerLink="/promocion">Promoción</button>

@@ -63,7 +63,7 @@
 
 @media only screen and (max-width: 600px) {
     .directory-container {
-        margin-bottom: 100px;
+        margin-bottom: 100px !important;
     }
 
     .directory-header h1 {

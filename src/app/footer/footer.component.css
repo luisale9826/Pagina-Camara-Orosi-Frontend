@@ -4,6 +4,7 @@
   position: relative;
   bottom: 0;
   display: inline-block !important;
+  margin-top: 40px;
 }
 
 #footer a {
