@@ -7,6 +7,7 @@ import { UploadFileCompanyComponent } from './management/upload-file-company/upl
 import { VerCompanyDialogComponent } from './visitante/ver-company-dialog/ver-company-dialog.component';
 import { Company } from '../models/company';
 import { ActivatedRoute } from '@angular/router';
+import { VerImagenCompanyDialogComponent } from './visitante/ver-imagen-company-dialog/ver-imagen-company-dialog.component';
 
 @Component({
   selector: 'app-directorio',
@@ -71,6 +72,12 @@ export class DirectorioComponent implements OnInit, AfterViewInit {
   openDialogVerCompany(company: Company): void {
     this.dialog.open(VerCompanyDialogComponent, {
       data: { company },
+    });
+  }
+
+  openCompanyImageDialog(company: Company): void {
+    this.dialog.open(VerImagenCompanyDialogComponent, {
+      data: company
     });
   }
 

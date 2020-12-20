@@ -1,17 +1,23 @@
-<a mat-dialog-title mat-dialog-close >
+<a mat-dialog-title mat-dialog-close>
     <span class="material-icons">
         close
     </span>
 </a>
 <mat-dialog-content>
-    <div class="content" fxLayout="column" fxLayoutGap="2%">
-        <div fxLayout="row">
-        </div>
+    <div class="content" fxLayout="column" fxLayoutGap="5%">
         <div>
-            <h2>
-                {{company.companyName}}
-            </h2>
+            <div>
+                <h2>
+                    {{company.companyName}}
+                </h2>
+            </div>
+            <div>
+                <a class="button" (click)="abrirImagen()">
+                    Ver Imagen
+                </a>
+            </div>
         </div>
+
         <div>
             <div>
                 <h3>Descripción</h3>
@@ -75,7 +81,7 @@
     </div>
 </mat-dialog-content>
 <mat-dialog-actions align="end" *ngIf="!status">
-        <button mat-button (click)="editarImagen(company)">Editar Imagen</button>
-        <button mat-button (click)="modificarCompany(company)">Editar</button>
-        <button mat-button (click)="eliminarCompany(company)">Eliminar</button>
+    <button mat-button (click)="editarImagen(company)">Editar Imagen</button>
+    <button mat-button (click)="modificarCompany(company)">Editar</button>
+    <button mat-button (click)="eliminarCompany(company)">Eliminar</button>
 </mat-dialog-actions>

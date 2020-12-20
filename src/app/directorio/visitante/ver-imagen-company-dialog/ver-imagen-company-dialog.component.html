@@ -1,9 +1,15 @@
-<div fxFlex>
-    <h1 mat-dialog-title>{{data.companyName}}</h1>
-    <div mat-dialog-content>
-        <img [src]="data.companyLogo" [alt]="data.companyName">
-    </div>
-    <mat-dialog-actions align="end">
-        <button mat-button mat-dialog-close>Cerrar</button>
-    </mat-dialog-actions>
+<a mat-dialog-title mat-dialog-close>
+    <span class="material-icons">
+        close
+    </span>
+</a>
+<div>
+    <mat-card-content>
+        <div>
+            <h1>{{data.companyName}}</h1>
+        </div>
+        <div>
+            <img [src]="data.companyLogo" [alt]="data.companyName">
+        </div>
+    </mat-card-content>
 </div>

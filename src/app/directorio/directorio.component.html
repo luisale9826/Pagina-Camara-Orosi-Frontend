@@ -12,7 +12,7 @@
     </div>
     <div class="cards-container">
       <mat-card *ngFor="let company of category.value" class="cards">
-        <img mat-card-image [src]="company.companyLogo" [alt]="company.companyName">
+        <img mat-card-image [src]="company.companyLogo" [alt]="company.companyName" (click)="openCompanyImageDialog(company)">
         <mat-card-content>
           <h3>{{company.companyName}}</h3>
         </mat-card-content>

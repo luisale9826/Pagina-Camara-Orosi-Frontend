@@ -53,9 +53,9 @@ export class VerCompanyDialogComponent implements OnInit {
     });
   }
 
-  abrirImagen(company: Company): void {
+  abrirImagen(): void {
     this.dialog.open(VerImagenCompanyDialogComponent, {
-      data: company,
+      data: this.company,
     });
   }
 }
