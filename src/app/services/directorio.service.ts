@@ -24,6 +24,7 @@ export class DirectorioService {
   }
 
   insertarCompany(company: Company): Promise<HttpResponse<any>> {
+    company.companyLogo = '';
     return this.httpClient
       .post<any>(`${this.PATHADMIN}`, company, {
         observe: 'response',

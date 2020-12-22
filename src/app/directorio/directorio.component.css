@@ -45,7 +45,7 @@
     cursor: pointer;
 }
 
-.btn-show {
+.btn-show, .btn-insert {
     background-color: transparent;
     color: #0c7c24;
     font-size: 20px;
@@ -56,13 +56,22 @@
     border-radius: 8px;
 }
   
-.btn-show:hover {
+.btn-show:hover, .btn-insert:hover {
     color: white !important;
     background-color: #0c7c24 !important;
 }
 
+.btn-insert {
+    padding: 5px 12px;
+    margin: 15px;
+}
 
 @media only screen and (max-width: 600px) {
+
+    h1 {
+        font-size: 35px
+    }
+
     .directory-container {
         margin-bottom: 100px !important;
     }

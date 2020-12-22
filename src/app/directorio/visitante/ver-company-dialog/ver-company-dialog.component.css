@@ -1,9 +1,3 @@
-img {
-    height: auto;
-    width: 150px;
-    margin-bottom: 5%;
-}
-
 h2 {
     text-align: center;
     margin-bottom: 5%;
@@ -17,19 +11,19 @@ p {
     margin-top: 10px;
 }
 
-.button {
+button, .button {
     font-size: 15px;
     background-color: transparent;
     color: #0c7c24;
     cursor: pointer;
-    padding: 10px 24px;
+    padding: 5px 12px;
     text-align: center;
     border: 2px solid #0c7c24;
     border-radius: 8px;
     text-decoration: none;
 }
 
-.button:hover {
+button:hover, .button:hover {
     color: white !important;
     background-color: #0c7c24 !important;
 }
@@ -44,6 +38,10 @@ a {
     cursor: pointer;
 }
 
+mat-dialog-actions button {
+    padding: 5px 12px;
+}
+
 @media only screen and (max-width: 600px) {
     h2 {
         font-size: 28px;
@@ -53,8 +51,8 @@ a {
         font-size: 12px;
     }
 
-    button {
-        font-size: 10px !important;
+    mat-dialog-actions button {
+        padding: 4px 10px;
     }
 
     .content {

@@ -1,27 +1,61 @@
-<h1>{{data.titulo}}</h1>
+<h2>{{data.titulo}}</h2>
 <mat-dialog-content>
-    <p>Este formulario tiene el propósito de registrar una compañía (afiliado) en el directorio</p>
-    <form [formGroup]="companyForm">
+    <p>Este formulario tiene el propósito de ingresar un afiliado al directorio</p>
+    <form [formGroup]="companyForm" fxLayout="column" fxLayoutGap="3%">
         <div>
+            <div>
+                <h3>Nombre de la Compañía</h3>
+            </div>
             <mat-form-field>
-                <mat-label>Nombre de la Compañía</mat-label>
+                <mat-label></mat-label>
                 <input matInput id="companyName" formControlName="companyName" required>
-                <mat-icon matSuffix>
-                    apartment
-                </mat-icon>
                 <mat-error *ngIf="companyForm.controls.companyName.touched">{{getCompanyNameError}}</mat-error>
             </mat-form-field>
             <mat-error *ngIf="apiErrors">{{getDuplicatedNameError}}</mat-error>
         </div>
         <div>
+            <div>
+                <h3>Logo o Imagen de la Compañía</h3>
+            </div>
+            <div>
+                <div fxLayout="row">
+                    <input type="file" class="upload-file" id="upload-file"
+                        (click)="clicked = true"
+                        (change)="onFileUploaded($event)" hidden>
+                    <label for="upload-file" title="Subir foto">
+                        <i class="fa fa-file-photo-o"></i>
+                    </label>
+                </div>
+                <img *ngIf="imageScr" class="prev-image" [src]="imageScr" alt="">
+                <div fxLayout="column" class="barra-progreso" *ngIf="progress">
+                    <p>Progreso: {{progress}}%</p>
+                    <ngb-progressbar [value]="progress"></ngb-progressbar>
+                </div>
+                <div>
+                    <p class="error" *ngIf="companyForm.controls.companyLogo.hasError('invalidImageType')">
+                        Solo se admiten imagenes con formato .PNG o .JPG
+                    </p>
+                    <p class="error" *ngIf="clicked && companyForm.controls.companyLogo.hasError('required')">
+                        Cada compañía debe tener un logo o imagen
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div>
+                <h3>Descripción de la Compañía</h3>
+            </div>
             <mat-form-field>
-                <mat-label>Descripción de la Compañía</mat-label>
+                <mat-label></mat-label>
                 <textarea matInput formControlName="companyDescription"></textarea>
             </mat-form-field>
         </div>
         <div>
+            <div>
+                <h3>Clasificación de la Compañía</h3>
+            </div>
             <mat-form-field>
-                <mat-label>Clasificación de la Compañía</mat-label>
+                <mat-label></mat-label>
                 <mat-select formControlName="companyCategory" required>
                     <mat-option *ngFor="let clasification of companyClasifications" [value]="clasification.value">
                         {{clasification.value}}
@@ -33,10 +67,12 @@
             </mat-form-field>
         </div>
         <div>
+            <div>
+                <h3>Correo de la Compañía</h3>
+            </div>
             <mat-form-field>
-                <mat-label>Correo de la Compañía</mat-label>
+                <mat-label></mat-label>
                 <input matInput type="email" formControlName="companyEmail">
-                <mat-icon matSuffix class="fa fa-envelope" style="font-size:24px"></mat-icon>
                 <mat-error
                     *ngIf="companyForm.controls.companyEmail.touched && companyForm.controls.companyEmail.hasError('email')">
                     El formato no coincide con el de correo electrónico</mat-error>
@@ -45,11 +81,7 @@
         </div>
         <div formArrayName="companyPhones">
             <div>
-                <button mat-button type="button" (click)="addPhoneNumber()">Agregar Teléfono
-                    <mat-icon>
-                        add_ic_call
-                    </mat-icon>
-                </button>
+                <button type="button" (click)="addPhoneNumber()">Agregar Teléfono</button>
             </div>
 
             <div *ngFor="let control of phones.controls; let i = index">
@@ -57,46 +89,55 @@
                     <mat-form-field class="field-phone">
                         <mat-label>Teléfono {{i + 1}} de la Compañía</mat-label>
                         <input matInput type="tel" formControlName="phone">
-                        <mat-icon matSuffix>phone_enabled</mat-icon>
                         <mat-error *ngIf="control">El teléfono se encuentra repetido</mat-error>
                     </mat-form-field>
-                    <button mat-button class="btn-delete" title="Eliminar Número" (click)="removePhone(i)">X</button>
+                    <button class="btn-delete-phone" title="Eliminar Número" (click)="removePhone(i)">X</button>
                 </div>
                 <mat-error *ngIf="apiErrors">{{getDuplicatedPhoneError}}</mat-error>
             </div>
         </div>
         <div>
             <div>
+                <h3>Dirección de la Compañía</h3>
+            </div>
+            <div>
                 <mat-form-field>
-                    <mat-label>Dirección de la Compañía</mat-label>
+                    <mat-label></mat-label>
                     <textarea matInput formControlName="companyAddress"></textarea>
                 </mat-form-field>
             </div>
         </div>
         <div>
+            <div>
+                <h3>Link a dirección de Google Maps de la Compañía</h3>
+            </div>
             <mat-form-field>
-                <mat-label>Ubicación en Google Maps de la Compañía</mat-label>
+                <mat-label></mat-label>
                 <input matInput formControlName="companyLocation">
-                <mat-icon matSuffix matSuffix class="fa fa-map-marker" style="font-size:24px"></mat-icon>
             </mat-form-field>
         </div>
         <div>
+            <div>
+                <h3>Link a Facebook de la Compañía</h3>
+            </div>
             <mat-form-field>
-                <mat-label>Link a Facebook de la Compañía</mat-label>
+                <mat-label></mat-label>
                 <input type="url" matInput formControlName="companyFacebookProfile">
-                <mat-icon matSuffix class="fa fa-facebook-official" style="font-size:24px"></mat-icon>
             </mat-form-field>
         </div>
         <div>
+            <div>
+                <h3>Link a Instagram de la Compañía</h3>
+            </div>
             <mat-form-field>
-                <mat-label>Link a Instagram de la Compañía</mat-label>
+                <mat-label></mat-label>
                 <input matInput type="url" formControlName="companyInstagramProfile">
-                <mat-icon matSuffix class="fa fa-instagram" style="font-size:24px"></mat-icon>
             </mat-form-field>
         </div>
     </form>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-    <button class="btn-insertar" mat-flat-button [disabled]="companyForm.invalid" (click)="onSubmit(companyForm.value)">Guardar</button>
-    <button type="button" mat-flat-button (click)="dialogRef.close()">Cancelar</button>
+    <button [disabled]="companyForm.invalid"
+        (click)="onSubmit(companyForm.value)">Guardar</button>
+    <button type="button" class="btn-cancelar" (click)="dialogRef.close()">Cancelar</button>
 </mat-dialog-actions>

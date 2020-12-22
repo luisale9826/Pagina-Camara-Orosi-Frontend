@@ -15,7 +15,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ScrollingModule } from '@angular/cdk/scrolling';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 @NgModule({
   declarations: [],
@@ -37,7 +37,6 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
     MatMenuModule,
     BrowserAnimationsModule,
     NgbModule,
-    ScrollingModule
   ],
 })
 export class AngularMaterialModule {}

@@ -3,7 +3,7 @@
   <h1>Directorio</h1>
 </div>
 
-<button mat-button *ngIf="!status" (click)="openDialogInsertCompany()">Insertar Compañía</button>
+<button class="btn-insert" *ngIf="!status" (click)="openDialogInsertCompany()">Insertar Compañía</button>
 
 <div class="directory-container">
   <div *ngFor="let category of directory | keyvalue">

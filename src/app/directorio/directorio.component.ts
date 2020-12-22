@@ -3,7 +3,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { DirectorioService } from '../services/directorio.service';
 import { LoginService } from '../services/login.service';
 import { InsertarCompanyDialogComponent } from './management/insertar-company-dialog/insertar-company-dialog.component';
-import { UploadFileCompanyComponent } from './management/upload-file-company/upload-file-company.component';
 import { VerCompanyDialogComponent } from './visitante/ver-company-dialog/ver-company-dialog.component';
 import { Company } from '../models/company';
 import { ActivatedRoute } from '@angular/router';
@@ -50,23 +49,12 @@ export class DirectorioComponent implements OnInit, AfterViewInit {
         },
       }
     );
-    let uploadFile = null;
     insertCompanyDialog
       .afterClosed()
       .toPromise()
-      .then((data) => {
-        if (data) {
-          uploadFile = this.dialog.open(UploadFileCompanyComponent, {
-            data: {
-              titulo: `Subir Imagen para compañía ${data.companyName}`,
-              companyId: data.companyId,
-            },
-          });
-        }
+      .then(() => {
+        location.reload();
       });
-    if (uploadFile) {
-      uploadFile.afterClosed();
-    }
   }
 
   openDialogVerCompany(company: Company): void {
@@ -77,7 +65,7 @@ export class DirectorioComponent implements OnInit, AfterViewInit {
 
   openCompanyImageDialog(company: Company): void {
     this.dialog.open(VerImagenCompanyDialogComponent, {
-      data: company
+      data: company,
     });
   }
 

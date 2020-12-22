@@ -8,7 +8,7 @@ import { Company } from 'src/app/models/company';
 import { Phone } from 'src/app/models/phone';
 import { Error } from 'src/app/models/error';
 import { DirectorioService } from 'src/app/services/directorio.service';
-import { notNullOrBlank } from 'src/app/shared/custome-validations';
+import { isImage, notNullOrBlank } from 'src/app/shared/custome-validations';
 
 @Component({
   selector: 'app-insertar-company-dialog',
@@ -20,6 +20,10 @@ export class InsertarCompanyDialogComponent implements OnInit {
   public companyClasifications;
   public uploadedFileName: string;
   public apiErrors: Error[];
+  imageScr: string;
+  progress: number;
+  private editedLogo = false;
+  clicked = false;
 
   constructor(
     public dialogRef: MatDialogRef<InsertarCompanyDialogComponent>,
@@ -27,7 +31,6 @@ export class InsertarCompanyDialogComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data,
     private directorioService: DirectorioService,
     private toastr: ToastrService,
-    private router: Router
   ) {
     this.companyClasifications = [
       { value: 'Actividades Térmicas' },
@@ -47,6 +50,7 @@ export class InsertarCompanyDialogComponent implements OnInit {
           this.data.company.companyName,
           [Validators.required, notNullOrBlank],
         ],
+        companyLogo: this.data.company.companyLogo,
         companyDescription: this.data.company.companyDescription,
         companyCategory: [
           this.data.company.companyCategory,
@@ -60,9 +64,11 @@ export class InsertarCompanyDialogComponent implements OnInit {
         companyInstagramProfile: this.data.company.companyInstagramProfile,
       });
       this.loadPhoneNumbers(this.data.company.companyPhones);
+      this.imageScr = this.data.company.companyLogo;
     } else {
       this.companyForm = this.formBuilder.group({
         companyName: ['', [Validators.required, notNullOrBlank]],
+        companyLogo: ['', [Validators.required, isImage]],
         companyDescription: '',
         companyCategory: ['', [Validators.required]],
         companyEmail: ['', [Validators.email]],
@@ -113,16 +119,33 @@ export class InsertarCompanyDialogComponent implements OnInit {
         this.directorioService
           .modificarCompany(companyData)
           .then((data) => {
-            this.data.companyId = data.body.companyId;
-            this.data.companyName = companyData.companyName;
-            this.dialogRef.close(this.data);
-            this.router.navigate(['/directorio']).then(() => {
-              location.reload();
-              this.toastr.success(
-                `Se ha modificado la compañía ${companyData.companyName}`,
-                'Modificado!!!'
-              );
-            });
+            const companyId = this.data.company.companyId;
+            if (this.editedLogo) {
+              this.directorioService
+                .editFile(companyId, this.companyForm.get('companyLogo').value)
+                .then(() => {
+                  this.toastr.success(
+                    `Se ha modificado la compañía ${companyData.companyName}`,
+                    'Modificado!!!'
+                  );
+                  setTimeout(() => {
+                    this.dialogRef.close();
+                    location.reload();
+                  }, 2000);
+                })
+                .catch((err) => {
+                  this.toastr.error(
+                    'Se produjo un error al modificar',
+                    'Error'
+                  );
+                  this.apiErrors = Object.values(err.error.errors);
+                });
+            } else {
+              setTimeout(() => {
+                this.dialogRef.close();
+                location.reload();
+              });
+            }
           })
           .catch((err) => {
             this.toastr.error('Se produjo un error al modificar', 'Error');
@@ -132,16 +155,20 @@ export class InsertarCompanyDialogComponent implements OnInit {
         this.directorioService
           .insertarCompany(companyData)
           .then((data) => {
-            this.data.companyId = data.body.companyId;
-            this.data.companyName = companyData.companyName;
-            this.dialogRef.close(this.data);
-            this.router.navigate(['/directorio']).then(() => {
-              location.reload();
-              this.toastr.success(
-                `Se ha insertado la compañía ${companyData.companyName}`,
-                'Insertado!!!'
-              );
-            });
+            const companyId = data.body.companyId;
+            this.directorioService
+              .uploadFile(companyId, this.companyForm.get('companyLogo').value)
+              .then(() => {
+                this.toastr.success(
+                  `Se ha insertado la compañía ${companyData.companyName}`,
+                  'Insertado!!!'
+                );
+                this.dialogRef.close();
+              })
+              .catch((err) => {
+                this.toastr.error('Se produjo un error al insertar', 'Error');
+                console.log(err);
+              });
           })
           .catch((err) => {
             this.toastr.error('Se produjo un error al insertar', 'Error');
@@ -189,5 +216,30 @@ export class InsertarCompanyDialogComponent implements OnInit {
         ? companyPhoneError.errorMessage
         : '';
     }
+  }
+
+  onFileUploaded(event): void {
+    if (this.data.company) {
+      this.editedLogo = true;
+    }
+    const file = event.target.files[0];
+    this.previewFile(file);
+    this.companyForm.get('companyLogo').setValue(event.target.files[0]);
+  }
+
+  private previewFile(file): void {
+    const render = new FileReader();
+    render.readAsDataURL(file);
+    render.onprogress = (data: ProgressEvent) => {
+      if (data.lengthComputable) {
+        const imageLoaded = ((data.loaded / data.total) * 100) as number;
+        this.progress = imageLoaded;
+      }
+    };
+
+    render.onload = () => {
+      this.progress = 100;
+      this.imageScr = render.result as string;
+    };
   }
 }

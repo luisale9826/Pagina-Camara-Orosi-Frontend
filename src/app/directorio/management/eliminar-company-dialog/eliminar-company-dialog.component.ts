@@ -15,7 +15,6 @@ export class EliminarCompanyDialogComponent implements OnInit {
     private directorioService: DirectorioService,
     private toastr: ToastrService,
     public dialogRef: MatDialogRef<EliminarCompanyDialogComponent>,
-    private router: Router
   ) {}
 
   ngOnInit(): void {}
@@ -24,14 +23,14 @@ export class EliminarCompanyDialogComponent implements OnInit {
     this.directorioService
       .eliminarCompany(this.data.companyId)
       .then((data) => {
-        this.dialogRef.close(this.data);
-        this.router.navigate(['/directorio']).then(() => {
+        this.toastr.success(
+          `Se ha eliminado la compañía ${this.data.companyName}`,
+          'Eliminado!!!'
+        );
+        setTimeout(() => {
+          this.dialogRef.close(this.data);
           location.reload();
-          this.toastr.success(
-            `Se ha eliminado la compañía ${this.data.companyName}`,
-            'Eliminado!!!'
-          );
-        });
+        }, 1000);
       })
       .catch((err) => {
         console.log(err);

@@ -67,7 +67,7 @@
             <div>
                 <h3>Redes Sociales</h3>
             </div>
-            <div fxLayout="row" fxLayoutGap="3%" fxLayoutAlign="center center">
+            <div fxLayout="row" fxLayoutGap="3%" fxLayoutAlign="start center">
                 <a class="button" *ngIf="company.companyFacebookProfile" [href]="company.companyFacebookProfile"
                     target="_blank">
                     Facebook
@@ -80,8 +80,7 @@
         </div>
     </div>
 </mat-dialog-content>
-<mat-dialog-actions align="end" *ngIf="!status">
-    <button mat-button (click)="editarImagen(company)">Editar Imagen</button>
-    <button mat-button (click)="modificarCompany(company)">Editar</button>
-    <button mat-button (click)="eliminarCompany(company)">Eliminar</button>
+<mat-dialog-actions align="end" *ngIf="!status" fxLayoutGap="2%">
+    <button (click)="modificarCompany(company)">Editar</button>
+    <button (click)="eliminarCompany(company)">Eliminar</button>
 </mat-dialog-actions>

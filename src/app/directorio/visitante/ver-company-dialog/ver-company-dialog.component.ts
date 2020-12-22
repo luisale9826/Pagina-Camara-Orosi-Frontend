@@ -37,19 +37,10 @@ export class VerCompanyDialogComponent implements OnInit {
       data: { company, titulo: `Editar compañía ${this.company.companyName}` },
     });
   }
+
   eliminarCompany(company: Company): void {
     this.dialog.open(EliminarCompanyDialogComponent, {
       data: company,
-    });
-  }
-
-  editarImagen(company: Company): void {
-    this.dialog.open(UploadFileCompanyComponent, {
-      data: {
-        titulo: `Editar Image de ${company.companyName}`,
-        companyId: company.companyId,
-        companyName: company.companyName
-      },
     });
   }
 
