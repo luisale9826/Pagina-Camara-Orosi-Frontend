@@ -29,7 +29,6 @@ export class EditTextDialogComponent implements OnInit {
   ngOnInit(): void {
     this.textForm = this.formBuilder.group({
       text: new FormControl(this.data.text, [
-        Validators.required,
         notNullOrBlank,
       ]),
     });

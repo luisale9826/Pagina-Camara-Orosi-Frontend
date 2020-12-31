@@ -9,6 +9,9 @@
                 <mat-label></mat-label>
                 <textarea matInput formControlName="text"></textarea>
             </mat-form-field>
+            <div *ngIf="textForm.controls.text.hasError('blankOrNull')">
+                <p class="error">No se puede ingresar un texto vacío.</p>
+            </div>
         </div>
     </form>
 </mat-dialog-content>
