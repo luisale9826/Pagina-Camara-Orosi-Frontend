@@ -1,0 +1,53 @@
+mat-form-field {
+    font-size: 15px;
+    width: 500px !important;
+}
+
+textarea {
+    height: 200px;
+}
+
+button {
+    font-size: 15px;
+    background-color: transparent;
+    color: #0c7c24;
+    cursor: pointer;
+    padding: 5px 12px;
+    text-align: center;
+    border: 2px solid #0c7c24;
+    border-radius: 8px;
+    text-decoration: none;
+    margin-left: 2%;
+}
+
+.error {
+    color: red;
+}
+
+button:hover {
+    background-color: #0c7c24;
+    color: white;
+}
+
+button:disabled {
+    background-color:white !important;
+    border: #767a77;
+    color: #767a77;
+    cursor: not-allowed;
+}
+
+.btn-cancelar {
+    color: #767a77;
+    border: 2px solid #767a77;
+}
+
+.btn-cancelar:hover {
+    color: white;
+    background-color: #767a77;
+}
+
+@media only screen and (max-width: 768px) {
+    mat-form-field {
+        width: 250px !important;
+    }
+}

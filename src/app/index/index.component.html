@@ -1,6 +1,11 @@
 <div fxLayout="column" fxLayoutGap="1%">
-  <div fxLayout="row" fxFlex="100%">
-    <img src="/assets/images/pantalla-principal.jpg" alt="Orosi">
+  <div class="image-header" fxLayout="row" fxFlex="100%">
+    <img [src]="getImage('principalHeader')" alt="Orosi">
+    <button *ngIf="!status" class="btn-edit-image" (click)="editImage('principalHeader')">
+      <span class="material-icons">
+        create
+      </span>
+    </button>
   </div>
   <div fxLayout="row">
     <h2>Nuestras promociones</h2>
@@ -18,22 +23,35 @@
         <div>
           <button routerLink="/directorio" class="btn-directorio">Ver más</button>
         </div>
+        <div *ngIf="!status" (click)="editImage('principalCompany')">
+          <button class="btn-edit-image">
+            <span class="material-icons">
+              create
+            </span>
+          </button>
+        </div>
       </div>
     </div>
   </div>
-  <div fxLayout="column" fxFlex="100%">
+  <div class="visit-orosi" fxLayout="column" fxFlex="100%">
     <h2>Visitá Orosi</h2>
+    <button *ngIf="!status" class="btn-edit-image" (click)="editText('visitOrosi')">
+      <span class="material-icons">
+        create
+      </span>
+    </button>
     <p>
-      LA RIQUEZA NATURAL ES NUESTRA ESENCIA, Orosi donde fluyen aguas termales, sinónimo de relajación
-      y salud. Es el lugar idóneo para iniciar tú viaje lleno de aventuras. Lugar donde puedes vivir tus
-      experiencias gastronómicas, culturales y naturales. Y si el clima te sorprende no es problema, puedes
-      visitar nuestras hermosas posadas, hoteles, restaurantes y cafeterías. Disfrutando de una larga estancia
-      en comodidad y confort con un rico café caliente. Orosi te llevara a vivir experiencias inimaginables
-      acompañados de una inmensidad de actividades desde las plantaciones de café, granjas temáticas,
-      pesca de truchas, y hasta todo tipo de caminatas.
+      {{visitOrosi}}
     </p>
   </div>
-  <div fxLayout="row" fxFlex="100%">
+  <div class="image-footer" fxLayout="row" fxFlex="100%">
     <img src="/assets/images/sin-imagen.jpg" alt="valle">
+    <div *ngIf="!status" (click)="editImage('principalFooter')">
+      <button class="btn-edit-image">
+        <span class="material-icons">
+          create
+        </span>
+      </button>
+    </div>
   </div>
 </div>

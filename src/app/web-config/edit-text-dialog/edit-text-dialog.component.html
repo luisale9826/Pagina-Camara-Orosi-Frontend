@@ -1,0 +1,18 @@
+<h2>Editar Texto</h2>
+<mat-dialog-content>
+    <form [formGroup]="textForm" fxLayout="column" fxLayoutGap="3%">
+        <div>
+            <div>
+                <h3>Texto a editar</h3>
+            </div>
+            <mat-form-field>
+                <mat-label></mat-label>
+                <textarea matInput formControlName="text"></textarea>
+            </mat-form-field>
+        </div>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button [disabled]="textForm.invalid" (click)="onSubmit()">Guardar</button>
+    <button type="button" class="btn-cancelar" (click)="dialogRef.close()">Cancelar</button>
+</mat-dialog-actions>

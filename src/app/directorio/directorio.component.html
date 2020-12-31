@@ -1,6 +1,11 @@
 <div class="directory-header">
   <img class="img-header" src="/assets/images/sin-imagen.jpg" alt="">
   <h1>Directorio</h1>
+  <button *ngIf="!status" class="btn-edit-image">
+    <span class="material-icons">
+      create
+    </span>
+  </button>
 </div>
 
 <button class="btn-insert" *ngIf="!status" (click)="openDialogInsertCompany()">Insertar Compañía</button>
@@ -12,7 +17,8 @@
     </div>
     <div class="cards-container">
       <mat-card *ngFor="let company of category.value" class="cards">
-        <img mat-card-image [src]="company.companyLogo" [alt]="company.companyName" (click)="openCompanyImageDialog(company)">
+        <img mat-card-image [src]="company.companyLogo" [alt]="company.companyName"
+          (click)="openCompanyImageDialog(company)">
         <mat-card-content>
           <h3>{{company.companyName}}</h3>
         </mat-card-content>

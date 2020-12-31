@@ -8,7 +8,6 @@ import { Company } from 'src/app/models/company';
 import { LoginService } from 'src/app/services/login.service';
 import { EliminarCompanyDialogComponent } from '../../management/eliminar-company-dialog/eliminar-company-dialog.component';
 import { InsertarCompanyDialogComponent } from '../../management/insertar-company-dialog/insertar-company-dialog.component';
-import { UploadFileCompanyComponent } from '../../management/upload-file-company/upload-file-company.component';
 import { VerImagenCompanyDialogComponent } from '../ver-imagen-company-dialog/ver-imagen-company-dialog.component';
 
 @Component({

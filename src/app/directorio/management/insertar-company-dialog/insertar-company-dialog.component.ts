@@ -230,6 +230,7 @@ export class InsertarCompanyDialogComponent implements OnInit {
   private previewFile(file): void {
     const render = new FileReader();
     render.readAsDataURL(file);
+    this.progress = 0;
     render.onprogress = (data: ProgressEvent) => {
       if (data.lengthComputable) {
         const imageLoaded = ((data.loaded / data.total) * 100) as number;

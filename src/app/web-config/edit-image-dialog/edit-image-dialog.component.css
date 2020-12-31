@@ -1,0 +1,91 @@
+.imageDrop {
+    border-style: dotted;
+    border-color: #0c7c24;
+    width: 400px;
+    height: 300px;
+}
+
+.file-field > h2 {
+    cursor: pointer;
+    border: 2px solid #0c7c24;
+    border-radius: 8px;
+    margin-top: 10%;
+}
+
+.file-field > h2:hover {
+    background-color: #0c7c24;
+    color: white;
+}
+
+img {
+    height: auto;
+    width: 150px;
+}
+
+button {
+    font-size: 15px;
+    background-color: transparent;
+    color: #0c7c24;
+    cursor: pointer;
+    padding: 5px 12px;
+    text-align: center;
+    border: 2px solid #0c7c24;
+    border-radius: 8px;
+    text-decoration: none;
+    margin-left: 2%;
+}
+
+p {
+    text-align: center;
+    color: #767a77;
+    font-size: 17px;
+}
+
+.error {
+    color: red;
+}
+
+button:hover {
+    background-color: #0c7c24;
+    color: white;
+}
+
+button:disabled {
+    background-color:white !important;
+    border: #767a77;
+    color: #767a77;
+    cursor: not-allowed;
+}
+
+.btn-cancelar {
+    color: #767a77;
+    border: 2px solid #767a77;
+}
+
+.btn-cancelar:hover {
+    color: white;
+    background-color: #767a77;
+}
+
+@media only screen and (max-width: 768px) {
+    .imageDrop {
+        border-style: dotted;
+        border-color: #0c7c24;
+        width: 220px;
+        height: auto;
+    }
+    
+    h2 {
+        cursor: pointer;
+        border: 2px solid #0c7c24;
+        border-radius: 8px;
+        margin-top: 10%;
+        font-size: 20px;
+    }
+
+    p {
+        text-align: center;
+        color: #767a77;
+        font-size: 12px;
+    }
+}

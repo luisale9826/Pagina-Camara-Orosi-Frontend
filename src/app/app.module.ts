@@ -8,7 +8,10 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { IndexComponent } from './index/index.component';
-import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
+import {
+  BrowserAnimationsModule,
+  NoopAnimationsModule,
+} from '@angular/platform-browser/animations';
 import { LoginModule } from './login/login.module';
 import { ConozcanosAfiliarseModule } from './conozcanos-afiliarse/conozcanos-afiliarse.module';
 import { PromocionModule } from './promocion/newPromo/promocion.module';
@@ -17,6 +20,7 @@ import { AngularMaterialModule } from './angular-material.module';
 import { ToastrModule } from 'ngx-toastr';
 import { PromocionesModule } from './promociones/promociones.module';
 import { UserModule } from './user/user.module';
+import { WebConfigModule } from './web-config/web-config.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,8 +43,9 @@ import { UserModule } from './user/user.module';
     PromocionModule,
     PromocionesModule,
     UserModule,
+    WebConfigModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

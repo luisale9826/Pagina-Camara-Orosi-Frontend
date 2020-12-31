@@ -1,0 +1,37 @@
+<h2>Editar imagen</h2>
+<mat-dialog-content>
+    <form [formGroup]="imageForm" fxLayout="column" fxLayoutGap="3%">
+        <div class="imageDrop" appFileDrop (fileDropped)="onFileDropped($event)">
+            <div class="file-field" fxLayout="row" fxLayoutAlign="center center">
+                <input type="file" class="upload-file" id="upload-file" (change)="onFileUpload($event)" hidden>
+                <label for="upload-file" title="Subir foto">
+                    <h2>Subir archivo</h2>
+                </label>
+            </div>
+            <ng-container *ngIf="imageScr; then thenTemplate; else elseTemplate"></ng-container>
+            <ng-template #thenTemplate>
+                <div fxLayout="row" fxLayoutAlign="center center">
+                    <img [src]="imageScr">
+                </div>
+            </ng-template>
+            <ng-template #elseTemplate>
+                <p>Arrastre la image o haga click en "Subir archivo"</p>
+            </ng-template>
+
+            <div>
+                <p class="error" *ngIf="imageForm.controls.image.hasError('invalidImageType')">
+                    Solo se admiten imagenes con formato .PNG o .JPG
+                </p>
+            </div>
+
+            <div fxLayout="column" class="barra-progreso" *ngIf="progress">
+                <p>Progreso: {{progress}}%</p>
+                <ngb-progressbar [value]="progress"></ngb-progressbar>
+            </div>
+        </div>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button [disabled]="imageForm.invalid" (click)="onSubmit()">Guardar</button>
+    <button type="button" class="btn-cancelar" (click)="dialogRef.close()">Cancelar</button>
+</mat-dialog-actions>
