@@ -7,6 +7,8 @@ import { VerCompanyDialogComponent } from './visitante/ver-company-dialog/ver-co
 import { Company } from '../models/company';
 import { ActivatedRoute } from '@angular/router';
 import { VerImagenCompanyDialogComponent } from './visitante/ver-imagen-company-dialog/ver-imagen-company-dialog.component';
+import { ImagesControl } from '../shared/images-control';
+import { EditImageDialogComponent } from '../web-config/edit-image-dialog/edit-image-dialog.component';
 
 @Component({
   selector: 'app-directorio',
@@ -18,18 +20,21 @@ export class DirectorioComponent implements OnInit, AfterViewInit {
   status: boolean;
   companies: Company[];
   directory: Map<string, Company[]> = new Map();
+  imagen = '/assets/images/sin-imagen.jpg';
 
   constructor(
     private loginService: LoginService,
     private dialog: MatDialog,
     private directoryService: DirectorioService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private ic: ImagesControl
   ) {
     this.status = this.loginService.isAuthenticated();
   }
 
   ngOnInit(): void {
     this.getCompanies();
+    this.ic.loadDirectoryImage();
   }
 
   ngAfterViewInit(): void {
@@ -96,5 +101,17 @@ export class DirectorioComponent implements OnInit, AfterViewInit {
         })
         .catch((err) => console.log(err));
     }
+  }
+
+  editImage(name: string): void {
+    this.dialog.open(EditImageDialogComponent, {
+      data: {
+        name,
+      },
+    });
+  }
+
+  getImage(path: string): string {
+    return this.ic.getImage(path);
   }
 }

@@ -16,7 +16,7 @@
     </div>
     <div class="asociados" fxFlex="50%" fxFlex.sm="100%" fxFlex.xs="100%">
       <div class="content">
-        <img src="/assets/images/sin-imagen.jpg" alt="">
+        <img [src]="getImage('principalCompany')" alt="">
         <div>
           <h2>Conoce a nuestros Asociados</h2>
         </div>
@@ -45,7 +45,7 @@
     </p>
   </div>
   <div class="image-footer" fxLayout="row" fxFlex="100%">
-    <img src="/assets/images/sin-imagen.jpg" alt="valle">
+    <img [src]="getImage('principalFooter')" alt="valle">
     <div *ngIf="!status" (click)="editImage('principalFooter')">
       <button class="btn-edit-image">
         <span class="material-icons">
