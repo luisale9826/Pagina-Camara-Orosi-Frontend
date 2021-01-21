@@ -1,23 +1,28 @@
-<div class="container" >
+<div class="container">
     <div>
         <h1 class="text-title">
             ¿QUIÉNES SOMOS?
         </h1>
+        <button *ngIf="!status" class="btn-edit-image" (click)="editText('whoAreWe')">
+            <span class="material-icons">
+                create
+            </span>
+        </button>
         <div class="title">
-            <p>La Cámara de Turismo de Orosi es el organismo impulsor de la actividad turística en la
-                zona; articulando los esfuerzos de instituciones públicas y privadas logrando un
-                desarrollo óptimo del Turismo en beneficio no solo para el distrito sino para toda la
-                provincia de Cartago. Somos una asociación sin fines de lucro de microempresas
-                turísticas fundada en el 2019; que tiene como objetivo consolidar y promover a Orosi
-                como destino turístico sostenible bajo altos estándares de calidad en servicios,
-                accesibilidad y seguridad.
+            <p>
+                {{whoAreWe}}
             </p>
         </div>
         <div class="subtitle">
-            <p ><b>Alianzas Estratégicas:</b> ICT, CANATUR, UCR, ACOPROT, TEC, CTP de Orosi,
-                Municipalidad de Paraíso, Asamblea Legislativa, MOPT, AyA, ICE, Iglesia Colonial San
-                José de Orosi, Ministerio de Cultura, SINAC, ADI Orosi, UNA, INA, Banco Nacional, entre
-                otros.</p>
+            <button *ngIf="!status" class="btn-edit-image" (click)="editText('alliances')">
+                <span class="material-icons">
+                    create
+                </span>
+            </button>
+            <p>
+                <b>Alianzas Estratégicas:</b>
+                {{alliances}}
+            </p>
         </div>
 
         <div class="panels margin">
@@ -25,12 +30,18 @@
                 <mat-expansion-panel>
                     <mat-expansion-panel-header>
                         <mat-panel-title>
-                            <p class="font">VISIÓN<p>
+                            <p class="font">VISIÓN
+                            <p>
                         </mat-panel-title>
                     </mat-expansion-panel-header>
-                     <div class="acordion">
-                         <p class="acordion">
-                        Consolidar y promover a Orosi como un solo multidestino; con capacidad de imponerse en el mercado turístico nacional e internacional; posicionándonos como el destino turístico sostenible número uno del valle central, garantizando calidad y seguridad al turista.
+                    <div class="acordion">
+                        <button *ngIf="!status" class="btn-edit-image" (click)="editText('vision')">
+                            <span class="material-icons">
+                                create
+                            </span>
+                        </button>
+                        <p class="acordion">
+                            {{vision}}
                         </p>
                     </div>
                 </mat-expansion-panel>
@@ -39,11 +50,17 @@
                 <mat-expansion-panel>
                     <mat-expansion-panel-header>
                         <mat-panel-title>
-                            <p class="font">MISIÓN<p>
+                            <p class="font">MISIÓN
+                            <p>
                         </mat-panel-title>
                     </mat-expansion-panel-header>
+                    <button *ngIf="!status" class="btn-edit-image" (click)="editText('mission')">
+                        <span class="material-icons">
+                            create
+                        </span>
+                    </button>
                     <p class="acordion">
-                        Ser un ente encargado de articular encadenamientos con los diferentes actores involucrados en la actividad turística dentro del distrito. Buscando la solución a problemas que puedan afectar al sector y generando bienestar en las comunidades.
+                        {{mission}}
                     </p>
                 </mat-expansion-panel>
             </mat-accordion>
@@ -51,94 +68,97 @@
                 <mat-expansion-panel>
                     <mat-expansion-panel-header>
                         <mat-panel-title>
-                            <p class="font">VALORES<p>
+                            <p class="font">VALORES
+                            <p>
                         </mat-panel-title>
                     </mat-expansion-panel-header>
-                    <ul class="acordion">
-                        <li class="fa fa-check li"> <b> Profesionalismo: </b> Este es uno de los principios fundamentales para lograr resultados óptimos dentro de la cámara. Nos comprometeremos en buscar la asesoría técnica adecuada en todo lo que emprendamos; para que en conjunto con las microempresas podamos ofrecer un servicio inigualable.</li>
-                        <li class="fa fa-check li"> <b> Calidad y Seguridad: </b>: Lograr la satisfacción de los turistas que visita la zona; es una de las prioridades de la cámara. Por lo que, velará en la estandarización de los servicios que garantizan una experiencia autentica para cualquier cliente. 
+                    <ul class="acordion" *ngFor="let value of values">
+                        <li class="fa fa-check li">
+                            <b> {{value.valueName}}: </b>
+                            {{value.valueDescription}}
                         </li>
-                        <li class="fa fa-check li"> <b> Sostenibilidad: </b> Desarrollar la actividad turística de manera responsable y sostenible, a fin de conservar los recursos naturales, culturales e históricos para la actual y futuras generaciones.</li>
-                        <li class="fa fa-check li"> <b> Transparencia: </b> Fomento de las normas éticas y morales en todo lo que hagamos, adhiriéndonos a los valores de la equidad y la honestidad.</li>
-                        <li class="fa fa-check li"><b> Dinamismo: </b> Se refiere al trabajo duro y la constancia que serán la base de la cámara para llevar a cabo todas las funciones; reflejándose en resultados tangibles en beneficio para los empresarios y toda la comunidad. </li>
-                        <li class="fa fa-check"> <b> Inclusión: </b> Brindar y facilitar a todas las personas el debido respeto, ya sean clientes, proveedores o vecinos de la comunidad: Incluyendo desde la persona cuida carros hasta el que vende directamente al cliente. Así como, involucrar en el sector a personas con discapacidad para capacitarlas y que puedan brindar sus servicios; generándoles una oportunidad en el mercado. </li>     
                     </ul>
                 </mat-expansion-panel>
             </mat-accordion>
         </div>
-        <div class="divtable">
-            
-            <h1 class="title-junta">
-                JUNTA DIRECTIVA
-            </h1>
-            
-            <table id="customers">
-                <tr >
-                  <th>Nombre</th>
-                  <th>Puesto</th>
-                  <th>Asociación / Empresa</th>
-                </tr>
-  
-                <tr class="tr">
-                  <td>Srita. Débora Céspedes</td>
-                  <td>Presidenta</td>
-                  <td>Profesional en Gestión Ecoturística</td>
-                </tr>
-                <tr>
-                  <td>Sr. Juan Carlos Coto</td>
-                  <td>Vicepresidente</td>
-                  <td>Orosi al Natural Spa</td>
-                </tr>
-                <tr>
-                  <td>Sra. Eyleen Mata</td>
-                  <td>Secretaria</td>
-                  <td>Mountain Paradise Farm </td>
-                </tr>
-                <tr>
-                  <td>Sr. Dagoberto Garro</td>
-                  <td>Tesorero</td>
-                  <td>Truchas Mi Ranchito </td>
-                </tr>
-                <tr>
-                  <td>Sr. Edgardo Martínez</td>
-                  <td>Vocal</td>
-                  <td>Balneario Los Martínez </td>
-                </tr>
-                <tr>
-                  <td>Sr. Emmerson Machado </td>
-                  <td>Fiscal </td>
-                  <td>Proyecto Turismo de Salud </td>
-                </tr>
-               
-            </table>
-        </div>
-        <div class="afiliarse"> 
+
+        <ng-container *ngIf="board">
+            <div class="divtable">
+                <h1 class="title-junta">
+                    JUNTA DIRECTIVA
+                </h1>
+
+                <table id="customers">
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Puesto</th>
+                        <th>Asociación / Empresa</th>
+                    </tr>
+
+                    <tr class="tr">
+                        <td>{{board.president.name}}</td>
+                        <td>Presidenta</td>
+                        <td>{{board.president.major}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{board.vicepresident.name}}</td>
+                        <td>Vicepresidente</td>
+                        <td>{{board.vicepresident.major}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{board.secretary.name}}</td>
+                        <td>Secretaria</td>
+                        <td>{{board.secretary.major}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{board.treasurer.name}}</td>
+                        <td>Tesorero</td>
+                        <td>{{board.treasurer.major}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{board.vocal.name}}</td>
+                        <td>Vocal</td>
+                        <td>{{board.vocal.major}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{board.fiscal.name}}</td>
+                        <td>Fiscal </td>
+                        <td>{{board.fiscal.major}}</td>
+                    </tr>
+
+                </table>
+            </div>
+        </ng-container>
+        <ng-template #elseTemplate>
+            <h2>Cargando</h2>
+        </ng-template>
+        <div class="afiliarse">
             <h1 class="title-junta subtitle-junta">
                 ¿CÓMO AFILIARSE?
             </h1>
-          <div >
-            <p class="afiliado">¿Por qué ser un afiliado?</p>
-            <p>La Cámara de Turismo de Orosi es una organización sin fines de lucro que se creó con
-                el fin de representar el interés de sus afiliados, buscando soluciones en conjunto para
-                resolver las necesidades del sector y lograr un desarrollo equitativo de la actividad
-                turística; articulando esfuerzos de instituciones públicas y privadas. De esta manera,
-                generando una oportunidad para incentivar y reactivar económicamente la zona. Ser
-                parte de la Cámara significa un respaldo institucional que brinda un sello distintivo de</p>
-            
-            <p class="afiliado subtile-junta">Beneficios: </p>
-            <ul class="beneficios">
-                <li> Mejores oportunidades para crecer y desarrollarse dentro del sector turístico.</li>
-                <li> Mayor participación en la toma de decisiones del gobierno local y nacional. </li>
-                <li> Participación y promoción en nuestro mapa que se colocará en puntos importantes, ferias nacionales e internacionales.</li>
-                <li> Posibilidad de mercadear su empresa por medio de material impreso y digital que se distribuye en aeropuertos y oficinas de turismo a nivel nacional.</li>
-                <li> Capacitaciones constantes en diferentes temas.</li>
-                <li> Acceso directo a información actualizada sobre el acontecer turístico nacional einternacional.</li>     
-                <li> Alianzas estratégicas institucionales y empresariales. </li>        
-            </ul>
+            <div>
+                <p class="afiliado">¿Por qué ser un afiliado?</p>
+                <button *ngIf="!status" class="btn-edit-image" (click)="editText('whyAffiliate')">
+                    <span class="material-icons">
+                        create
+                    </span>
+                </button>
+                <p> {{whyAffiliate}}
+                </p>
+                <p class="afiliado subtile-junta">Beneficios: </p>
+                <ng-container *ngIf="benefits; else elseTemplate">
+                    <ul class="beneficios" *ngFor="let benefit of benefits">
+                        <li>{{benefit}}</li>
+                    </ul>
+                </ng-container>
+                <ng-template #elseTemplate>
+                    <h2>Cargando</h2>
+                </ng-template>
+
             </div>
         </div>
     </div>
-    
+
     <div class="subtile-junta divbutton">
         <button type="button" class="button"><u>Afiliarse</u></button>
     </div>

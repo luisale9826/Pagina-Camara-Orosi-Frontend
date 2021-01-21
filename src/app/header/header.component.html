@@ -15,6 +15,7 @@
     <button mat-menu-item routerLink="/conozcanos">Conózcanos/Afiliarse</button>
     <button *ngIf="!status" mat-menu-item routerLink="/promocion">Promoción</button>
     <button mat-menu-item routerLink="/tourVirtual">Tour Virtual</button>
+    <button *ngIf="!status" mat-menu-item (click)="changeLogoCamara('logoCamara')">Cambiar logo Cámara</button>
     <button *ngIf="!status" mat-menu-item routerLink="/usuarios">Usuario</button>
     <button *ngIf="!status" mat-menu-item (click)="logout()">Cerrar sesión</button>
   </mat-menu>

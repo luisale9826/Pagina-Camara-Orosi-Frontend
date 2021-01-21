@@ -151,3 +151,17 @@
     margin-bottom: 110px;
 }
 
+button {
+    background-color: transparent;
+    color: #0c7c24;
+    cursor: pointer;
+    text-align: center;
+    border: 2px solid #0c7c24;
+    border-radius: 8px;
+}
+
+.btn-edit-image {
+    font-size: 15px;
+    padding: 5px 12px;
+}
+

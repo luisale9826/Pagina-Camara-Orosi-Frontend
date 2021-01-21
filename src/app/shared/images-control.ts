@@ -1,5 +1,9 @@
+import { Injectable } from '@angular/core';
 import { WebConfigService } from '../services/web-config.service';
 
+@Injectable({
+  providedIn: 'root',
+})
 export class ImagesControl {
   constructor(private wcs: WebConfigService) {}
 

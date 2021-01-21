@@ -3,7 +3,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { Promocion } from '../models/Promocion';
 import { LoginService } from '../services/login.service';
 import { PromocionService } from '../services/promocion.service';
-import { WebConfigService } from '../services/web-config.service';
 import { ImagesControl } from '../shared/images-control';
 import { TextControl } from '../shared/text-control';
 import { EditImageDialogComponent } from '../web-config/edit-image-dialog/edit-image-dialog.component';
@@ -23,7 +22,6 @@ export class IndexComponent implements OnInit {
     private promocionService: PromocionService,
     private loginService: LoginService,
     private dialog: MatDialog,
-    private wcs: WebConfigService,
     private ic: ImagesControl,
     private tc: TextControl
   ) {
