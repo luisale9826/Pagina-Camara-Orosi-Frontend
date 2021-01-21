@@ -72,6 +72,11 @@
                             <p>
                         </mat-panel-title>
                     </mat-expansion-panel-header>
+                    <button *ngIf="!status" class="btn-edit-image" (click)="editValues(values)">
+                        <span class="material-icons">
+                            create
+                        </span>
+                    </button>
                     <ul class="acordion" *ngFor="let value of values">
                         <li class="fa fa-check li">
                             <b> {{value.valueName}}: </b>

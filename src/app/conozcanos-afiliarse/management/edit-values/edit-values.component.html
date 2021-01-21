@@ -1,0 +1,31 @@
+<h2 mat-dialog-title>Editar Valores</h2>
+<mat-dialog-content>
+    <form action="" [formGroup]="valuesForm">
+        <div formArrayName="values">
+            <div>
+                <button type="button" (click)="addValue()">Agregar Valor</button>
+            </div>
+
+            <div *ngFor="let control of values.controls; let i = index">
+                <div class="values" [formGroupName]="i">
+                    <mat-form-field>
+                        <mat-label>Valor</mat-label>
+                        <input matInput type="tel" formControlName="valueName">
+                        <mat-error *ngIf="control.hasError('notNullOrBlank')">Los espacio nos pueden estar vacios
+                        </mat-error>
+                    </mat-form-field>
+                    <div>
+                        <mat-form-field>
+                            <textarea matInput formControlName="valueDescription"></textarea>
+                        </mat-form-field>
+                    </div>
+                    <button class="btn-delete-value" title="Eliminar Valor" (click)="removeValue(i)">Eliminar
+                        {{control.get('valueName').value}}</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button (click)="saveClose()">Guardar y Cerrar</button>
+</mat-dialog-actions>

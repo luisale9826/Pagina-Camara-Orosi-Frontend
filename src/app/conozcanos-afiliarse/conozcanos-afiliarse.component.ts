@@ -6,6 +6,7 @@ import { ConozcanosService } from '../services/conozcanos.service';
 import { LoginService } from '../services/login.service';
 import { TextControl } from '../shared/text-control';
 import { EditTextDialogComponent } from '../web-config/edit-text-dialog/edit-text-dialog.component';
+import { EditValuesComponent } from './management/edit-values/edit-values.component';
 
 @Component({
   selector: 'app-conozcanos-afiliarse',
@@ -117,5 +118,19 @@ export class ConozcanosAfiliarseComponent implements OnInit {
           break;
       }
     });
+  }
+
+  editValues(values: string): void {
+    const dialogRef = this.dialog.open(EditValuesComponent, {
+      data: {
+        values,
+      },
+    });
+    dialogRef.afterClosed().subscribe(
+      () => {
+        this.loadValues();
+      },
+      (err) => console.log(err)
+    );
   }
 }
