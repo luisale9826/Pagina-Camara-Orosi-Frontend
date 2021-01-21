@@ -1,1 +1,26 @@
-<p>edit-benefits works!</p>
+<h2 mat-dialog-title>Editar Valores</h2>
+<mat-dialog-content>
+    <form action="" [formGroup]="benefitsForm">
+        <div formArrayName="benefits">
+            <div>
+                <button type="button" (click)="addBenefit()">Agregar Beneficio</button>
+            </div>
+
+            <div *ngFor="let control of benefits.controls; let i = index">
+                <div class="benefits" [formGroupName]="i">
+                    <mat-form-field>
+                        <mat-label>Beneficio</mat-label>
+                        <textarea matInput formControlName="benefit"></textarea>
+                        <mat-error *ngIf="control.hasError('notNullOrBlank')">Los espacio nos pueden estar vacios
+                        </mat-error>
+                    </mat-form-field>
+                    <button class="btn-delete-benefit" title="Eliminar Valor" (click)="removeBenefit(i)">Eliminar
+                        Beneficio</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button (click)="saveClose()">Guardar y Cerrar</button>
+</mat-dialog-actions>

@@ -78,8 +78,8 @@ export class EditValuesComponent implements OnInit {
         .catch((err) => {
           console.log(err);
           this.toastr.error(
-            'Errpr al modificar valores',
-            'Se producjo un error al modificar los valores'
+            'Error al modificar valores',
+            'Se produjo un error al modificar los valores'
           );
         });
     }

@@ -151,6 +151,11 @@
                 <p> {{whyAffiliate}}
                 </p>
                 <p class="afiliado subtile-junta">Beneficios: </p>
+                <button *ngIf="!status" class="btn-edit-image" (click)="editBenefits(benefits)">
+                    <span class="material-icons">
+                        create
+                    </span>
+                </button>
                 <ng-container *ngIf="benefits; else elseTemplate">
                     <ul class="beneficios" *ngFor="let benefit of benefits">
                         <li>{{benefit}}</li>

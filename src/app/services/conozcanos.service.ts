@@ -31,9 +31,17 @@ export class ConozcanosService {
   }
 
   editValues(values: Value[]): Promise<any> {
-    console.log(values);
     return this.httpClient
       .post(`${this.PATHADMIN}/values`, values, {
+        observe: 'response',
+        headers: this.headers,
+      })
+      .toPromise();
+  }
+
+  editBenefits(benefits: string[]): Promise<any> {
+    return this.httpClient
+      .post(`${this.PATHADMIN}/benefits`, benefits, {
         observe: 'response',
         headers: this.headers,
       })
