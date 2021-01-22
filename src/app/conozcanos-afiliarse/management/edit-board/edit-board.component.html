@@ -1,0 +1,92 @@
+<h2 mat-dialog-title>Editar Junta</h2>
+<mat-dialog-content>
+    <form action="" [formGroup]="boardForm">
+        <div formGroupName="president">
+            <div>
+                <mat-form-field>
+                    <mat-label>Nombre de la Presidencia</mat-label>
+                    <input matInput formControlName="name">
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field>
+                    <mat-label>Trabajo o Carrera de la Presidencia</mat-label>
+                    <input matInput formControlName="major">
+                </mat-form-field>
+            </div>
+        </div>
+        <div formGroupName="vicepresident">
+            <div>
+                <mat-form-field>
+                    <mat-label>Nombre de la Vicepresidencia</mat-label>
+                    <input matInput formControlName="name">
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field>
+                    <mat-label>Trabajo o Carrera de la Vicepresidencia</mat-label>
+                    <input matInput formControlName="major">
+                </mat-form-field>
+            </div>
+        </div>
+        <div formGroupName="secretary">
+            <div>
+                <mat-form-field>
+                    <mat-label>Nombre de la Secretaría</mat-label>
+                    <input matInput formControlName="name">
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field>
+                    <mat-label>Trabajo o Carrera de la Secretaría</mat-label>
+                    <input matInput formControlName="major">
+                </mat-form-field>
+            </div>
+        </div>
+        <div formGroupName="treasurer">
+            <div>
+                <mat-form-field>
+                    <mat-label>Nombre de la Tesorería</mat-label>
+                    <input matInput formControlName="name">
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field>
+                    <mat-label>Trabajo o Carrera de la Tesorería</mat-label>
+                    <input matInput formControlName="major">
+                </mat-form-field>
+            </div>
+        </div>
+        <div formGroupName="vocal">
+            <div>
+                <mat-form-field>
+                    <mat-label>Nombre de la Vocalía</mat-label>
+                    <input matInput formControlName="name">
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field>
+                    <mat-label>Trabajo o Carrera de la Vocalía</mat-label>
+                    <input matInput formControlName="major">
+                </mat-form-field>
+            </div>
+        </div>
+        <div formGroupName="fiscal">
+            <div>
+                <mat-form-field>
+                    <mat-label>Nombre de la Fiscalía</mat-label>
+                    <input matInput formControlName="name">
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field>
+                    <mat-label>Trabajo o Carrera de la Fiscalía</mat-label>
+                    <input matInput formControlName="major">
+                </mat-form-field>
+            </div>
+        </div>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button (click)="saveClose()">Guardar y Cerrar</button>
+</mat-dialog-actions>

@@ -9,9 +9,10 @@ import { ConozcanosAfiliarseComponent } from './conozcanos-afiliarse.component';
 import { EditValuesComponent } from './management/edit-values/edit-values.component';
 import { EditBenefitsComponent } from './management/edit-benefits/edit-benefits.component';
 import { AngularMaterialModule } from '../angular-material.module';
+import { EditBoardComponent } from './management/edit-board/edit-board.component';
 
 @NgModule({
-  declarations: [ConozcanosAfiliarseComponent, EditValuesComponent, EditBenefitsComponent],
+  declarations: [ConozcanosAfiliarseComponent, EditValuesComponent, EditBenefitsComponent, EditBoardComponent],
   imports: [
     CommonModule,
     ConozcanosAfiliarseRoutingModule,

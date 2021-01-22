@@ -92,7 +92,11 @@
                 <h1 class="title-junta">
                     JUNTA DIRECTIVA
                 </h1>
-
+                <button *ngIf="!status" class="btn-edit-image" (click)="editBoard()">
+                    <span class="material-icons">
+                        create
+                    </span>
+                </button>
                 <table id="customers">
                     <tr>
                         <th>Nombre</th>
