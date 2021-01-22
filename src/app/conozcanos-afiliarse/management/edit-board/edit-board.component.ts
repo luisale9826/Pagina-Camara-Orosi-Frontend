@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
+import { Board } from 'src/app/models/board';
 import { ConozcanosService } from 'src/app/services/conozcanos.service';
 import { notNullOrBlank } from 'src/app/shared/custome-validations';
 
@@ -52,7 +53,23 @@ export class EditBoardComponent implements OnInit {
 
   saveClose(): void {
     if (this.boardForm.valid) {
-      console.log(this.boardForm.value);
+      const board: Board = this.boardForm.value;
+      this.cs
+        .editBoard(board)
+        .then(() => {
+          this.toastr.success(
+            'Se ha modificado la Junta',
+            'La Junta Directiva se ha modificado con exito'
+          );
+        })
+        .then(() => this.dialogRef.close())
+        .catch((err) => {
+          console.log(err);
+          this.toastr.error(
+            'Hubo un error',
+            'Hubo un error al modificar la Junta Directiva'
+          );
+        });
     }
   }
 }

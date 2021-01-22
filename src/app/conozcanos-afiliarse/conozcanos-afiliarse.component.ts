@@ -158,6 +158,7 @@ export class ConozcanosAfiliarseComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(
       () => {
+        this.loadBoard();
       },
       (err) => console.log(err)
     );

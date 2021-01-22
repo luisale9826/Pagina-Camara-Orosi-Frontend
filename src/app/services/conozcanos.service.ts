@@ -47,4 +47,13 @@ export class ConozcanosService {
       })
       .toPromise();
   }
+
+  editBoard(board): Promise<any> {
+    return this.httpClient
+      .post(`${this.PATHADMIN}/board`, board, {
+        observe: 'response',
+        headers: this.headers,
+      })
+      .toPromise();
+  }
 }

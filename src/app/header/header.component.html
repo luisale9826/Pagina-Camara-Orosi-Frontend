@@ -17,6 +17,11 @@
     <button mat-menu-item routerLink="/tourVirtual">Tour Virtual</button>
     <button *ngIf="!status" mat-menu-item (click)="changeLogoCamara('logoCamara')">Cambiar logo Cámara</button>
     <button *ngIf="!status" mat-menu-item routerLink="/usuarios">Usuario</button>
-    <button *ngIf="!status" mat-menu-item (click)="logout()">Cerrar sesión</button>
+    <ng-container *ngIf="!status; else elseTemplate">
+      <button mat-menu-item (click)="logout()">Cerrar sesión</button>
+    </ng-container>
+    <ng-template #elseTemplate>
+      <button mat-menu-item routerLink="/login">Iniciar Sesión</button>
+    </ng-template>
   </mat-menu>
 </header>
