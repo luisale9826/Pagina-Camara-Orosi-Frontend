@@ -62,4 +62,8 @@ button:hover {
     .btn-delete-value {
         font-size: 12px;
     }
+
+    textarea {
+        height: 100px !important;
+    }
 }

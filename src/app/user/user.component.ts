@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatTableDataSource } from '@angular/material/table';
 import { User } from '../models/user';
 import { LoginService } from '../services/login.service';
 import { UserService } from '../services/user.service';
@@ -12,7 +13,8 @@ import { UserFormDialogComponent } from './user-form-dialog/user-form-dialog.com
   styleUrls: ['./user.component.css'],
 })
 export class UserComponent implements OnInit {
-  users: User[];
+  users: MatTableDataSource<User>;
+  displayedColumns = ['userName', 'action'];
 
   constructor(
     private userService: UserService,
@@ -23,7 +25,8 @@ export class UserComponent implements OnInit {
   ngOnInit(): void {
     this.userService.getUsers
       .then((data) => {
-        this.users = data;
+        data = data.filter((user) => user.userName !== this.loginService.user);
+        this.users = new MatTableDataSource(data);
       })
       .catch((error) => console.log(error));
   }

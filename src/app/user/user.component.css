@@ -1,0 +1,39 @@
+.container {
+    margin: 0px 0px 0px 20px;
+}
+
+h1 {
+    text-align: center;
+}
+
+table {
+    width: 100%;
+    margin-bottom: 20%;
+}
+
+a {
+    font-size: 15px;
+    color: #0c7c24 !important;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+a:hover {
+    text-decoration: underline !important;
+}
+
+@media only screen and (max-width: 768px) {
+    .container {
+        margin: 0px 0px 0px 0px;
+    }
+
+    h1 {
+        font-size: 30px;
+    }
+
+    td, th, a {
+        padding-left: 2px !important;
+        padding-right: 0px !important;
+        font-size: 10px !important;
+    }
+}
