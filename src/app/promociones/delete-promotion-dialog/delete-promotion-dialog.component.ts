@@ -4,7 +4,7 @@ import {
   MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
-import { Promocion } from 'src/app/models/promocion';
+import { Promotion } from 'src/app/models/promotion';
 import { LoginService } from 'src/app/services/login.service';
 import { PromocionService } from 'src/app/services/promocion.service';
 
@@ -14,7 +14,7 @@ import { PromocionService } from 'src/app/services/promocion.service';
   styleUrls: ['./delete-promotion-dialog.component.css'],
 })
 export class DeletePromotionDialogComponent implements OnInit {
-  promotion: Promocion;
+  promotion: Promotion;
   status: boolean;
 
   constructor(
@@ -30,7 +30,7 @@ export class DeletePromotionDialogComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  eliminar(promotion: Promocion): void {
+  eliminar(promotion: Promotion): void {
     this.ps
       .deletePromotion(promotion.id)
       .then(() => {

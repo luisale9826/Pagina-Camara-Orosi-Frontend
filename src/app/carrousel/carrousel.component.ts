@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Promocion } from '../models/promocion';
+import { Promotion } from '../models/promotion';
 import { PromocionService } from '../services/promocion.service';
 
 @Component({
@@ -8,7 +8,7 @@ import { PromocionService } from '../services/promocion.service';
   styleUrls: ['./carrousel.component.css'],
 })
 export class CarrouselComponent implements OnInit {
-  public promociones: Promocion[];
+  public promociones: Promotion[];
   constructor(public promocionService: PromocionService) {}
 
   ngOnInit(): void {

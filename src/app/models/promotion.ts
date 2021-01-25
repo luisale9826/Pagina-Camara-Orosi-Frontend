@@ -1,4 +1,4 @@
-export class Promocion {
+export class Promotion {
   constructor(
     public name: string,
     public link: any,

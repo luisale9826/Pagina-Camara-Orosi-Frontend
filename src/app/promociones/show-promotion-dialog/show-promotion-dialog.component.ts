@@ -4,7 +4,7 @@ import {
   MatDialogRef,
   MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
-import { Promocion } from 'src/app/models/promocion';
+import { Promotion } from 'src/app/models/promotion';
 import { LoginService } from 'src/app/services/login.service';
 import { DeletePromotionDialogComponent } from '../delete-promotion-dialog/delete-promotion-dialog.component';
 import { InsertPromotionDialogComponent } from '../insert-promotion-dialog/insert-promotion-dialog.component';
@@ -15,7 +15,7 @@ import { InsertPromotionDialogComponent } from '../insert-promotion-dialog/inser
   styleUrls: ['./show-promotion-dialog.component.css'],
 })
 export class ShowPromotionDialogComponent implements OnInit {
-  promotion: Promocion;
+  promotion: Promotion;
   status: boolean;
 
   constructor(
@@ -30,7 +30,7 @@ export class ShowPromotionDialogComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  modifyPromotion(promotion: Promocion): void {
+  modifyPromotion(promotion: Promotion): void {
     this.dialog
       .open(InsertPromotionDialogComponent, {
         data: {
@@ -52,7 +52,7 @@ export class ShowPromotionDialogComponent implements OnInit {
       );
   }
 
-  deletePromotion(promotion: Promocion): void {
+  deletePromotion(promotion: Promotion): void {
     this.dialog
     .open(DeletePromotionDialogComponent, {
       data: {

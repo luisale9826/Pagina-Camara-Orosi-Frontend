@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Promocion } from '../models/promocion';
 import { PromocionService } from '../services/promocion.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
@@ -7,6 +6,7 @@ import { ShowPromotionDialogComponent } from './show-promotion-dialog/show-promo
 import { LoginService } from '../services/login.service';
 import { InsertPromotionDialogComponent } from './insert-promotion-dialog/insert-promotion-dialog.component';
 import { DeletePromotionDialogComponent } from './delete-promotion-dialog/delete-promotion-dialog.component';
+import { Promotion } from '../models/promotion';
 
 @Component({
   selector: 'app-promociones',
@@ -14,7 +14,7 @@ import { DeletePromotionDialogComponent } from './delete-promotion-dialog/delete
   styleUrls: ['./promociones.component.css'],
 })
 export class PromocionesComponent implements OnInit {
-  promotions: MatTableDataSource<Promocion>;
+  promotions: MatTableDataSource<Promotion>;
   status: boolean;
   displayedColumns = ['name', 'startDate', 'expirationDate', 'action'];
 
@@ -39,7 +39,7 @@ export class PromocionesComponent implements OnInit {
       .catch((err) => console.log(err));
   }
 
-  deletePromotion(promotion: Promocion): void {
+  deletePromotion(promotion: Promotion): void {
         this.dialog
       .open(DeletePromotionDialogComponent, {
         data: {
@@ -73,7 +73,7 @@ export class PromocionesComponent implements OnInit {
     );
   }
 
-  openPromotion(promotion: Promocion): void {
+  openPromotion(promotion: Promotion): void {
     this.dialog.open(ShowPromotionDialogComponent, {
       data: {
         promotion,
@@ -81,7 +81,7 @@ export class PromocionesComponent implements OnInit {
     });
   }
 
-  modifyPromotion(promotion: Promocion): void {
+  modifyPromotion(promotion: Promotion): void {
     this.dialog
       .open(InsertPromotionDialogComponent, {
         data: {

@@ -8,7 +8,7 @@ import {
 } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
-import { Promocion } from 'src/app/models/promocion';
+import { Promotion } from 'src/app/models/promotion';
 import { PromocionService } from 'src/app/services/promocion.service';
 import {
   invalidExpirationDate,
@@ -91,7 +91,7 @@ export class InsertPromotionDialogComponent implements OnInit {
     };
   }
 
-  onSubmit(promocionData: Promocion): void {
+  onSubmit(promocionData: Promotion): void {
     if (this.promotionForm.valid) {
       promocionData.startDate = this.getFormattedDate(promocionData.startDate);
       promocionData.expirationDate = this.getFormattedDate(
@@ -112,7 +112,7 @@ export class InsertPromotionDialogComponent implements OnInit {
     return formatedDate;
   }
 
-  private modifyPromotion(promocion: Promocion): void {
+  private modifyPromotion(promocion: Promotion): void {
     let image = this.promotionForm.get('image').value;
     if (!this.editedLogo) {
       image = null;
@@ -127,8 +127,8 @@ export class InsertPromotionDialogComponent implements OnInit {
       )
       .then(() => {
         this.toastr.success(
-          `Se ha insertado la compañía ${promocion.name}`,
-          'Insertado!!!'
+          `Se ha modificado la promoción`,
+          'Modificado!!!'
         );
         this.dialogRef.close();
       })
@@ -138,7 +138,7 @@ export class InsertPromotionDialogComponent implements OnInit {
       });
   }
 
-  private insertPromotion(promocion: Promocion): void {
+  private insertPromotion(promocion: Promotion): void {
     this.ps
       .insertPromotion(
         promocion.name,
@@ -148,7 +148,7 @@ export class InsertPromotionDialogComponent implements OnInit {
       )
       .then(() => {
         this.toastr.success(
-          `Se ha insertado la compañía ${promocion.name}`,
+          `Se ha insertado la promoción ${promocion.name}`,
           'Insertado!!!'
         );
         this.dialogRef.close();

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
-import { Promocion } from '../models/promocion';
 import { environment } from 'src/environments/environment';
 import { LoginService } from './login.service';
+import { Promotion } from '../models/promotion';
 
 @Injectable({
   providedIn: 'root',
@@ -17,8 +17,8 @@ export class PromocionService {
     private loginService: LoginService
   ) {}
 
-  getPromotions(): Promise<Promocion[]> {
-    return this.httpClient.get<Promocion[]>(this.PATHVISITER).toPromise();
+  getPromotions(): Promise<Promotion[]> {
+    return this.httpClient.get<Promotion[]>(this.PATHVISITER).toPromise();
   }
 
   insertPromotion(
@@ -86,7 +86,7 @@ export class PromocionService {
       .toPromise();
   }
 
-  getTopTenPromotions(): Promise<Promocion[]> {
-    return this.httpClient.get<Promocion[]>(`${this.PATHVISITER}/10`).toPromise();
+  getTopTenPromotions(): Promise<Promotion[]> {
+    return this.httpClient.get<Promotion[]>(`${this.PATHVISITER}/10`).toPromise();
   }
 }
