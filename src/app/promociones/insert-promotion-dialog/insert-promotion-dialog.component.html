@@ -1,0 +1,67 @@
+<h2>{{data.titulo}}</h2>
+<mat-dialog-content>
+    <p>Este formulario tiene el propósito de ingresar una promoción</p>
+    <form [formGroup]="promotionForm" fxLayout="column" fxLayoutGap="3%">
+        <div>
+            <div>
+                <h3>Nombre de la Promoción</h3>
+            </div>
+            <mat-form-field>
+                <mat-label></mat-label>
+                <input matInput id="name" formControlName="name" required>
+                <mat-error *ngIf="promotionForm.get('name').hasError('notNullOrBlank')"></mat-error>
+            </mat-form-field>
+        </div>
+        <div>
+            <div>
+                <h3>Logo o Imagen de la Compañía</h3>
+            </div>
+            <div>
+                <div fxLayout="row">
+                    <input type="file" class="upload-file" id="upload-file" (click)="clicked = true"
+                        (change)="onFileUploaded($event)" hidden>
+                    <label for="upload-file" title="Subir foto">
+                        <i class="fa fa-file-photo-o"></i>
+                    </label>
+                </div>
+                <img *ngIf="imageScr" class="prev-image" [src]="imageScr" alt="">
+                <div fxLayout="column" class="barra-progreso" *ngIf="progress">
+                    <p>Progreso: {{progress}}%</p>
+                    <ngb-progressbar [value]="progress"></ngb-progressbar>
+                </div>
+                <div>
+                    <p class="error" *ngIf="promotionForm.controls.image.hasError('invalidImageType')">
+                        Solo se admiten imagenes con formato .PNG o .JPG
+                    </p>
+                    <p class="error" *ngIf="clicked && promotionForm.controls.image.hasError('required')">
+                        Cada promoción debe tener una imagen
+                    </p>
+                </div>
+            </div>
+            <br />
+            <div>
+                <mat-form-field class="date-picker">
+                    <mat-label>Enter a date range</mat-label>
+                    <mat-date-range-input [formGroup]="promotionForm" [rangePicker]="picker">
+                        <input matStartDate formControlName="startDate" placeholder="Start date">
+                        <input matEndDate formControlName="expirationDate" placeholder="End date">
+                    </mat-date-range-input>
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-date-range-picker #picker></mat-date-range-picker>
+
+                    <mat-error *ngIf="promotionForm.controls.startDate.hasError('required')">Debe especificarse la fecha
+                        de inicio de la promoción</mat-error>
+                    <mat-error *ngIf="promotionForm.controls.expirationDate.hasError('required')">Debe especificarse la
+                        fecha de finalización de la promoción</mat-error>
+                    <mat-error *ngIf="promotionForm.controls.expirationDate.hasError('invalidDate')">
+                        La fecha de expiración no puede ser menor a la fecha actual
+                    </mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button [disabled]="promotionForm.invalid" (click)="onSubmit(promotionForm.value)">Guardar</button>
+    <button type="button" class="btn-cancelar" (click)="dialogRef.close()">Cancelar</button>
+</mat-dialog-actions>

@@ -1,0 +1,25 @@
+<a mat-dialog-title mat-dialog-close>
+    <span class="material-icons">
+        close
+    </span>
+</a>
+<mat-dialog-content>
+    <div class="content" fxLayout="column">
+        <div>
+            <h2>{{promotion.name}}</h2>
+        </div>
+        <div>
+            <img [src]="promotion.link" alt="">
+            <div>
+                <p>Fecha de Inicio: {{promotion.startDate}}</p>
+            </div>
+            <div>
+                <p>Fecha de Expiración: {{promotion.expirationDate}}</p>
+            </div>
+        </div>
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end" *ngIf="!status" fxLayoutGap="2%">
+    <button (click)="modifyPromotion(promotion)">Editar</button>
+    <button (click)="deletePromotion(promotion)">Eliminar</button>
+</mat-dialog-actions>

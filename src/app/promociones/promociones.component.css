@@ -1,7 +1,63 @@
+.promotion-container {
+    margin: 30px 30px 60px 46px;
+}
+
+.btn-insert {
+    background-color: transparent;
+    color: #0c7c24;
+    font-size: 15px;
+    cursor: pointer;
+    padding: 10px 15px;
+    text-align: center;
+    border: 2px solid #0c7c24;
+    border-radius: 8px;
+}
+  
+.btn-insert:hover {
+    color: white !important;
+    background-color: #0c7c24 !important;
+}
+
 h1 {
     text-align: center;
 }
 
-img {
+table {
     width: 100%;
+}
+
+a {
+    font-size: 15px;
+    color: #0c7c24 !important;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+a:hover {
+    text-decoration: underline !important;
+}
+
+@media only screen and (max-width: 768px) {
+    h1 {
+        font-size: 30px;
+    }
+
+    .promotion-container {
+        margin: 30px 0px 30px 0px;
+    }
+
+    td, th, a {
+        padding-left: 2px !important;
+        padding-right: 0px !important;
+        font-size: 10px !important;
+    }
+
+    .btn-insert {
+        font-size: 10px;
+        padding: 5px 7.5px;
+    }
+
+    p {
+        font-size: 12px;
+    }
 }

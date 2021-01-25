@@ -60,8 +60,6 @@ export class DirectorioService {
   }
 
   eliminarCompany(companyId: any): Promise<any> {
-    const formData = new FormData();
-    formData.append('companyId', companyId);
     return this.httpClient
       .request('delete', `${this.PATHADMIN}`, {
         body: companyId,

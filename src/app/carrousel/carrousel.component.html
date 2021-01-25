@@ -1,0 +1,12 @@
+<ng-container *ngIf="this.promociones === undefined; else elseTemplate">
+    <h1>Cargando</h1>
+</ng-container>
+<ng-template #elseTemplate>
+    <ngb-carousel *ngIf="promociones" [showNavigationIndicators]="false">
+        <ng-template *ngFor="let prom of promociones" ngbSlide>
+            <div class="picsum-img-wrapper">
+                <img [src]="prom.link" [alt]="prom.name">
+            </div>
+        </ng-template>
+    </ngb-carousel>
+</ng-template>

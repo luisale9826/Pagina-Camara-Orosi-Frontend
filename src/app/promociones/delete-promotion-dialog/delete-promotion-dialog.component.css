@@ -1,0 +1,32 @@
+mat-dialog-content {
+    width: 400px !important;
+}
+
+img {
+    height: 200px;
+    width: auto;
+}
+
+button {
+    font-size: 15px;
+    background-color: transparent;
+    color: #0c7c24;
+    cursor: pointer;
+    padding: 5px 12px;
+    text-align: center;
+    border: 2px solid #0c7c24;
+    border-radius: 8px;
+    text-decoration: none;
+}
+
+button:hover {
+    color: white !important;
+    background-color: #0c7c24 !important;
+}
+
+
+@media only screen and (max-width: 768px) {
+    p {
+        font-size: 10px;
+    }
+}

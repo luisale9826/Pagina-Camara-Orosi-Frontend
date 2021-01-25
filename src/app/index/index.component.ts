@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Promocion } from '../models/Promocion';
+import { Promocion } from '../models/promocion';
 import { LoginService } from '../services/login.service';
 import { PromocionService } from '../services/promocion.service';
 import { ImagesControl } from '../shared/images-control';

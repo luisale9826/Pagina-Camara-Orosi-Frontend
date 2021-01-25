@@ -15,8 +15,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import {MatProgressBarModule} from '@angular/material/progress-bar';
-
+import { MatTableModule } from '@angular/material/table';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 @NgModule({
   declarations: [],
   exports: [
@@ -34,8 +35,11 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     MatListModule,
     MatCardModule,
     MatToolbarModule,
+    MatTableModule,
     MatMenuModule,
     BrowserAnimationsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     NgbModule,
   ],
 })

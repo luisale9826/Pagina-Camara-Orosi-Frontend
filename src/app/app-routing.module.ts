@@ -5,8 +5,7 @@ import { IndexComponent } from './index/index.component';
 import { DirectorioModule } from './directorio/directorio.module';
 import { LoginModule } from './login/login.module';
 import { ConozcanosAfiliarseModule } from './conozcanos-afiliarse/conozcanos-afiliarse.module';
-import { PromocionModule } from './promocion/newPromo/promocion.module';
-import { EliminarPromocionModule } from './promocion/deletePromo/eliminarPromocion.module';
+import { PromocionesModule } from './promociones/promociones.module';
 
 const routes: Routes = [{ path: '', component: IndexComponent }];
 
@@ -15,8 +14,7 @@ const routes: Routes = [{ path: '', component: IndexComponent }];
     DirectorioModule,
     LoginModule,
     ConozcanosAfiliarseModule,
-    PromocionModule,
-    EliminarPromocionModule,
+    PromocionesModule,
     RouterModule.forRoot(routes),
   ],
   exports: [RouterModule],
