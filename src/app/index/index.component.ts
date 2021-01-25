@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Promocion } from '../models/promocion';
 import { LoginService } from '../services/login.service';
-import { PromocionService } from '../services/promocion.service';
 import { ImagesControl } from '../shared/images-control';
 import { TextControl } from '../shared/text-control';
 import { EditImageDialogComponent } from '../web-config/edit-image-dialog/edit-image-dialog.component';
@@ -14,12 +12,10 @@ import { EditTextDialogComponent } from '../web-config/edit-text-dialog/edit-tex
   styleUrls: ['./index.component.css'],
 })
 export class IndexComponent implements OnInit {
-  promocion: Promocion[];
   status: boolean;
   visitOrosi: string;
 
   constructor(
-    private promocionService: PromocionService,
     private loginService: LoginService,
     private dialog: MatDialog,
     private ic: ImagesControl,
@@ -29,12 +25,6 @@ export class IndexComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.promocionService
-      .getPromotions()
-      .then((data) => {
-        this.promocion = data;
-      })
-      .catch((err) => console.log(err));
     this.loadText();
     this.ic.loadHeaderImages();
   }
