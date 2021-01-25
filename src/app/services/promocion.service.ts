@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
-import { Observable } from 'rxjs';
 import { Promocion } from '../models/promocion';
 import { environment } from 'src/environments/environment';
 import { LoginService } from './login.service';

@@ -1,6 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import {
-  MatDialog,
   MatDialogRef,
   MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
@@ -34,7 +33,7 @@ export class DeletePromotionDialogComponent implements OnInit {
   eliminar(promotion: Promocion): void {
     this.ps
       .deletePromotion(promotion.id)
-      .then((data) => {
+      .then(() => {
         this.toastr.success(`Se ha eliminado la promoción`, 'Eliminado!!!');
         setTimeout(() => {
           this.dialogRef.close(this.data);
