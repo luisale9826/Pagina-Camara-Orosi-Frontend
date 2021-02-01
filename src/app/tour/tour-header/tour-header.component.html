@@ -1,0 +1,11 @@
+<div>
+    <div class="tour-header">
+        <img class="img-header" [src]="getImage('tourHeader')" alt="">
+        <h1>Tour Virtual</h1>
+        <button *ngIf="!status" class="btn-edit-image" (click)="editImage('tourHeader')">
+            <span class="material-icons">
+                create
+            </span>
+        </button>
+    </div>
+</div>

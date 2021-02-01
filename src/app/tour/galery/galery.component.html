@@ -1,0 +1,48 @@
+<div>
+    <app-tour-header></app-tour-header>
+    <div class="titulo">
+        <h1>Galería</h1>
+    </div>
+
+    <div class="galery-container" fxLayout="column" fxLayoutGap="15px">
+        <div>
+            <button (click)="return()">Regresar</button>
+        </div>
+        <div fxLayout="row" fxFlex="100%" fxLayoutGap="10px">
+            <div class="column-1" fxLayout="column" fxFlex="75%">
+                <img (click)="openImageDialog(imagenOne)" fxFill class="image-1"
+                    [src]="imagenOne"
+                    alt="">
+            </div>
+            <div fxLayout="column" fxFlex="25%" fxLayoutGap="15px">
+                <div fxLayout="row" fxFlex="50%">
+                    <img (click)="openImageDialog(imagenDos)" fxFill class="image-2"
+                        [src]="imagenDos"
+                        alt="">
+                </div>
+                <div fxLayout="row" fxFlex="50%">
+                    <img (click)="openImageDialog(imagenTres)" fxFill class="image-3"
+                        [src]="imagenTres"
+                        alt="">
+                </div>
+            </div>
+        </div>
+        <div class="column-2" fxLayout="row" fxFlex="100%">
+            <img (click)="openImageDialog(imagenCuatro)" fxFill class="image-4"
+                [src]="imagenCuatro"
+                alt="">
+        </div>
+        <div class="column-3" fxLayout="row" fxFlex="100%" fxLayoutGap="10px">
+            <div fxLayout="column" fxFlex="50%">
+                <img (click)="openImageDialog(imagenCinco)" fxFill class="image-5"
+                    [src]="imagenCinco"
+                    alt="">
+            </div>
+            <div fxLayout="column" fxFlex="50%">
+                <img (click)="openImageDialog(imagenSeis)" fxFill class="image-6"
+                    [src]="imagenSeis"
+                    alt="">
+            </div>
+        </div>
+    </div>
+</div>

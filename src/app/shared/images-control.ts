@@ -9,7 +9,9 @@ export class ImagesControl {
 
   getImage(path: string): string {
     const image = localStorage.getItem(path);
-    return image === '' ? '/assets/images/sin-imagen.jpg' : image;
+    return image === '' || image === null
+      ? '/assets/images/sin-imagen.jpg'
+      : image;
   }
 
   loadHeaderImages(): void {
@@ -38,6 +40,30 @@ export class ImagesControl {
 
   loadLoginImage(): void {
     const images = ['loginImage'];
+    images.forEach((image) => {
+      if (this.wcs.getLocalStorageItem(image) === null) {
+        this.wcs
+          .getImage(image)
+          .then((data) => this.wcs.saveLocalStorageItem(image, data.url))
+          .catch((err) => console.log(err));
+      }
+    });
+  }
+
+  tourImage(): void {
+    const images = ['tourHeader'];
+    images.forEach((image) => {
+      if (this.wcs.getLocalStorageItem(image) === null) {
+        this.wcs
+          .getImage(image)
+          .then((data) => this.wcs.saveLocalStorageItem(image, data.url))
+          .catch((err) => console.log(err));
+      }
+    });
+  }
+
+  loadLogo(): void {
+    const images = ['logoCamara'];
     images.forEach((image) => {
       if (this.wcs.getLocalStorageItem(image) === null) {
         this.wcs

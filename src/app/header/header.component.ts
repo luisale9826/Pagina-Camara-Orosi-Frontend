@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { LoginService } from '../services/login.service';
+import { ImagesControl } from '../shared/images-control';
 import { EditImageDialogComponent } from '../web-config/edit-image-dialog/edit-image-dialog.component';
 
 @Component({
@@ -10,7 +11,11 @@ import { EditImageDialogComponent } from '../web-config/edit-image-dialog/edit-i
 })
 export class HeaderComponent implements OnInit {
   status: boolean;
-  constructor(private loginService: LoginService, private dialog: MatDialog) {
+  constructor(
+    private loginService: LoginService,
+    private dialog: MatDialog,
+    private ic: ImagesControl
+  ) {
     this.status = this.loginService.isAuthenticated();
   }
 
@@ -27,5 +32,9 @@ export class HeaderComponent implements OnInit {
         name,
       },
     });
+  }
+
+  getLogo(): string {
+    return this.ic.getImage('logoCamara');
   }
 }

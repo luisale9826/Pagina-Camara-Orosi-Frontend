@@ -1,0 +1,28 @@
+img {
+    width: 25% !important;
+    height: auto !important;
+}
+
+.titulo {
+    margin: 20px 15px 20px 15px;
+}
+
+.galery-container {
+    margin: 10px 30px 30px 30px;
+}
+
+button {
+    background-color: transparent;
+    color: #0c7c24;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 10px 24px;
+    text-align: center;
+    border: 2px solid #0c7c24;
+    border-radius: 8px;
+}
+
+button:hover {
+    color: white !important;
+    background-color: #0c7c24 !important;
+}

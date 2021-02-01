@@ -20,6 +20,7 @@ import { PromocionesModule } from './promociones/promociones.module';
 import { UserModule } from './user/user.module';
 import { WebConfigModule } from './web-config/web-config.module';
 import { CarrouselComponent } from './carrousel/carrousel.component';
+import { TourModule } from './tour/tour.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,6 +38,7 @@ import { CarrouselComponent } from './carrousel/carrousel.component';
     HttpClientModule,
     LoginModule,
     NoopAnimationsModule,
+    TourModule,
     ToastrModule.forRoot(),
     PromocionesModule,
     UserModule,

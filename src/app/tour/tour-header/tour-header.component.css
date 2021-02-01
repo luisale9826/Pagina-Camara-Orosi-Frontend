@@ -1,0 +1,44 @@
+.tour-header h1 {
+    position: absolute;
+    z-index: 1;
+    top: 40%;
+    left: 10%;
+}
+
+.btn-edit-image {
+    position: absolute;
+    z-index: 1;
+    top: 150px;
+    left: 0%;
+    background-color: transparent;
+    color: #0c7c24;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 5px 12px;
+    text-align: center;
+    border: 2px solid #0c7c24;
+    border-radius: 8px;
+}
+
+.img-header {
+    width: 100%;
+    position: relative;
+}
+
+.btn-edit-image:hover {
+    color: white !important;
+    background-color: #0c7c24 !important;
+}
+
+@media only screen and (max-width: 600px) {
+
+    h1 {
+        top: 43%;
+        font-size: 35px
+    }
+
+    .btn-edit-image {
+        top: 100px;
+    }
+
+}

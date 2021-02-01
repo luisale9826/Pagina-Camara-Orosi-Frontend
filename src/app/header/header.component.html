@@ -2,7 +2,7 @@
   <mat-toolbar fxLayout="row">
     <mat-toolbar-row fxFlex="100%">
       <a href="/">
-        <img src="/assets/images/logos/logo-camara.png" alt="Logo camara orosi">
+        <img [src]="getLogo()" alt="Logo camara orosi">
       </a>
       <button class="menu" mat-icon-button [matMenuTriggerFor]="menu">
         <mat-icon>menu</mat-icon>
@@ -14,7 +14,7 @@
     <button mat-menu-item routerLink="/directorio">Directorio</button>
     <button mat-menu-item routerLink="/conozcanos">Conózcanos/Afiliarse</button>
     <button *ngIf="!status" mat-menu-item routerLink="/promocion">Promociones</button>
-    <button mat-menu-item routerLink="/tourVirtual">Tour Virtual</button>
+    <button mat-menu-item routerLink="/tour">Tour Virtual</button>
     <button *ngIf="!status" mat-menu-item (click)="changeLogoCamara('logoCamara')">Cambiar logo Cámara</button>
     <button *ngIf="!status" mat-menu-item routerLink="/usuarios">Usuarios</button>
     <ng-container *ngIf="!status; else elseTemplate">

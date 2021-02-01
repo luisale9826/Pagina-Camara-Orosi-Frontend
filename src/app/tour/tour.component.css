@@ -1,0 +1,29 @@
+.tour-container {
+    margin: 30px 20px 30px 20px;
+}
+
+button {
+    background-color: transparent;
+    color: #0c7c24;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 10px 24px;
+    text-align: center;
+    border: 2px solid #0c7c24;
+    border-radius: 8px;
+}
+
+button:hover {
+    color: white !important;
+    background-color: #0c7c24 !important;
+}
+
+.information {
+    margin-top: 15px;
+}
+
+@media only screen and (max-width: 600px) {
+     h1 {
+      font-size: 40px;
+    }
+}

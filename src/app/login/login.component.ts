@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from '../services/login.service';
@@ -8,7 +8,7 @@ import { LoginService } from '../services/login.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
   loginForm = new FormGroup({
     username: new FormControl(''),
     password: new FormControl(''),
@@ -19,6 +19,10 @@ export class LoginComponent implements OnInit {
   error = '';
 
   constructor(private loginService: LoginService, private router: Router) {}
+
+  ngOnDestroy(): void {
+    document.body.style.backgroundImage = `none`;
+  }
 
   ngOnInit(): void {
     document.body.style.backgroundImage = `url('/assets/images/login/fondo.jpeg')`;

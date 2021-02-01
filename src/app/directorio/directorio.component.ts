@@ -20,7 +20,6 @@ export class DirectorioComponent implements OnInit, AfterViewInit {
   status: boolean;
   companies: Company[];
   directory: Map<string, Company[]> = new Map();
-  imagen = '/assets/images/sin-imagen.jpg';
 
   constructor(
     private loginService: LoginService,
