@@ -47,8 +47,8 @@ export class UserFormDialogComponent implements OnInit {
   onSubmit(user: User): void {
     if (this.userForm.valid) {
       if (this.data.user !== undefined) {
-        if (!this.habilitado) {
-          user.password = this.data.user.password;
+        if (user.password === null) {
+          user.password = 'not-changed';
         }
         user.userId = this.data.user.userId;
         user.role = this.data.user.role;
@@ -134,5 +134,4 @@ export class UserFormDialogComponent implements OnInit {
       this.userForm.get('password').updateValueAndValidity();
     }
   }
-
 }
