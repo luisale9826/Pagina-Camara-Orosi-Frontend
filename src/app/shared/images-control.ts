@@ -9,7 +9,7 @@ export class ImagesControl {
 
   getImage(path: string): string {
     const image = localStorage.getItem(path);
-    return image === '' || image === null
+    return image === ''
       ? '/assets/images/sin-imagen.jpg'
       : image;
   }

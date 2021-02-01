@@ -17,6 +17,7 @@ export class HeaderComponent implements OnInit {
     private ic: ImagesControl
   ) {
     this.status = this.loginService.isAuthenticated();
+    this.ic.loadLogo();
   }
 
   ngOnInit(): void {}
